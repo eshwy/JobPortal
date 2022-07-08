@@ -1,0 +1,17 @@
+﻿@model IEnumerable<JopPortalMVC.Models.ArticlePinedTbl>
+
+
+<h3>H4</h3>
+@foreach (var item in Model) 
+{
+            
+            <td>
+                @Html.DisplayFor(modelItem => item.RowId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PinedArticleId)
+            </td>
+}

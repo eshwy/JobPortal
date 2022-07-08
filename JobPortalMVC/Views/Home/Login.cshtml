@@ -1,0 +1,76 @@
+﻿@{
+    ViewData["Title"] = "Login";
+    Layout = null;
+}
+@*<div class="row">
+        <div class="col-md-4">
+            <form asp-action="Login">
+                <div class="form-group">
+                    <label asp-for="UserName" class="control-label"></label>
+                    <input asp-for="UserName" class="form-control" />
+                    <span asp-validation-for="UserName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PassWord" class="control-label"></label>
+                    <input asp-for="PassWord" class="form-control" />
+                    <span asp-validation-for="PassWord" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Submit" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>*@
+<link rel="stylesheet" href="~/css/LoginSignUp.css">
+<h2>Welcome to Job Portal</h2>
+<div class="container" id="container">
+    <div class="form-container sign-up-container">
+        <form asp-action="SignUp">
+            <h1>Create Account</h1>
+            <input type="text" name="UserName" placeholder="Name" />
+            <input type="email" name="Email" placeholder="Email" />
+            <input type="password" name="PassWord" placeholder="Password" />
+            <button>Sign Up</button>
+        </form>
+    </div>
+    <div class="form-container sign-in-container">
+        <form asp-action="Login">
+            <h1>Sign in</h1>
+            <input type="text" name="UserName" placeholder="User Name" />
+            <input type="password" name="PassWord" placeholder="Password" />
+            @if (ViewBag.Error != null)
+            {
+                <h4 style="color:red">@ViewBag.Error</h4>
+            }
+            <button>Sign In</button>
+        </form>
+    </div>
+    <div class="overlay-container">
+        <div class="overlay">
+            <div class="overlay-panel overlay-left">
+                <h1>Welcome Back!</h1>
+                <p>To keep connected with us please login with your personal info</p>
+                <button class="ghost" id="signIn">Sign In</button>
+            </div>
+            <div class="overlay-panel overlay-right">
+                <h1>Hello, Friend!</h1>
+                <p>Enter your personal details and start journey with us</p>
+                <button class="ghost" id="signUp">Sign Up</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const signUpButton = document.getElementById('signUp');
+    const signInButton = document.getElementById('signIn');
+    const container = document.getElementById('container');
+
+    signUpButton.addEventListener('click', () => {
+        container.classList.add("right-panel-active");
+    });
+
+    signInButton.addEventListener('click', () => {
+        container.classList.remove("right-panel-active");
+    });
+</script>

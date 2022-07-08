@@ -1,0 +1,39 @@
+﻿@model ViewModelData;
+@{
+    int a = @ViewBag.UserId;
+}
+<div class="row">
+    <div class="col-md-3 card" >
+        <partial name="_Photo" model="Model.UserProfilePhotoTbl"/>        
+    </div>
+    <div class="col-md-9 card">        
+        <partial name="_Personal" model="Model.PersonalDetailsTbl" />
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12 card">
+        <partial name="_Address" model="Model.AddressDetailsTbl"/>
+    </div>    
+</div>
+<div class="row">
+    <div class="col-md-6 card" >
+        <partial name="_Education" model="Model.UserEducationTbl" />        
+    </div>
+    <div class="col-md-6 card" >
+        <partial name="_Work" model="Model.UserWorkTbl" />
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-3 card">
+        <partial name="_Followers" model="Model.UserFollowersDetails" />
+    </div>
+    <div class="col-md-3 card">
+        <partial name="_Following" model="Model.UserFollowingDetails"/>
+    </div>
+    <div class="col-md-3 card">
+        <partial name="_ArticleWrote" model="Model.ArticleTbl"/>
+    </div>
+    <div class="col-md-3 card">
+        <partial name="_ArticlePined" model="Model.ArticlePinedTbl"/>
+    </div>
+</div>

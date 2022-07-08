@@ -1,0 +1,81 @@
+﻿@model List<JopPortalMVC.Models.PersonalDetailsTbl>
+<div id="PlaceHolderHere">
+
+    @foreach (var j in Model)
+    {
+    <div class="row">
+        <div class="col-md-11">
+            <div class="row">
+                <div class="col-md-6">
+                    <b>Name :</b> @j.FirstName &nbsp @j.LastName <br />
+                    <b>Email :</b> @j.Email <br />                    
+                    <b>Phone Number :</b> @j.PhoneNumber <br />
+                    <b>Skills :</b> @j.Skills <br />
+                </div>
+                <div class="col-md-6">
+                    <b>D.O.B :</b> @j.DateOfBirth.Value.ToString("dd/MM/yyyy") <br />
+                    <b>Gender :</b> @j.Gender <br />
+                    <b>Experience :</b> @j.Experience<br />
+                </div>
+            </div>
+            
+        </div>
+        <div class="col-md-1">
+            <button type="button" class="btn btn-light " data-toggle="modal" data-target="#EditPersonal">
+                <span class="bi bi-pencil"></span>
+            </button>
+        </div>
+    </div>
+
+    }
+    @foreach (var item in Model)
+    {
+        <div class="modal fade" id="EditPersonal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <form asp-controller="Edit" asp-action="EditPersonal" id="EditForm">
+                            <div class="row">
+                                <input value="@item.RowId" name="RowId" type="hidden" />
+                                <input value="@item.UserId" name="UserId" type="hidden" />
+                                <input value="@item.Email" name="Email" type="hidden" />
+                                <div class="col-md-6">
+                                    <b> Email Can't be Edited</b><label>@item.Email</label>
+                                    First Name:<input type="text" name="FirstName" value="@item.FirstName" />
+                                    Last Name:<input type="text" name="LastName" value="@item.LastName" />
+                                    Phone Number:<input type="text" name="PhoneNumber" value="@item.PhoneNumber" />
+                                </div>
+                                <div class="col-md-6">
+                                    <b>DOB Can't be Edited:</b><label>@item.DateOfBirth.Value.ToString("dd/MM/yyyy")</label><br />
+                                    <input type="hidden" value="@item.DateOfBirth" name="DateOfBirth" />
+                                    <b>Gender Can't be Edited : </b><br /><label>@item.Gender</label><br />
+                                    <input type="hidden" value="@item.Gender" name="Gender" />
+                                    Experience :<input type="number" name="Experience" value="@item.Experience" />
+                                    Skills :<input type="text" name="Skills" value="@item.Skills" />
+                                </div>
+                            </div>
+                            <div class="row">                              
+                                <button id="Create" type="submit" value="Create" class="btn btn-success">Save changes</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<script>
+    $(function () {
+        $("#Create").click(function (e) {
+            if (confirm("Do you want to Save Changes ?")) {                
+                $("#EditForm").submit();
+            }
+        });
+    });
+</script>

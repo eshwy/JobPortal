@@ -1,0 +1,76 @@
+﻿@model IEnumerable<JopPortalMVC.Models.UserEducationTbl>
+
+
+        @foreach (var item in Model)
+        {
+
+            <h3 align="center">@Html.DisplayFor(modelItem => item.EducationType)</h3>
+            <div class="row">
+
+                <div class="col-md-8">
+                    @if (item.GroupName != null)
+                    {
+                        <b>Group Name :</b>@Html.DisplayFor(modelItem => item.GroupName) <br />
+                    }
+                    <b>Graduated From:</b>@Html.DisplayFor(modelItem => item.CompletedEducationIn)<br />
+                    <b>Percentage :</b>@Html.DisplayFor(modelItem => item.PercentageObtained) %<br />
+                </div>
+                <div class="col-md-3">
+                    <b>From:</b>@Html.DisplayFor(modelItem => item.YearOfStart)<br />
+                    <b>Till:</b>@Html.DisplayFor(modelItem => item.YearOfEnd)<br />
+                </div>
+                <div class="col-md-1">
+                    
+                    <button type="button" class="btn btn-light " data-toggle="modal" data-target="#EditEducation_@item.RowId">
+                        <span class="bi bi-pencil"></span>
+                    </button>
+                </div>
+                <hr align="center" width="50%" style="height:2px;border-width:0;color:gray;background-color:gray" />
+            </div>
+
+        }
+    
+    
+    @foreach (var Education in Model)
+    {
+        <div class="modal fade" id=@("EditEducation_"+Education.RowId) tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <form asp-controller="Edit" asp-action="EditEducation" id="EditEducation">
+                            <div class="row">
+                                <input value="@Education.RowId" name="RowId" type="hidden" />
+                                <input value="@Education.UserId" name="UserId" type="hidden" />
+                                Type:<label>@Education.EducationType</label>
+                                <input type="hidden" name="EducationType" value="@Education.EducationType" required /><br />
+                                Group:<input type="text" name="GroupName" value="@Education.GroupName" required />
+                                From:<input type="text" name="CompletedEducationIn" value="@Education.CompletedEducationIn" required />
+                                Percentage :<input type="number" step="any" value="@Education.PercentageObtained" name="PercentageObtained" required />
+                                Start Year :<input type="number" value="@Education.YearOfStart" name="YearOfStart" required />
+                                End Year :<input type="number" value="@Education.YearOfEnd" name="YearOfEnd" required />
+                                <hr align="center" width="50%" style="height:2px;border-width:0;color:gray;background-color:gray" />
+                            </div>
+                            <div class="row">
+                                <button id="CreateEducation" type="submit" value="Create" class="btn btn-success">Save changes</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+<script>
+    $(function () {
+        $("#CreateEducation").click(function (e) {
+            if (confirm("Do you want to Save Changes ?")) {
+                $("#EditEducation").submit();
+            }
+        });
+    });
+</script>

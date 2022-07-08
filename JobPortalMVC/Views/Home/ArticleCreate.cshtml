@@ -1,0 +1,20 @@
+﻿@model JopPortalMVC.Models.ArticleTbl
+<form method="post" asp-controller="Home" asp-action="ArticleCreate">
+    <input type="hidden" asp-for="UserId" value="@ViewBag.ID">
+    <label asp-for="Title"></label>
+    <input type="text" asp-for="Title" />
+    <label asp-for="Category"></label>
+    <input type="text" asp-for="Category" />
+    <br />
+    <label asp-for="Content"></label>
+    <textarea cols="100" rows="7" asp-for="Content"></textarea>
+    <br />
+    <input type="submit" />
+    <br />
+</form>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/4.0.20/tinymce.min.js"></script>
+<script type="text/javascript">
+    tinymce.init({ selector: 'textarea', width: 900 });
+</script>
+

@@ -1,0 +1,13 @@
+﻿@model IEnumerable<JopPortalMVC.Models.ArticleTbl>
+
+@{
+    ViewData["Title"] = "ListArticle";
+}
+@foreach (var item in Model) {
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category)
+            </td>
+}

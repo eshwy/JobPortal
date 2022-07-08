@@ -1,0 +1,10 @@
+﻿@model IEnumerable<JopPortalMVC.Models.ArticleTbl>
+
+<h1>Article</h1>
+@foreach (var item in Model)
+{
+    <h1>Title    : @item.Title</h1>
+    <h2>Category : @item.Category</h2>
+    @Html.Raw(item.Content)
+
+}

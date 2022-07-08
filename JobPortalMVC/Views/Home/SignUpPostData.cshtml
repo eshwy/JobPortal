@@ -1,0 +1,178 @@
+﻿@model JobPortalMVC.Models.UserSignUpDataAll
+
+@{
+    ViewData["Title"] = "SignUpPostData";
+    Layout = null;
+}
+<link rel="stylesheet" href="~/css/SignUp.css">
+<div class="container">
+    <div class="form-wrap">
+        <header>
+            <h1>Welcome to Crowdise</h1>
+        </header>
+        <form asp-controller="Home" asp-action="SignUpPostData" enctype="multipart/form-data">
+            <div class="row">
+                <div class="form-group">
+                    <label asp-for="photo" class="control-label"></label>
+                    <input asp-for="photo" accept="image/gif, image/jpeg, image/png" id="imgfile" onchange="loadFile(event)">
+                    <span asp-validation-for="photo" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <p><img id="output" width="200" /></p>
+                </div>
+            </div>
+            <hr align="center" width="85%" style="height:2px;border-width:0;color:gray;background-color:gray" />
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label"></label>
+                <input asp-for="FirstName" class="form-control" placeholder="Enter First Name" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">                
+                <label asp-for="LastName" class="control-label"></label>
+                <input asp-for="LastName" class="form-control" placeholder="Enter Last Name" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhoneNumber" class="control-label"></label>
+                <input asp-for="PhoneNumber" class="form-control" placeholder="(981-111-1233)" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Gender" class="control-label"></label>
+                @Html.DropDownListFor(m => m.Gender, new SelectList(Enum.GetValues(typeof(Gender))), "Select Gender")
+                <span asp-validation-for="Gender" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateOfBirth" class="control-label"></label>
+                <input asp-for="DateOfBirth" class="form-control" />
+                <span asp-validation-for="DateOfBirth" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Experience" class="control-label"></label>
+                <input asp-for="Experience" class="form-control" placeholder="Enter Experience" />
+                <span asp-validation-for="Experience" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Skills" class="control-label"></label>
+                <input asp-for="Skills" class="form-control" placeholder="Enter Your Skill" />
+                <span asp-validation-for="Skills" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+
+            </div>
+            <hr align="center" width="85%" style="height:2px;border-width:0;color:gray;background-color:gray" />
+            <div class="form-group">
+                <label asp-for="PermantentDoorNumber" class="control-label"></label>
+                <input asp-for="PermantentDoorNumber" id="PDN" class="form-control" placeholder="Door Number" />
+                <span asp-validation-for="PermantentDoorNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PermantentStreetName" class="control-label"></label>
+                <input asp-for="PermantentStreetName" id="PSN" class="form-control" placeholder="Street Name" />
+                <span asp-validation-for="PermantentStreetName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PermantentArea" class="control-label"></label>
+                <input asp-for="PermantentArea" id="PA" class="form-control" placeholder="Area Name" />
+                <span asp-validation-for="PermantentArea" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PermantentCity" class="control-label"></label>
+                <input asp-for="PermantentCity" id="PC" class="form-control" placeholder="City Name" />
+                <span asp-validation-for="PermantentCity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PermantentPinCode" class="control-label"></label>
+                <input asp-for="PermantentPinCode" id="PPC" class="form-control" placeholder="Pincode" />
+                <span asp-validation-for="PermantentPinCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+
+            </div>
+            <div class="form-group-checkbox">
+                <input type="checkbox" id="checkBox" onclick="autoFilAddress()"> Same as permanent address
+            </div>
+            <div class="form-group-checkbox">
+
+            </div>
+            <div class="form-group">
+                <label asp-for="CurrentDoorNumber" class="control-label"></label>
+                <input asp-for="CurrentDoorNumber" id="CDN" class="form-control" placeholder="Door Number" />
+                <span asp-validation-for="CurrentDoorNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CurrentStreetName" class="control-label"></label>
+                <input asp-for="CurrentStreetName" id="CSN" class="form-control" placeholder="Street Name" />
+                <span asp-validation-for="CurrentStreetName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CurrentArea" class="control-label"></label>
+                <input asp-for="CurrentArea" id="CA" class="form-control" placeholder="Area Name" />
+                <span asp-validation-for="CurrentArea" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CurrentCity" class="control-label"></label>
+                <input asp-for="CurrentCity" id="CC" class="form-control" placeholder="City Name" />
+                <span asp-validation-for="CurrentCity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CurrentPinCode" class="control-label"></label>
+                <input asp-for="CurrentPinCode" id="CPC" class="form-control" placeholder="Pincode" />
+                <span asp-validation-for="CurrentPinCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+
+            </div>
+            <hr align="center" width="85%" style="height:2px;border-width:0;color:gray;background-color:gray" />
+            <div class="row">
+                <button>Submit</button>
+            </div>
+
+        </form>
+
+    </div>
+</div>
+
+<script>
+    var loadFile = function (event) {
+        var image = document.getElementById('output');
+        image.src = URL.createObjectURL(event.target.files[0]);
+    };
+    function autoFilAddress() {
+        let checkBox = document.getElementById('checkBox');
+
+        let CurrentDoorNumber = document.getElementById('CDN');
+        let CurrentStreetName = document.getElementById("CSN");
+        let CurrentArea = document.getElementById("CA");
+        let CurrentCity = document.getElementById("CC");
+        let CurrentPinCode = document.getElementById("CPC");
+        let PermantentDoorNumber = document.getElementById("PDN");
+        let PermantentStreetName = document.getElementById("PSN");
+        let PermantentArea = document.getElementById("PA");
+        let PermantentCity = document.getElementById("PC");
+        let PermantentPinCode = document.getElementById("PPC");
+        if (checkBox.checked == true) {
+            let PermantentDoorNumberValue = PDN.value;
+            let PermantentStreetNameValue = PSN.value;
+            let PermantentAreaValue = PA.value;
+            let PermantentCityValue = PC.value;
+            let PermantentPinCodeValue = PPC.value;
+
+            CDN.value = PermantentDoorNumberValue;
+            CSN.value = PermantentStreetNameValue;
+            CA.value = PermantentAreaValue;
+            CC.value = PermantentCityValue;
+            CPC.value = PermantentPinCodeValue;
+        }
+        else {
+            CDN.value = "";
+            CSN.value = "";
+            CA.value = "";
+            CC.value = "";
+            CPC.value = "";
+        }
+    }
+</script>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

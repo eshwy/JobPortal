@@ -1,0 +1,62 @@
+﻿@model IEnumerable<JopPortalMVC.Models.UserProfilePhotoTbl>
+
+
+@foreach (var i in Model)
+{
+    <body>
+        <div class="gfg">
+            <img src="@i.PhotoPath" class="img-thumbnail" />
+
+            <button class="second-txt" data-toggle="modal" data-target="#EditPhoto">
+                Change profile <span class="bi bi-pencil"></span>
+            </button>
+        </div>
+    </body>
+}
+@foreach (var item in Model)
+{
+    <div class="modal fade" id="EditPhoto" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">Change Profile</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <form asp-controller="Edit" asp-action="EditPhoto" id="EditForm" enctype="multipart/form-data">
+                        <div class="row">
+                            <input value="@item.RowId" name="RowId" type="hidden" />
+                            <input value="@item.UserId" name="UserId" type="hidden" />
+                            <input value="@item.PhotoPath" name="PhotoPath" type="hidden" />                            
+                            <div class="col-md-6">
+                                <label name="photo" class="control-label"></label>
+                                <input type="file" name="photo" accept="image/gif, image/jpeg, image/png" id="imgfile" onchange="loadFile(event)" reqired />
+                            </div>
+                            <div class="col-md-6">
+                                <p><img id="output" width="200" src="@item.PhotoPath" /></p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <button id="Create" type="submit" value="Create" class="btn btn-success">Save changes</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<style>
+    .second-txt {
+        position: absolute;
+        bottom: 20px;
+        left: 10px;
+    }
+</style>
+<script>
+        var loadFile = function (event) {
+        var image = document.getElementById('output');
+        image.src = URL.createObjectURL(event.target.files[0]);
+    };
+</script>

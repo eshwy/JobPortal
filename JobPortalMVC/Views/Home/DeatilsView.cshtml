@@ -1,0 +1,66 @@
+﻿@model PagedList<JopPortalMVC.Models.DetailsView>
+
+@using X.PagedList.Mvc.Core;
+@using X.PagedList;
+@{
+    ViewData["Title"] = "DeatilsView";
+}
+
+<div class="row">
+    <div class="col-md-3">
+        <form asp-action="DeatilsView" method="get">
+            <h4><u><b>SORT By</b></u></h4>
+            Skills : @Html.DropDownList("Skill", TempData["Skill"] as IEnumerable<SelectListItem>)
+            <hr />
+            <br />
+            Gender : @Html.DropDownList("Gender", TempData["Gender"] as IEnumerable<SelectListItem>)
+            <hr />
+            <br />
+            Sort By : @Html.DropDownList("Sort", TempData["Sort"] as IEnumerable<SelectListItem>)
+            <hr />
+            <br />
+            Search: <input type="text" name="SearchString" placeholder="Name,Email & Experience" value="@ViewData["ValueFilter"]" />
+            <hr />
+            <br />
+            <input type="submit" value="Search" class="btn btn-success" />
+            <a asp-action="DeatilsView" class="btn btn-danger">Clear Filter </a>
+        </form>
+    </div>
+    <div class="col-md-9">
+        @foreach (var item in Model)
+        {
+            <div class="row">
+                <div class="col-md-2">
+                    <img src="@item.PhotoPath" height="100" width="130" />
+                </div>
+                <div class="col-md-4">
+                    <p><b>Name      : </b>@item.FullName</p>
+                    <p><b>Gender    : </b>@item.Gender</p>
+                    <p><b>Contact No: </b>@item.PhoneNumber</p>
+                </div>
+                <div class="col-md-4">
+                    <p><b>Email      : </b>@item.Email</p>
+                    <p><b>Skills     :</b>@item.Skills</p>
+                    <p><b>Experience :</b>@item.Experience</p>
+                </div>
+                <div class="col-md-2">
+                    @Html.ActionLink("View", "ParticularView", new { UserId = item.UserId }, new { @class = "btn btn-primary btn-small" })
+                </div>
+                <hr />
+            </div>
+            <br />
+        }
+    </div>
+    <table align="center">
+        <tr>
+            <td style="font-size:25px ;text-decoration:underline;text-decoration-color:black">
+                Pages
+            </td>
+        </tr>
+        <tr align="center">
+            <td style="font-size:25px">
+                @Html.PagedListPager((IPagedList)Model, page => Url.Action("DeatilsView", new { page = page }))
+            </td>
+        </tr>
+    </table>
+</div>

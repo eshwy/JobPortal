@@ -1,0 +1,89 @@
+﻿@model IEnumerable<JopPortalMVC.Models.UserAdressTbl>
+
+<div class="row">
+    <div class="col-md-11">
+        @foreach (var Address in Model)
+        {
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>Current Adderess</h3>
+                    <b>Door   :</b>@Address.CurrentDoorNumber <br />
+                    <b>Street :</b>@Address.CurrentStreetName<br />
+                    <b>Area   :</b>@Address.CurrentArea<br />
+                    <b>City   :</b>@Address.CurrentCity<br />
+                    <b>Pincode:</b>@Address.CurrentPinCode<br />
+                </div>
+                <div class="col-md-6">
+                    <table></table>
+                    <h3>Permanent Adderess</h3>
+                    <b>Door   :</b>@Address.PermantentDoorNumber<br />
+                    <b>Street :</b>@Address.PermantentStreetName<br />
+                    <b>Area   :</b>@Address.PermantentArea<br />
+                    <b>City   :</b>@Address.PermantentCity<br />
+                    <b>Pincode:</b>@Address.PermantentPinCode<br />
+                </div>
+            </div>
+        }
+    </div>
+    <div class="col-md-1">
+        <button type="button" class="btn btn-light " data-toggle="modal" data-target="#EditAddress">
+            <span class="bi bi-pencil"></span>
+        </button>
+    </div>
+    @foreach (var Address in Model)
+    {
+        <div class="modal fade" id="EditAddress" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body">
+                        <form asp-controller="Edit" asp-action="EditAddress" id="EditAddress">
+                            <div class="row">
+                                <input value="@Address.RowId" name="RowId" type="hidden" />
+                                <input value="@Address.UserId" name="UserId" type="hidden" />                                
+                                <div class="col-md-6">
+                                    <h6>Current Adderess</h6>
+                                    Door:<input type="text" name="CurrentDoorNumber" value="@Address.CurrentDoorNumber" required />
+                                    Street:<input type="text" name="CurrentStreetName" value="@Address.CurrentStreetName" required />
+                                    Area:<input type="text" name="CurrentArea" value="@Address.CurrentArea" required />
+                                    City:<input type="text" name="CurrentCity" value="@Address.CurrentCity" required />
+                                    PinCode:<input type="number" name="CurrentPinCode" value="@Address.CurrentPinCode" required />
+                                </div>
+                                <div class="col-md-6">
+                                    <table></table>
+                                    <h6>Permanent Adderess</h6>
+                                    Door:<input type="text" name="PermantentDoorNumber" value="@Address.PermantentDoorNumber" required />
+                                    Street:<input type="text" name="PermantentStreetName" value="@Address.PermantentStreetName" required />
+                                    Area:<input type="text" name="PermantentArea" value="@Address.PermantentArea" required />
+                                    City:<input type="text" name="PermantentCity" value="@Address.PermantentCity" required />
+                                    PinCode:<input type="number" name="PermantentPinCode" value="@Address.PermantentPinCode" required />                                    
+                                </div>
+                            </div>
+                            <div class="row">
+                                <button id="CreateAddress" type="submit" value="Create" class="btn btn-success">Save changes</button>
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            
+        </div>
+    }
+</div>
+
+
+<script>
+    $(function () {
+        $("#CreateAddress").click(function (e) {
+            if (confirm("Do you want to Save Changes ?")) {
+                $("#EditAddress").submit();
+            }
+        });
+    });
+</script>
