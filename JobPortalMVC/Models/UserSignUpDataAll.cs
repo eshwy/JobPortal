@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
@@ -29,7 +30,7 @@ namespace JobPortalMVC.Models
         [Required]
         public int? Experience { get; set; }
         [Required]
-        public string Skills { get; set; }
+        public string[] Skills { get; set; }
         //Adress Details
         [Required]
         public string CurrentDoorNumber { get; set; }
@@ -57,5 +58,16 @@ namespace JobPortalMVC.Models
     {
         Male,
         Female
+    }
+    public enum Skill
+    {
+        [Description("Dot Net")]
+        DotNet,
+        Python,
+        Angular,
+        React,
+        [Description("Machine Leanrning")]
+        MachineLearning,
+        DBMS
     }
 }

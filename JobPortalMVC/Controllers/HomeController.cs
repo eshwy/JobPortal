@@ -140,13 +140,17 @@ namespace JobPortalMVC.Controllers
             PersonalDetailsTbl PersonalData = new PersonalDetailsTbl();
             UserAdressTbl addressData = new UserAdressTbl();
 
+            string SkillData = string.Join(",", UserData.Skills);
+            PersonalData.Skills = SkillData;
+
             HttpClient cli = _jobPortalUrl.initial();
             var authors = TempDataUserValue();
             string[] authorsList = authors.Split("|");
             UserData.UserId = Int32.Parse(authorsList[0]);
             PersonalData.RowId = Int32.Parse(authorsList[1]);
             PersonalData.Email = authorsList[2];
-            
+
+           
             Console.WriteLine(UserData.UserId);
             //if (ModelState.IsValid)
             //{
@@ -175,7 +179,8 @@ namespace JobPortalMVC.Controllers
                     PersonalData.Gender = UserData.Gender;
                     PersonalData.DateOfBirth = UserData.DateOfBirth;
                     PersonalData.Experience = UserData.Experience;
-                    PersonalData.Skills = UserData.Skills;
+                    //string SkillData = string.Join(",", UserData.Skills);
+                    //PersonalData.Skills = SkillData;
                     StringContent Personalcontent = Serialization(PersonalData);
                     var Personalresponse = await cli.PostAsync(cli.BaseAddress + "api/PersonalDetails/Put", Personalcontent);
                     if (Personalresponse.IsSuccessStatusCode)
@@ -514,30 +519,7 @@ namespace JobPortalMVC.Controllers
                
             }
             return View(ArticleDetails);
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Photo(UserPhotoUpload imageModel)
-        {
-            if (imageModel.photo != null)
-            {
-                //Save image to wwwroot/image
-                string wwwRootPath = _hostEnvironment.WebRootPath;
-                string fileName = imageModel.photo.FileName;
-                string extension = Path.GetExtension(imageModel.photo.FileName);
-                //imageModel.ImageName = fileName = fileName + DateTime.Now.ToString("yymmssfff") + extension;
-                string path = Path.Combine(wwwRootPath + "/Image/", fileName);
-                //using (var fileStream = new FileStream(path, FileMode.Create))
-                //{
-                //    await imageModel.photo.CopyToAsync(fileStream);
-                //}
-                await imageModel.photo.CopyToAsync(new FileStream(path, FileMode.Create));
-                
-                return RedirectToAction("Index");
-            }
-            return View();
-        }
+        }       
 
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

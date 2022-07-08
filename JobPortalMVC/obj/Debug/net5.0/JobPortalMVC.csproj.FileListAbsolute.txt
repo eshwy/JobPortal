@@ -146,3 +146,4 @@ C:\Users\Merit\Desktop\dotnetHandsOnFiles\JopPortal\JobPortalMVC\obj\Debug\net5.
 C:\Users\Merit\Desktop\dotnetHandsOnFiles\JopPortal\JobPortalMVC\obj\Debug\net5.0\ref\JobPortalMVC.dll
 C:\Users\Merit\Desktop\dotnetHandsOnFiles\JopPortal\JobPortalMVC\obj\Debug\net5.0\JobPortalMVC.pdb
 C:\Users\Merit\Desktop\dotnetHandsOnFiles\JopPortal\JobPortalMVC\obj\Debug\net5.0\JobPortalMVC.genruntimeconfig.cache
+C:\Users\Merit\Desktop\dotnetHandsOnFiles\JopPortal\JobPortalMVC\obj\Debug\net5.0\JobPortalMVC.csproj.AssemblyReference.cache

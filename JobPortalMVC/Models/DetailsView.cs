@@ -28,5 +28,6 @@ namespace JopPortalMVC.Models
         React,
         [Description("Machine Leanrning")]
         MachineLearning,
+        
     }
 }
