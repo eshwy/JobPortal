@@ -1,6 +1,7 @@
 ﻿@model ViewModelData;
 @{
-    int a = @ViewBag.UserId;
+    int UserId = Int32.Parse(@ViewBag.UserId);
+    
 }
 <div class="row d-flex justify-content-between">
     <div class="col-md-3 card" >
@@ -12,11 +13,12 @@
 </div>
 <div class="row">
     <div class="col-md-12 card mt-2">
-        <partial name="_Address" model="Model.AddressDetailsTbl"/>
+        @*<partial name="_Address" model="Model.AddressDetailsTbl"/>*@
+        @{await Html.RenderPartialAsync("_Address", new { AddressDetails = Model.AddressDetailsTbl, UserData = UserId }); }
     </div>    
 </div>
 <div class="row">
-    <div class="col-md-6 card m-2" >
+    <div class="col-md-6 card" >
         <partial name="_Education" model="Model.UserEducationTbl" />        
     </div>
     <div class="col-md-6 card" >

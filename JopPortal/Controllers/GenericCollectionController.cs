@@ -6,11 +6,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using JopPortal.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace JopPortal.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class GenericCollectionController<T> : ControllerBase where T : class
     {
         private readonly JobPortal2Context _context;

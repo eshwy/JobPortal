@@ -6,12 +6,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using JopPortal.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace JopPortal.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]  
-
+    [ApiController]
+    [Authorize]
     public class ArticleController : GenericCollectionController<ArticleTbl>
     {
         private readonly JobPortal2Context _context;

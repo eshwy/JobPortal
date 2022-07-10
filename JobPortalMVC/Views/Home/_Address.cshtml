@@ -1,12 +1,13 @@
-﻿@model IEnumerable<JopPortalMVC.Models.UserAdressTbl>
-
+﻿@*@model IEnumerable<JopPortalMVC.Models.UserAdressTbl>*@
+@{int UserIdData = 0; }
 <div class="row">
     <div class="col-md-11">
-        @foreach (var Address in Model)
+        @foreach (var Address in Model.AddressDetails)
         {
             <div class="row">
                 <div class="col-md-6">
                     <h3>Current Adderess</h3>
+                    @{UserIdData = @Address.UserId;}
                     <b>Door   :</b>@Address.CurrentDoorNumber <br />
                     <b>Street :</b>@Address.CurrentStreetName<br />
                     <b>Area   :</b>@Address.CurrentArea<br />
@@ -24,13 +25,18 @@
                 </div>
             </div>
         }
+        @Model.UserData
     </div>
     <div class="col-md-1">
-        <button type="button" class="btn btn-light " data-toggle="modal" data-target="#EditAddress">
-            <span class="bi bi-pencil"></span>
-        </button>
+        @if (UserIdData == @Model.UserData)
+        {
+            <button type="button" class="btn btn-light " data-toggle="modal" data-target="#EditAddress">
+                <span class="bi bi-pencil"></span>
+            </button>
+        }
+
     </div>
-    @foreach (var Address in Model)
+    @foreach (var Address in Model.AddressDetails)
     {
         <div class="modal fade" id="EditAddress" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
@@ -43,7 +49,7 @@
                         <form asp-controller="Edit" asp-action="EditAddress" id="EditAddress">
                             <div class="row">
                                 <input value="@Address.RowId" name="RowId" type="hidden" />
-                                <input value="@Address.UserId" name="UserId" type="hidden" />                                
+                                <input value="@Address.UserId" name="UserId" type="hidden" />
                                 <div class="col-md-6">
                                     <h6>Current Adderess</h6>
                                     Door:<input type="text" name="CurrentDoorNumber" value="@Address.CurrentDoorNumber" required />
@@ -59,7 +65,7 @@
                                     Street:<input type="text" name="PermantentStreetName" value="@Address.PermantentStreetName" required />
                                     Area:<input type="text" name="PermantentArea" value="@Address.PermantentArea" required />
                                     City:<input type="text" name="PermantentCity" value="@Address.PermantentCity" required />
-                                    PinCode:<input type="number" name="PermantentPinCode" value="@Address.PermantentPinCode" required />                                    
+                                    PinCode:<input type="number" name="PermantentPinCode" value="@Address.PermantentPinCode" required />
                                 </div>
                             </div>
                             <div class="row">
@@ -72,7 +78,7 @@
             </div>
         </div>
         <div class="row">
-            
+
         </div>
     }
 </div>

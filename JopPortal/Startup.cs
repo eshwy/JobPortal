@@ -33,11 +33,38 @@ namespace JopPortal
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddControllers();
-
-            services.AddDbContext<JobPortal2Context>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("DevConnection")));
             
+
+            services.AddDbContext<JobPortal2Context>(options =>options.UseSqlServer(Configuration.GetConnectionString("DevConnection")));
+            services.AddControllers();
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "JobPortal", Version = "v1" });
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                {
+                    In = ParameterLocation.Header,
+                    Description = "Please enter a valid token",
+                    Name = "Authorization",
+                    Type = SecuritySchemeType.ApiKey,
+                    BearerFormat = "JWT",
+                    Scheme = "Bearer"
+                }
+                );
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    {
+                        new OpenApiSecurityScheme
+                        {
+                            Reference = new OpenApiReference
+                            {
+                                Type = ReferenceType.SecurityScheme,
+                                Id= "Bearer"
+                            }
+                        },
+                        new string[] {}
+                    }
+                });
+            });
 
             services.AddAuthentication(x =>
             {
@@ -60,12 +87,8 @@ namespace JopPortal
             });
 
             services.AddScoped<IJWTManagerRepository, JWTManagerRepository>();
-            
 
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "JopPortal", Version = "v1" });
-            });
+            services.AddControllers();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -81,10 +104,9 @@ namespace JopPortal
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
-            app.UseAuthorization();
-
             app.UseAuthentication();
+            app.UseAuthorization();
+            
 
             app.UseEndpoints(endpoints =>
             {

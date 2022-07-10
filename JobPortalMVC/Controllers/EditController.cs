@@ -55,7 +55,7 @@ namespace JobPortalMVC.Controllers
         [HttpPost]
         public async Task<IActionResult> EditPhoto(UserProfilePhotoTbl photoDetails)
         {
-            HttpClient cli = _jobPortalUrl.initial();                        
+            HttpClient cli = TokenValue();
 
             ViewBag.oldPath = photoDetails.PhotoPath;
             if (photoDetails.Photo != null)
@@ -89,7 +89,7 @@ namespace JobPortalMVC.Controllers
         [HttpPost]
         public async Task<IActionResult> EditPersonal(PersonalDetailsTbl personalDetails)
         {
-            HttpClient cli = _jobPortalUrl.initial();            
+            HttpClient cli = TokenValue();
             StringContent content = Serialization(personalDetails);
             var response = await cli.PostAsync(cli.BaseAddress + "api/PersonalDetails/Put", content);
             if (response.IsSuccessStatusCode)
@@ -102,7 +102,7 @@ namespace JobPortalMVC.Controllers
         [HttpPost]
         public async Task<IActionResult> EditAddress(UserAdressTbl addressDetails)
         {
-            HttpClient cli = _jobPortalUrl.initial();
+            HttpClient cli = TokenValue();
             StringContent content = Serialization(addressDetails);
             var response = await cli.PostAsync(cli.BaseAddress + "api/UserAdress/Put", content);
             if (response.IsSuccessStatusCode)
@@ -115,7 +115,7 @@ namespace JobPortalMVC.Controllers
         [HttpPost]
         public async Task<IActionResult> EditEducation(UserEducationTbl educationDetails)
         {
-            HttpClient cli = _jobPortalUrl.initial();            
+            HttpClient cli = TokenValue();
             StringContent content = Serialization(educationDetails);
             var response = await cli.PostAsync(cli.BaseAddress + "api/UserEducation/Put", content);
             if (response.IsSuccessStatusCode)
@@ -128,7 +128,7 @@ namespace JobPortalMVC.Controllers
         [HttpPost]
         public async Task<IActionResult> EditWork(UserWorkTbl UserWorkTbl)
         {
-            HttpClient cli = _jobPortalUrl.initial();
+            HttpClient cli = TokenValue();
             StringContent content = Serialization(UserWorkTbl);
             var response = await cli.PostAsync(cli.BaseAddress + "api/UserWork/Put", content);
             if (response.IsSuccessStatusCode)
@@ -141,7 +141,7 @@ namespace JobPortalMVC.Controllers
         [HttpGet]
         public async Task<IActionResult> EditFollowing(int rowId,int UserId)
         {
-            HttpClient cli = _jobPortalUrl.initial();            
+            HttpClient cli = TokenValue();
             var response = await cli.DeleteAsync(cli.BaseAddress + "api/FollowersAndFollowing/" + rowId);
             if (response.IsSuccessStatusCode)
             {
@@ -153,7 +153,7 @@ namespace JobPortalMVC.Controllers
         [HttpGet]
         public async Task<IActionResult> EditFollowers(int rowId, int UserId)
         {
-            HttpClient cli = _jobPortalUrl.initial();
+            HttpClient cli = TokenValue();
             var response = await cli.DeleteAsync(cli.BaseAddress + "api/FollowersAndFollowing/" + rowId);
             if (response.IsSuccessStatusCode)
             {
@@ -165,7 +165,7 @@ namespace JobPortalMVC.Controllers
         [HttpPost]
         public async Task<IActionResult> EditArticle(UserWorkTbl UserWorkTbl)
         {
-            HttpClient cli = _jobPortalUrl.initial();
+            HttpClient cli = TokenValue();
             StringContent content = Serialization(UserWorkTbl);
             var response = await cli.PostAsync(cli.BaseAddress + "api/UserWork/Put", content);
             if (response.IsSuccessStatusCode)
@@ -178,7 +178,7 @@ namespace JobPortalMVC.Controllers
         [HttpPost]
         public async Task<IActionResult> EditArticlePinned(UserWorkTbl UserWorkTbl)
         {
-            HttpClient cli = _jobPortalUrl.initial();
+            HttpClient cli = TokenValue();
             StringContent content = Serialization(UserWorkTbl);
             var response = await cli.PostAsync(cli.BaseAddress + "api/UserWork/Put", content);
             if (response.IsSuccessStatusCode)

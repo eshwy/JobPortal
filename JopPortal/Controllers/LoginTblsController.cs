@@ -7,11 +7,13 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using JopPortal.Models;
 using JopPortal.Repository;
+using Microsoft.AspNetCore.Authorization;
 
 namespace JopPortal.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class LoginTblsController : ControllerBase
     {
         private readonly JobPortal2Context _context;
@@ -32,6 +34,7 @@ namespace JopPortal.Controllers
 
         // GET: api/LoginTbls/5
         [HttpPost]        
+        [AllowAnonymous]
         public ActionResult<LoginTbl> GetLoginTbl(LoginTbl login)
         {
             var token = _jWTManager.Authenticate(login);
@@ -46,6 +49,7 @@ namespace JopPortal.Controllers
 
         [HttpPost]
         [Route("SignUp")]
+        [AllowAnonymous]
         public async Task<ActionResult<string>> SignUp(SignUpData signUpData)
         {
             //exec[InsertIDIntoAllTableSp]  @choice = 'Insert', @UserName = 'eshwy',PassWord = '1234',

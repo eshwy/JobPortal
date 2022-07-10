@@ -23,6 +23,7 @@ namespace JobPortalMVC.Controllers
 {
     public class HomeController : Controller
     {
+
         private readonly ILogger<HomeController> _logger;
         private IJobPortalUrl _jobPortalUrl;
         private readonly IWebHostEnvironment _hostEnvironment;
@@ -143,7 +144,7 @@ namespace JobPortalMVC.Controllers
             string SkillData = string.Join(",", UserData.Skills);
             PersonalData.Skills = SkillData;
 
-            HttpClient cli = _jobPortalUrl.initial();
+            HttpClient cli = TokenValue();
             var authors = TempDataUserValue();
             string[] authorsList = authors.Split("|");
             UserData.UserId = Int32.Parse(authorsList[0]);
@@ -221,7 +222,7 @@ namespace JobPortalMVC.Controllers
         [HttpPost]
         public async Task<IActionResult> UserEducationAndWorkPost(IFormCollection educationAndWork)
         {
-            HttpClient cli = _jobPortalUrl.initial();
+            HttpClient cli = TokenValue();
             UserEducationTbl usereducation = new UserEducationTbl();
             
             var d1 = educationAndWork["ListId"].Count();
@@ -256,7 +257,7 @@ namespace JobPortalMVC.Controllers
         [HttpPost]
         public async Task<IActionResult> WorkPost(IFormCollection Work)
         {
-            HttpClient cli = _jobPortalUrl.initial();            
+            HttpClient cli = TokenValue();
             UserWorkTbl userWork = new UserWorkTbl();
             
             var authors = TempDataUserValue();
@@ -282,7 +283,7 @@ namespace JobPortalMVC.Controllers
         [HttpGet]
         public async Task<IActionResult> DeatilsView(String sort_order, string searchString, string gender, String skill, int? page)
         {
-            HttpClient cli = _jobPortalUrl.initial();
+            HttpClient cli = TokenValue();
             List<SelectListItem> Skill = new List<SelectListItem>();
             List<SelectListItem> Gender = new List<SelectListItem>();
             List<SelectListItem> Sort = new List<SelectListItem>();
@@ -368,9 +369,9 @@ namespace JobPortalMVC.Controllers
 
         public async Task<IActionResult> ParticularView(int UserId)
         {            
-            ViewBag.UserId = UserId;
-            
-            HttpClient cli = _jobPortalUrl.initial();
+            ViewBag.UserId = UserClaim();
+
+            HttpClient cli = TokenValue();
             List<UserProfilePhotoTbl> PhotoData = new List<UserProfilePhotoTbl>();
             List<PersonalDetailsTbl> PersonalData = new List<PersonalDetailsTbl>();
             List<UserAdressTbl> AddressData = new List<UserAdressTbl>();
@@ -456,7 +457,7 @@ namespace JobPortalMVC.Controllers
         [HttpPost]
         public async Task<IActionResult> EditPersonal(PersonalDetailsTbl details)
         {
-            HttpClient cli = _jobPortalUrl.initial();
+            HttpClient cli = TokenValue();
 
             StringContent PersonalContent = Serialization(details);
             var WorkDetailsResponce = await cli.PostAsync(cli.BaseAddress + "api/PersonalDetails/Put", PersonalContent);            
@@ -477,7 +478,7 @@ namespace JobPortalMVC.Controllers
         [System.Web.Mvc.ValidateInput(false)]
         public async Task<IActionResult> ArticleCreate(ArticleTbl article)
         {
-            HttpClient cli = _jobPortalUrl.initial();
+            HttpClient cli = TokenValue();
             article.UserId = 1070;
             //Console.WriteLine(article);
 
@@ -509,7 +510,7 @@ namespace JobPortalMVC.Controllers
         public async Task<IActionResult> ListArticle()
         {
 
-            HttpClient cli = _jobPortalUrl.initial();
+            HttpClient cli = TokenValue();
             List<ArticleTbl> ArticleDetails = new List<ArticleTbl>();
             var ArticleResponse = await cli.GetAsync("api/Article");
             if (ArticleResponse.IsSuccessStatusCode)

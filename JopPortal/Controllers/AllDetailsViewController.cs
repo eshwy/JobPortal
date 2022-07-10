@@ -1,5 +1,6 @@
 ﻿using JopPortal.Models;
 using JopPortal.Repository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -11,14 +12,14 @@ namespace JopPortal.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class AllDetailsViewController : ControllerBase
     {
-        private readonly JobPortal2Context _context;
-        private readonly IJWTManagerRepository _jWTManager;
-        public AllDetailsViewController(JobPortal2Context context, IJWTManagerRepository repo)
+        private readonly JobPortal2Context _context;        
+        public AllDetailsViewController(JobPortal2Context context)
         {
             _context = context;
-            _jWTManager = repo;
+        
         }
 
         [HttpGet]        
