@@ -1,25 +1,30 @@
-﻿@model IEnumerable<JobPortalMVC.Models.FollowingFollowerNameDetails>
-
+﻿@*@model IEnumerable<JobPortalMVC.Models.FollowingFollowerNameDetails>*@
+@{int UserIdData = 0; }
 <div class="d-flex align-items-center justify-content-center">
-    <h3>Followers : @Model.Count()</h3>
+    <h3>Followers : @Model.FollowersDetails.Count</h3>
 </div>
 
-@foreach (var item in Model)
+@foreach (var item in Model.FollowersDetails)
 {
-<div class="row">
-    <div class="col-md-7">
-        @Html.DisplayFor(modelItem => item.Name)
-    </div>
+    UserIdData = item.UserId;
+    <div class="row">
+        <div class="col-md-7">
+            @item.Name
+        </div>
 
-    <div class="col-md-4">
-        <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#EditFollowers_@item.RowId">
-            Remove
-        </button>
+        <div class="col-md-4">
+            @if (UserIdData == @Model.UserData)
+            {
+            <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#EditFollowers_@item.RowId">
+                Remove
+            </button>
+            }
+
+        </div>
     </div>
-</div>
 }
 
-@foreach (var item in Model)
+@foreach (var item in Model.FollowersDetails)
 {
     <div class="modal fade" id=@("EditFollowers_"+item.RowId) tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
@@ -31,10 +36,10 @@
                 <div class="modal-body">
                     <form asp-controller="Edit" asp-action="EditFollowers" id="EditFollowers">
                         <div class="row">
-                            Do you want to&nbsp; <b> Remove @Html.DisplayFor(m => item.Name) </b>&nbsp;From Followers ?
+                            Do you want to&nbsp; <b> Remove @item.Name </b>&nbsp;From Followers ?
                         </div>
                         <div class="row d-flex align-items-center justify-content-center">
-                            @Html.ActionLink("Remove", "EditFollowers", "Edit", new { rowId = item.RowId, UserId = item.UserId }, new { @class= "btn btn-outline-danger" })
+                            @Html.ActionLink("Remove", "EditFollowers", "Edit", new { rowId = item.RowId, UserId = item.UserId }, new { @class = "btn btn-outline-danger" })
                         </div>
                     </form>
                 </div>

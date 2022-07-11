@@ -5,37 +5,44 @@
 }
 <div class="row d-flex justify-content-between">
     <div class="col-md-3 card" >
-        <partial name="_Photo" model="Model.UserProfilePhotoTbl"/>        
+        @*<partial name="_Photo" model="Model.UserProfilePhotoTbl"/>*@        
+        @{await Html.RenderPartialAsync("_Photo",new {PhotoDetails=Model.UserProfilePhotoTbl,UserData=UserId});}
     </div>
-    <div class="col-md-9 card">        
-        <partial name="_Personal" model="Model.PersonalDetailsTbl" />
+    <div class="col-md-9 card">
+        @*<partial name="_Personal" model="Model.PersonalDetailsTbl" />*@
+        @{await Html.RenderPartialAsync("_Personal", new { PersonalDetails = Model.PersonalDetailsTbl, UserData = UserId });}
     </div>
 </div>
 <div class="row">
-    <div class="col-md-12 card mt-2">
-        @*<partial name="_Address" model="Model.AddressDetailsTbl"/>*@
+    <div class="col-md-12 card mt-2">        
         @{await Html.RenderPartialAsync("_Address", new { AddressDetails = Model.AddressDetailsTbl, UserData = UserId }); }
     </div>    
 </div>
 <div class="row">
-    <div class="col-md-6 card" >
-        <partial name="_Education" model="Model.UserEducationTbl" />        
+    <div class="col-md-6 card">
+        @*<partial name="_Education" model="Model.UserEducationTbl" />*@
+        @{await Html.RenderPartialAsync("_Education", new { EducationDetails = Model.UserEducationTbl, UserData = UserId });}
     </div>
-    <div class="col-md-6 card" >
-        <partial name="_Work" model="Model.UserWorkTbl" />
+    <div class="col-md-6 card">
+        @*<partial name="_Work" model="Model.UserWorkTbl" />*@
+        @{await Html.RenderPartialAsync("_Work", new { WorkDetails = Model.UserWorkTbl, UserData = UserId });}
     </div>
 </div>
 <div class="row">
     <div class="col-md-3 card">
-        <partial name="_Followers" model="Model.UserFollowersDetails" />
+        @*<partial name="_Followers" model="Model.UserFollowersDetails" />*@
+        @{await Html.RenderPartialAsync("_Followers", new { FollowersDetails = Model.UserFollowersDetails, UserData = UserId });}
     </div>
     <div class="col-md-3 card">
-        <partial name="_Following" model="Model.UserFollowingDetails"/>
+        @*<partial name="_Following" model="Model.UserFollowingDetails"/>*@
+        @{await Html.RenderPartialAsync("_Following", new { FollowingDetails = Model.UserFollowingDetails, UserData = UserId });}
     </div>
     <div class="col-md-3 card">
-        <partial name="_ArticleWrote" model="Model.ArticleTbl"/>
+        @*<partial name="_ArticleWrote" model="Model.ArticleTbl" />*@
+        @{await Html.RenderPartialAsync("_ArticleWrote", new { ArticleWroteDetails = Model.ArticleTbl, UserData = UserId });}
     </div>
     <div class="col-md-3 card">
-        <partial name="_ArticlePined" model="Model.ArticlePinedTbl"/>
+        @*<partial name="_ArticlePined" model="Model.ArticlePinedTbl"/>*@
+        @{await Html.RenderPartialAsync("_ArticlePined", new { ArticlePinnedDetails = Model.ArticlePinedTbl, UserData = UserId });}
     </div>
 </div>

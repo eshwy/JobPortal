@@ -1,17 +1,18 @@
-﻿@model IEnumerable<JopPortalMVC.Models.ArticlePinedTbl>
-
+﻿@*@model IEnumerable<JopPortalMVC.Models.ArticlePinedTbl>*@
+@{int UserIdData = 0; }
 
 <h3>H4</h3>
-@foreach (var item in Model) 
+@foreach (var item in Model.ArticlePinnedDetails)
 {
-            
-            <td>
-                @Html.DisplayFor(modelItem => item.RowId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.UserId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PinedArticleId)
-            </td>
+    <div class="row">
+        <div class="col-md-9">
+            @item.RowId
+
+            @item.UserId
+
+            @item.PinedArticleId
+        </div>
+    </div>
+
+    UserIdData = item.UserId;
 }

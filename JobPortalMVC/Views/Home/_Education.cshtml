@@ -1,69 +1,110 @@
-﻿@model IEnumerable<JopPortalMVC.Models.UserEducationTbl>
+﻿@*@model IEnumerable<JopPortalMVC.Models.UserEducationTbl>*@
+@{int UserIdData = 0; }
+
+@foreach (var item in Model.EducationDetails)
+{
+    UserIdData = item.UserId;    
+    <h3 align="center">@item.EducationType</h3>
+    <div class="row">
+
+        <div class="col-md-8">
+            @if (item.GroupName != null)
+            {
+                <b>Group Name :</b>@item.GroupName<br />
+            }
+            <b>Graduated From:</b>@item.CompletedEducationIn<br />
+            <b>Percentage :</b>@item.PercentageObtained %<br />
+        </div>
+        <div class="col-md-3">
+            <b>From:</b>@item.YearOfStart<br />
+            <b>Till:</b>@item.YearOfEnd<br />
+        </div>
+        <div class="col-md-1">
+            @if (UserIdData == @Model.UserData)
+            {
+            <button type="button" class="btn btn-light " data-toggle="modal" data-target="#EditEducation_@item.RowId">
+                <span class="bi bi-pencil"></span>
+            </button>
+            }
+        </div>
+        <hr align="center" width="50%" style="height:2px;border-width:0;color:gray;background-color:gray" />
+    </div>
+
+}
 
 
-        @foreach (var item in Model)
-        {
-
-            <h3 align="center">@Html.DisplayFor(modelItem => item.EducationType)</h3>
-            <div class="row">
-
-                <div class="col-md-8">
-                    @if (item.GroupName != null)
-                    {
-                        <b>Group Name :</b>@Html.DisplayFor(modelItem => item.GroupName) <br />
-                    }
-                    <b>Graduated From:</b>@Html.DisplayFor(modelItem => item.CompletedEducationIn)<br />
-                    <b>Percentage :</b>@Html.DisplayFor(modelItem => item.PercentageObtained) %<br />
+@foreach (var Education in Model.EducationDetails)
+{
+    <div class="modal fade" id=@("EditEducation_"+Education.RowId) tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 </div>
-                <div class="col-md-3">
-                    <b>From:</b>@Html.DisplayFor(modelItem => item.YearOfStart)<br />
-                    <b>Till:</b>@Html.DisplayFor(modelItem => item.YearOfEnd)<br />
-                </div>
-                <div class="col-md-1">
-                    
-                    <button type="button" class="btn btn-light " data-toggle="modal" data-target="#EditEducation_@item.RowId">
-                        <span class="bi bi-pencil"></span>
-                    </button>
-                </div>
-                <hr align="center" width="50%" style="height:2px;border-width:0;color:gray;background-color:gray" />
-            </div>
-
-        }
-    
-    
-    @foreach (var Education in Model)
-    {
-        <div class="modal fade" id=@("EditEducation_"+Education.RowId) tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    </div>
-                    <div class="modal-body">
-                        <form asp-controller="Edit" asp-action="EditEducation" id="EditEducation">
+                <div class="modal-body">
+                    <form asp-controller="Edit" asp-action="EditEducation" id="EditEducation">
+                        <div class="row">
+                            <input value="@Education.RowId" name="RowId" type="hidden" />
+                            <input value="@Education.UserId" name="UserId" type="hidden" />
+                            <input type="hidden" name="EducationType" value="@Education.EducationType" required />
                             <div class="row">
-                                <input value="@Education.RowId" name="RowId" type="hidden" />
-                                <input value="@Education.UserId" name="UserId" type="hidden" />
-                                Type:<label>@Education.EducationType</label>
-                                <input type="hidden" name="EducationType" value="@Education.EducationType" required /><br />
-                                Group:<input type="text" name="GroupName" value="@Education.GroupName" required />
-                                From:<input type="text" name="CompletedEducationIn" value="@Education.CompletedEducationIn" required />
-                                Percentage :<input type="number" step="any" value="@Education.PercentageObtained" name="PercentageObtained" required />
-                                Start Year :<input type="number" value="@Education.YearOfStart" name="YearOfStart" required />
-                                End Year :<input type="number" value="@Education.YearOfEnd" name="YearOfEnd" required />
-                                <hr align="center" width="50%" style="height:2px;border-width:0;color:gray;background-color:gray" />
+                                <div class="col-md-12">
+                                    Type : <label>@Education.EducationType</label>
+                                </div>
+                            </div>                            
+                            <div class="row">
+                                <div class="col-md-5">                                    
+                                    Group :
+                                </div>
+                                <div class="col-md-7">                                    
+                                    <input type="text" name="GroupName" value="@Education.GroupName" required /><br />
+                                </div>
                             </div>
                             <div class="row">
-                                <button id="CreateEducation" type="submit" value="Create" class="btn btn-success">Save changes</button>
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                <div class="col-md-5">
+                                    From :
+                                </div>
+                                <div class="col-md-7">
+                                    <input type="text" name="CompletedEducationIn" value="@Education.CompletedEducationIn" required /><br />
+                                </div>
                             </div>
-                        </form>
-                    </div>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    Percentage :
+                                </div>
+                                <div class="col-md-7">
+                                    <input type="number" step="any" value="@Education.PercentageObtained" name="PercentageObtained" required />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    Start Year :
+                                </div>
+                                <div class="col-md-7">
+                                    <input type="number" value="@Education.YearOfStart" name="YearOfStart" required /><br />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-5">
+                                    End Year :
+                                </div>
+                                <div class="col-md-7">
+                                    <input type="number" value="@Education.YearOfEnd" name="YearOfEnd" required /><br />
+                                </div>
+                            </div>
+                            <hr align="center" width="50%" style="height:2px;border-width:0;color:gray;background-color:gray" />
+                        </div>
+                        <div class="row">
+                            <button id="CreateEducation" type="submit" value="Create" class="btn btn-success">Save changes</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
-    }
+    </div>
+}
 
 <script>
     $(function () {

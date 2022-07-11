@@ -1,64 +1,69 @@
-﻿@model IEnumerable<JopPortalMVC.Models.UserWorkTbl>
-
-@foreach (var Work in Model)
+﻿@*@model IEnumerable<JopPortalMVC.Models.UserWorkTbl>*@
+@{int UserIdData = 0; }
+@foreach (var Work in Model.WorkDetails)
 {
+    UserIdData = Work.UserId;
     <div class="row">
         <div class="col-md-10">
-            <b>Company Name :</b>@Html.DisplayFor(modelItem => Work.CompanyName)
+            <b>Company Name :</b>@Work.CompanyName
             <br />
-            <b>Worked From :</b> @Html.DisplayFor(modelItem => Work.WorkedFrom)
+            <b>Worked From :</b> @Work.WorkedFrom
             <br />
             @if (Work.WorkedTill == null)
             {
-                <b>Worked Till :</b> @Html.DisplayFor(modelItem => Work.WorkedTill)
+                <b>Worked Till :</b> @Work.WorkedTill
                 <br />
-            }<b>Worked Till :</b> @Html.DisplayFor(modelItem => Work.WorkedTill)
+            }<b>Worked Till :</b> @Work.WorkedTill
             <br />
-        </div>        
-            <div class="col-md-2">
-                <button type="button" class="btn btn-light " data-toggle="modal" data-target="#EditWork_@Work.RowId">
-                    <span class="bi bi-pencil"></span>
-                </button>
-            </div>                
+        </div>
+        <div class="col-md-2">
+            @if (UserIdData == @Model.UserData)
+            {
+            <button type="button" class="btn btn-light " data-toggle="modal" data-target="#EditWork_@Work.RowId">
+                <span class="bi bi-pencil"></span>
+            </button>
+            }
+            
+        </div>
     </div>
 }
 
-    @foreach (var Work in Model)
-    {
-        <div class="modal fade" id=@("EditWork_"+Work.RowId) tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    </div>
-                    <div class="modal-body">
-                        <form asp-controller="Edit" asp-action="EditWork" id="EditWork">
-                            <div class="row">
-                                <input value="@Work.RowId" name="RowId" type="hidden" />
-                                <input value="@Work.UserId" name="UserId" type="hidden" />
-                                Company:<input type="text" name="CompanyName" value="@Work.CompanyName" />
-                                From:<input type="number" name="WorkedFrom" value="@Work.WorkedFrom" />
-                                Till:<input type="number" name="WorkedTill" value="@Work.WorkedTill" />
-                            </div>
-                            <div class="row">
-                                <button id="CreateEducation" type="submit" value="Create" class="btn btn-success">Save changes</button>
-                                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                            </div>
-                        </form>
-                    </div>
+@foreach (var Work in Model.WorkDetails)
+{
+    <div class="modal fade" id=@("EditWork_"+Work.RowId) tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <form asp-controller="Edit" asp-action="EditWork" id="EditWork">
+                        <div class="row">
+                            <input value="@Work.RowId" name="RowId" type="hidden" />
+                            <input value="@Work.UserId" name="UserId" type="hidden" />
+                            Company:<input type="text" name="CompanyName" value="@Work.CompanyName" /><br />
+                            From:<input type="number" name="WorkedFrom" value="@Work.WorkedFrom" /><br />
+                            Till:<input type="number" name="WorkedTill" value="@Work.WorkedTill" /><br />
+                        </div>
+                        <div class="row">
+                            <button id="CreateEducation" type="submit" value="Create" class="btn btn-success">Save changes</button>
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
-    }
+    </div>
+}
 
-    <script>
-        $(function () {
-            $("#CreateEducation").click(function (e) {
-                if (confirm("Do you want to Save Changes ?")) {
-                    $("#EditEducation").submit();
-                }
-            });
+<script>
+    $(function () {
+        $("#CreateEducation").click(function (e) {
+            if (confirm("Do you want to Save Changes ?")) {
+                $("#EditEducation").submit();
+            }
         });
-    </script>
+    });
+</script>
 

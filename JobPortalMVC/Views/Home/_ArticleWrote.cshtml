@@ -1,23 +1,69 @@
-﻿@model IEnumerable<JopPortalMVC.Models.ArticleTbl>
+﻿@*@model IEnumerable<JopPortalMVC.Models.ArticleTbl>*@
+@{int UserIdData = 0; }
 
-    
-    <div class="d-flex align-items-center justify-content-center">
-        <h3>Articles written</h3>
+<div class="d-flex align-items-center justify-content-center">
+    <h3>Articles written</h3>
+</div>
+<div class="row">
+    <div class="col-md-7">
+        <h5>Article Name</h5>
     </div>
-    <div class="row">
+</div>
+<div class="row">
+    @foreach (var item in Model.ArticleWroteDetails)
+    {
+        UserIdData = @item.UserId;
         <div class="col-md-7">
-            <h5>Article Name</h5>
-        </div>
-    </div>
-    <div class="row">
-        @foreach (var item in Model)
-        {
-        <div class="col-md-7">
-            @Html.DisplayFor(modelItem => item.Title)
+
+            @*@Html.DisplayFor(modelItem => item.Title)*@
+            <b>@item.Title</b><br />
         </div>
         <div class="col-md-4">
-            @Html.ActionLink("View", "ViewArticle", "Home", new { artileId = item.RowId}, new { @class = "btn btn-outline-primary" })
+            @if (UserIdData == @Model.UserData)
+            {
+                <button type="button" class="btn btn-light " data-toggle="modal" data-target="#EditArticleWrote">
+                    <span class="bi bi-pencil"></span>
+                </button>
+            }
         </div>
-            
-        }
+    }
+</div>
+@foreach (var item in Model.ArticleWroteDetails)
+{
+    <div class="modal fade" id="EditArticleWrote" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <form asp-controller="Edit" asp-action="EditAddress" id="EditAddress">
+                        <div class="row">
+                            <input value="@item.RowId" name="RowId" type="hidden" />
+                            <input value="@item.UserId" name="UserId" type="hidden" />
+                            <div class="col-md-6">
+                                <h6>Article Name</h6>
+                                <b>@item.Title</b>
+                            </div>
+                            <div class="col-md-3">
+                                <table></table>
+                                <h6> </h6>
+                                @Html.ActionLink("View", "ViewArticle", "Home", new { artileId = item.RowId }, new { @class = "btn btn-outline-primary" })
+
+                            </div>
+                            <div class="col-md-3">
+                                <table></table>
+                                <h6> </h6>
+                                @Html.ActionLink("Remove", "DeleteAticle", new { RowId = item.RowId}, new { @class = "btn btn-danger btn-small", @onclick = "return confirm('Do You Want to Delete This Article?');" })
+                            </div>                            
+                        </div>                        
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
+    <div class="row">
+
+    </div>
+}

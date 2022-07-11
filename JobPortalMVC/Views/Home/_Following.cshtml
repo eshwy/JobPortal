@@ -1,27 +1,32 @@
-﻿@model IEnumerable<JobPortalMVC.Models.FollowingFollowerNameDetails>
-
+﻿@*@model IEnumerable<JobPortalMVC.Models.FollowingFollowerNameDetails>*@
+@{int UserIdData = 0; }
 
 <div class="d-flex align-items-center justify-content-center">
-    <h3>Following : @Model.Count()</h3>
+    <h3>Following : @Model.FollowingDetails.Count</h3>
 </div>
 
 
-@foreach (var item in Model)
+@foreach (var item in Model.FollowingDetails)
 {
+    UserIdData = item.FollowerId;
 <div class="row">
     <div class="col-md-7">
-        @Html.DisplayFor(modelItem => item.Name)
-    </div>
-
+        @item.Name
+    </div>    
     <div class="col-md-4">
-        <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#EditFollowing_@item.RowId">
-            UnFollow
-        </button>
+        @if (UserIdData == Model.UserData)
+        {
+
+            <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#EditFollowing_@item.RowId">
+                UnFollow
+            </button>
+        }
+
     </div>
 </div>
 }
 
-@foreach (var item in Model)
+@foreach (var item in Model.FollowingDetails)
 {
     <div class="modal fade" id=@("EditFollowing_"+item.RowId) tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
@@ -33,10 +38,10 @@
                 <div class="modal-body">
                     <form asp-controller="Edit" asp-action="EditFollowing" id="EditFollowing">
                         <div class="row">
-                            Do you want to &nbsp;<b>UnFollow @Html.DisplayFor(m => item.Name)</b>&nbsp; From Following ?
+                            Do you want to &nbsp;<b>UnFollow @item.Name</b>&nbsp; From Following ?
                         </div>
                         <div class="row d-flex align-items-center justify-content-center">
-                            @Html.ActionLink("UnFollow", "EditFollowing", "Edit", new { rowId = item.RowId, UserId =item.FollowerId }, new { @class = "btn btn-outline-danger" })
+                            @Html.ActionLink("UnFollow", "EditFollowing", "Edit", new { rowId = item.RowId, UserId = item.FollowerId }, new { @class = "btn btn-outline-danger" })
                         </div>
                     </form>
                 </div>
