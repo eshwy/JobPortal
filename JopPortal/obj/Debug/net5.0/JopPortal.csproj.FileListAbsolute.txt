@@ -58,3 +58,10 @@ C:\Users\Merit\Desktop\dotnetHandsOnFiles\JopPortal\JopPortal\obj\Debug\net5.0\J
 C:\Users\Merit\Desktop\dotnetHandsOnFiles\JopPortal\JopPortal\obj\Debug\net5.0\ref\JopPortal.dll
 C:\Users\Merit\Desktop\dotnetHandsOnFiles\JopPortal\JopPortal\obj\Debug\net5.0\JopPortal.pdb
 C:\Users\Merit\Desktop\dotnetHandsOnFiles\JopPortal\JopPortal\obj\Debug\net5.0\JopPortal.genruntimeconfig.cache
+C:\Users\Merit\Desktop\dotnetHandsOnFiles\JopPortal\JopPortal\bin\Debug\net5.0\System.Web.Mvc.dll
+C:\Users\Merit\Desktop\dotnetHandsOnFiles\JopPortal\JopPortal\bin\Debug\net5.0\System.Web.Razor.dll
+C:\Users\Merit\Desktop\dotnetHandsOnFiles\JopPortal\JopPortal\bin\Debug\net5.0\System.Web.Helpers.dll
+C:\Users\Merit\Desktop\dotnetHandsOnFiles\JopPortal\JopPortal\bin\Debug\net5.0\System.Web.WebPages.Deployment.dll
+C:\Users\Merit\Desktop\dotnetHandsOnFiles\JopPortal\JopPortal\bin\Debug\net5.0\System.Web.WebPages.Razor.dll
+C:\Users\Merit\Desktop\dotnetHandsOnFiles\JopPortal\JopPortal\bin\Debug\net5.0\System.Web.WebPages.dll
+C:\Users\Merit\Desktop\dotnetHandsOnFiles\JopPortal\JopPortal\bin\Debug\net5.0\Microsoft.Web.Infrastructure.dll

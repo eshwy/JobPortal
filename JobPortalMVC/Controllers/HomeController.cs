@@ -481,6 +481,11 @@ namespace JobPortalMVC.Controllers
             HttpClient cli = TokenValue();
             article.UserId = 1070;
             //Console.WriteLine(article);
+            //1-article table and article Title table
+            //1.1-#Aticle
+            //2-Split based on hash tag
+            //3-push normal data to articl table
+            //4-if success then get id and push in article title table
 
             StringContent content = Serialization(article);
             var response = await cli.PostAsync(cli.BaseAddress + "api/Article", content);

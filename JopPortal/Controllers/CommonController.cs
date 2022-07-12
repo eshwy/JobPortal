@@ -13,21 +13,21 @@ namespace JopPortal.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Authorize]
-    public class ArticleController : GenericCollectionController<ArticleTbl>
-    {
-        private readonly JobPortal2Context _context;
-        public ArticleController(JobPortal2Context context) : base(context)
-        {
-            _context = context;
-        }
-        [HttpGet("{userId}")]
-        public async Task<ActionResult> DetailsOfParticularUsingUserId(int userId)
-        {
-            var details = await _context.ArticleTbls.Where(x => x.UserId == userId || x.RowId==userId).ToListAsync();
-            return Ok(details);
-        }
+    //public class ArticleController : GenericCollectionController<ArticleTbl>
+    //{
+    //    private readonly JobPortal2Context _context;
+    //    public ArticleController(JobPortal2Context context) : base(context)
+    //    {
+    //        _context = context;
+    //    }
+    //    [HttpGet("{userId}")]
+    //    public async Task<ActionResult> DetailsOfParticularUsingUserId(int userId)
+    //    {
+    //        var details = await _context.ArticleTbls.Where(x => x.UserId == userId || x.RowId==userId).ToListAsync();
+    //        return Ok(details);
+    //    }
         
-    }
+    //}
 
     public class ArticlePinedController : GenericCollectionController<ArticlePinedTbl>
     {

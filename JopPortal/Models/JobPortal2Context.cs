@@ -28,6 +28,7 @@ namespace JopPortal.Models
         public virtual DbSet<UserProfilePhotoTbl> UserProfilePhotoTbls { get; set; }
         public virtual DbSet<UserWorkTbl> UserWorkTbls { get; set; }
         public virtual DbSet<SignUpData> SignUpData { get; set; }
+        public virtual DbSet<ArticleTitleTbl> ArticleTitleTbl { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -37,6 +38,10 @@ namespace JopPortal.Models
             modelBuilder.Entity<SignUpData>(entity =>
             {
                 entity.HasNoKey();                
+            });
+            modelBuilder.Entity<ArticleTitleTbl>(entity =>
+            {
+                entity.HasKey(c => c.Id);
             });
             //modelBuilder.Entity<SignUpData>(entity =>
             //{
@@ -68,10 +73,6 @@ namespace JopPortal.Models
 
                 entity.Property(e => e.Content)
                     .HasMaxLength(5000)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.Title)
-                    .HasMaxLength(100)
                     .IsUnicode(false);
 
                 //entity.HasOne(d => d.User)
