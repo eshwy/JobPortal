@@ -16,11 +16,11 @@
     
 
 </head>
-<body>
+<body style="background: #87e9ff ">
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="DeatilsView"></a>
+            <div class="container">                
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Login"><img src="~/Image/Logo.webp" width="200" height="100" style="z-index:+1" /></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -31,7 +31,13 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="DeatilsView">All Profiles</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="ArticleCreate">Add Article</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="ListArticle">View Article</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="SortedView">Sorted Profiles</a>
                         </li>
                     </ul>
                 </div>

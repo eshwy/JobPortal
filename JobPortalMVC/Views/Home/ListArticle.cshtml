@@ -1,13 +1,98 @@
-﻿@model IEnumerable<JopPortalMVC.Models.ArticleTbl>
+﻿@model IEnumerable<JobPortalMVC.Models.ArticleList>
 
 @{
     ViewData["Title"] = "ListArticle";
 }
-@foreach (var item in Model) {
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Category)
-            </td>
-}
+<link rel="stylesheet" href="~/css/ArticleList.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<form action="ListArticle" method="post">     
+    <div class="w-50 ml-0 mr-0 mx-auto text-center">
+        <div class="input-group">
+            <div id="search-autocomplete" class="form-outline">
+                <input class="form-control border border-right-0" type="text" name="SearchString" placeholder="Search by Ex (Dot,Python)" value="@ViewData["ValueFilter"]" />
+            </div>
+            <button type="submit" class="btn btn-primary">
+                <i class="fa fa-search"></i>
+            </button><a asp-action="ListArticle">Back to Default</a>
+        </div>
+    </div>
+</form>
+<div class="container mt-4 justify-content-center">
+    <div class="row g-0">
+        @foreach (var item in Model)
+        {
+            <div class="h-100 col-md-4 border-right">
+                <div class="cards">
+                    <div class="first bg-white p-4 text-center">
+                        <h6>Authour Name : @item.Name</h6>
+                        <hr />
+                        <h5>Category : @item.Category</h5>
+                        <h5>Title : @item.Title</h5>
+                        <hr />
+                        <p class="line1"><b>Skills :</b>@item.Skills</p>
+                        <p class="line1"><b>Email :</b>@item.Email</p>
+                        @Html.ActionLink("View", "ViewArticle", new { userId = item.RowId })
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<div id="shade" onclick="hide();"></div>
+
+<script src="https://player.vimeo.com/api/player.js"></script>
+<script src="https://a.vimeocdn.com/js/froogaloop2.min.js"></script>
+
+
+<script>
+
+    function material(data_modal) {
+        var s = document.getElementById("shade");
+        var p = document.getElementById(data_modal);
+        var c = document.getElementById(data_modal).getElementsByClassName("content")[0];
+        //s.style.display = "block";
+        s.style.zIndex = "2";
+        s.style.backgroundColor = "rgba(0,0,0,0.85)";
+        p.setAttribute('data', "opened-modal");
+        p.style.visibility = "visible";
+        p.style.opacity = "1";
+        p.style.borderRadius = "8px";
+        p.style.width = "100%";
+        p.style.height = "100%";
+        p.style.zIndex = "3";
+        c.setAttribute('data', "opened-content");
+        c.style.opacity = "1";
+    }
+
+    function hide() {
+        var s = document.getElementById("shade");
+        var p = document.querySelectorAll("[data='opened-modal']");
+        var c = document.querySelectorAll("[data='opened-content']");
+        //s.style.display = "block";
+        s.style.backgroundColor = "rgba(0,0,0,0)";
+        s.style.zIndex = "-1";
+        p[0].setAttribute('data', "closed-modal");
+        p[0].style.opacity = "0";
+        p[0].style.borderRadius = "100%";
+        p[0].style.width = "0";
+        p[0].style.height = "0";
+        p[0].style.zIndex = "-1";
+        c[0].setAttribute('data', "closed-content");
+        c[0].style.opacity = "0";
+    }
+
+    var iframe = document.querySelectorAll('[data="opened-modal"]').getElementsByClassName('vimeo')[0];
+
+    // $f == Froogaloop
+    var player = $f(iframe);
+
+    // bind events
+    var pauseButton = document.querySelectorAll('[data="opened-modal"]').getElementsByClassName('video_kapat')[0];
+    pauseButton.addEventListener("click", function () {
+        player.api("pause");
+    });
+
+</script>
+

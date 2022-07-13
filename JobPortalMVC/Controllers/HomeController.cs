@@ -86,7 +86,7 @@ namespace JobPortalMVC.Controllers
             {
                 string token = await response.Content.ReadAsStringAsync();
                 HttpContext.Session.SetString("JWToken", token);
-                return RedirectToAction("Index");
+                return RedirectToAction("DeatilsView");
             }
             ViewBag.Error = "***  Invalid Valid User or Password  ***";
             return View();
@@ -206,7 +206,6 @@ namespace JobPortalMVC.Controllers
                         return RedirectToAction("UserEducationAndWorkPost");
                     }
                 }
-            //}
             return View();
         }
         public IActionResult Photo()
@@ -437,6 +436,8 @@ namespace JobPortalMVC.Controllers
                 WorkData = JsonConvert.DeserializeObject<List<UserWorkTbl>>(WorkRes);
             }
 
+            ViewBag.SortedProfile = PhotoData[0].UserId;
+            Console.WriteLine(ViewBag.SortedProfile);
             ViewModelData ViewData = new ViewModelData
             {
                 UserProfilePhotoTbl = PhotoData,
@@ -479,30 +480,42 @@ namespace JobPortalMVC.Controllers
         public async Task<IActionResult> ArticleCreate(ArticleTbl article)
         {
             HttpClient cli = TokenValue();
-            article.UserId = 1070;
-            //Console.WriteLine(article);
-            //1-article table and article Title table
-            //1.1-#Aticle
-            //2-Split based on hash tag
-            //3-push normal data to articl table
-            //4-if success then get id and push in article title table
+            article.UserId = Int32.Parse(UserClaim());
+            
+            var Title = article.Title.Split('#').Select(p => p).ToList();
+            Title.RemoveAt(0);
+            Console.WriteLine(Title);
+
 
             StringContent content = Serialization(article);
-            var response = await cli.PostAsync(cli.BaseAddress + "api/Article", content);
+            var response = await cli.PostAsync(cli.BaseAddress + "api/ArticleAndTitle/ArticlePost", content);
             if (response.IsSuccessStatusCode)
             {
-                return RedirectToAction("Index");
+                var value =  response.Content.ReadAsStringAsync().Result;
+                ArticleTitleTbl ArticleTitleDetails = new ArticleTitleTbl();
+                ArticleTitleDetails.ArticleId = Int32.Parse(value);                
+                Console.WriteLine(value);
+                foreach (var ArticleTitle in Title)
+                {
+                    ArticleTitleDetails.Title = ArticleTitle;
+                    StringContent Titlecontent = Serialization(ArticleTitleDetails);
+                    var Titleresponse = await cli.PostAsync(cli.BaseAddress + "api/ArticleAndTitle/TitlePost", Titlecontent);
+                    if (Titleresponse.IsSuccessStatusCode)
+                    {
+                        continue;
+                    }
+                }
             }
             return View();
         }
         [HttpGet]
-        public async Task<IActionResult> ViewArticle(int artileId)
+        public async Task<IActionResult> ViewArticle(int userId)
         {
             List<ArticleTbl> ParticularArticleDetails = new List<ArticleTbl>();
-            HttpClient cli = _jobPortalUrl.initial();
-            
-            
-            var ParticularArticleResult = await cli.GetAsync(cli.BaseAddress + "api/Article/"+ artileId);
+
+            HttpClient cli = TokenValue();
+
+            var ParticularArticleResult = await cli.GetAsync(cli.BaseAddress + "api/ArticleAndTitle/" + userId);
             if (ParticularArticleResult.IsSuccessStatusCode)
             {
                 var RawArticleResult = ParticularArticleResult.Content.ReadAsStringAsync().Result;
@@ -512,21 +525,67 @@ namespace JobPortalMVC.Controllers
             return RedirectToAction("DeatilsView");
         }
 
-        public async Task<IActionResult> ListArticle()
+        public async Task<IActionResult> ListArticle(string searchString)
         {
-
+            ViewData["ValueFilter"] = searchString;
             HttpClient cli = TokenValue();
-            List<ArticleTbl> ArticleDetails = new List<ArticleTbl>();
-            var ArticleResponse = await cli.GetAsync("api/Article");
+            List<ArticleList> ArticleDetails = new List<ArticleList>();
+            List<ArticleList> FinalArticleDetails = new List<ArticleList>();
+            var ArticleResponse = await cli.GetAsync("api/ArticleAndTitle");
             if (ArticleResponse.IsSuccessStatusCode)
             {
                 var ArtileResult = ArticleResponse.Content.ReadAsStringAsync().Result;
-                ArticleDetails = JsonConvert.DeserializeObject<List<ArticleTbl>>(ArtileResult);
+                ArticleDetails = JsonConvert.DeserializeObject<List<ArticleList>>(ArtileResult);
                
             }
-            return View(ArticleDetails);
-        }       
+            if (!String.IsNullOrEmpty(searchString))
+            {               
+                
+                var Title = searchString.Split(',').Select(p => p.ToLower());
 
+                foreach (var item in Title)
+                {
+                    FinalArticleDetails = ArticleDetails.Where(s => s.Category.ToLower().Any(value => s.Category.ToLower().Contains(item)) ||
+                                                                    s.Title.ToLower().Any(value => s.Title.ToLower().Contains(item)) ||
+                                                                    s.Skills.ToLower().Any(value => s.Skills.ToLower().Contains(item)) ||
+                                                                    s.Name.ToLower().Any(value => s.Name.ToLower().Contains(item)) ||
+                                                                    s.Email.ToLower().Any(value => s.Email.ToLower().Contains(item))).ToList();                                                                    
+                                                                    
+                }
+                FinalArticleDetails = FinalArticleDetails.GroupBy(x => x.RowId).Select(g => new ArticleList { RowId = g.Key,UserId = g.FirstOrDefault().UserId,Title=g.FirstOrDefault().Title,
+                                                                                                Category = g.FirstOrDefault().Category, Content = g.FirstOrDefault().Content,
+                                                                                                   Name = g.FirstOrDefault().Name,Skills = g.FirstOrDefault().Skills,Email = g.FirstOrDefault().Email}).ToList();
+                return View(FinalArticleDetails);
+            }
+            return View(ArticleDetails);
+        }
+
+        public async Task<IActionResult> SortedView()
+        {
+            HttpClient cli = TokenValue();
+            int SelectedBy = Int32.Parse(UserClaim());
+            List<SortedProfileList> SortedResultdata = new List<SortedProfileList>();
+            var SortedResponse = await cli.GetAsync("api/SortedProfiles/" + SelectedBy);
+            if (SortedResponse.IsSuccessStatusCode)
+            {
+                var SortedResult = SortedResponse.Content.ReadAsStringAsync().Result;
+                SortedResultdata = JsonConvert.DeserializeObject<List<SortedProfileList>>(SortedResult);
+
+            }
+            return View(SortedResultdata);
+        }
+
+        public async Task<IActionResult> RemoveSort(int RowId)
+        {
+            HttpClient cli = TokenValue();
+            int SelectedBy = Int32.Parse(UserClaim());            
+            var SortedResponse = await cli.DeleteAsync("api/SortedProfiles/" + RowId);
+            if (SortedResponse.IsSuccessStatusCode)
+            {
+                return RedirectToAction("SortedView");
+            }
+            return RedirectToAction("SortedView");
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

@@ -1,0 +1,38 @@
+﻿@model IEnumerable<JobPortalMVC.Models.SortedProfileList>
+
+@{
+    ViewData["Title"] = "SortedView";
+    Layout = null;
+}
+<link rel="stylesheet" href="~/css/SortedList.css" />
+
+
+<div class="container">
+    @foreach (var value in Model)
+    {
+        <div class="d-lg-flex mt-2">
+
+            <div class="card border-0 me-lg-4 mb-lg-0 mb-4">
+                <div class="backgroundEffect"></div>
+                <div class="pic">
+                    <img src="@value.PhotoPath" alt="" class="" height:"200px" width:"200px">
+                </div>
+                <div class="content">
+                    <p class="h-1 mt-4">Name :  @value.Name</p>
+                    <p class="text-muted mt-3">
+                        Email : @value.Email <br />
+                        Skills : @value.Skills <br />
+                        Experience : @value.Experience <br />
+                    </p>
+                    <div class="d-flex align-items-center justify-content-between mt-3 pb-3">
+                        <div class="btn btn-primary">@Html.ActionLink("View Profile", "ParticularView", "Home", new { UserId = value.SortedProfile })<span class="fas fa-arrow-right"></span></div>
+                        <div class="btn btn-danger">@Html.ActionLink("Remove From Sort", "RemoveSort", "Home", new { RowId = value.RowId })<span class="fas fa-arrow-right"></span></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    }
+</div>
+
+

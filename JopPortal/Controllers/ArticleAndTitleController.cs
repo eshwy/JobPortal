@@ -1,4 +1,5 @@
 ﻿using JopPortal.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -11,6 +12,7 @@ namespace JopPortal.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class ArticleAndTitleController : ControllerBase
     {
         private readonly JobPortal2Context _context;
@@ -23,6 +25,7 @@ namespace JopPortal.Controllers
         public async Task<ActionResult> GetArticle()
         {
             var ArticleDetails = await _context.ArticleTbls.ToListAsync();
+            var PersonalDetails = await _context.PersonalDetailsTbl.ToListAsync();
             List<int> ArticleRowId = new List<int>();
             foreach (var Artdetails in ArticleDetails)
             {
@@ -47,7 +50,7 @@ namespace JopPortal.Controllers
                                      Title = string.Join(",", g.ToArray())
                                  };
 
-            var FinalArticleData = (from t1 in ArticleDetails
+            var ArticleData = (from t1 in ArticleDetails
                                     join t2 in FinalTitleData
                                     on t1.RowId equals t2.id
                                     select new
@@ -59,11 +62,25 @@ namespace JopPortal.Controllers
                                         t1.Content
                                     }).ToList();
 
+            var FinalArticleData = (from t1 in ArticleData
+                                    join t2 in PersonalDetails
+                                    on t1.UserId equals t2.UserId 
+                                    select new
+                                    {
+                                        t1.RowId,
+                                        t1.UserId,
+                                        Name = t2.FirstName +" "+ t2.LastName,
+                                        t2.Skills,
+                                        t2.Email,
+                                        t1.Title,
+                                        t1.Category,
+                                        t1.Content
+                                    });
             return Ok(FinalArticleData);
 
         }
 
-        [HttpGet("{userId}")]
+        [HttpGet("{userId}")]        
         public async Task<ActionResult> GetArticle(int userId)
         {            
             var ArticleDetails = await _context.ArticleTbls.Where(x => x.UserId == userId || x.RowId==userId).ToListAsync();

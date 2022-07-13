@@ -188,6 +188,22 @@ namespace JobPortalMVC.Controllers
             return RedirectToAction("ParticularView", "Home", new { UserId = UserWorkTbl.UserId });
         }
 
+        [HttpPost]
+        public async Task<IActionResult> SortedPost(int SelectBy,int SortedProfile)
+        {
+            HttpClient cli = TokenValue();
+            SortedProfilesTbl sortData = new SortedProfilesTbl();
+            sortData.SelectBy = SelectBy;
+            sortData.SortedProfile = SortedProfile;
+            StringContent content = Serialization(sortData);
+            var response = await cli.PostAsync(cli.BaseAddress + "api/SortedProfiles", content);
+            if (response.IsSuccessStatusCode)
+            {
+                return RedirectToAction("SortedView", "Home");
+            }
+            return RedirectToAction("SortedView", "Home");
+        }
+
 
     }
 }

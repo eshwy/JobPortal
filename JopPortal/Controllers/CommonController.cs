@@ -13,21 +13,6 @@ namespace JopPortal.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [Authorize]
-    //public class ArticleController : GenericCollectionController<ArticleTbl>
-    //{
-    //    private readonly JobPortal2Context _context;
-    //    public ArticleController(JobPortal2Context context) : base(context)
-    //    {
-    //        _context = context;
-    //    }
-    //    [HttpGet("{userId}")]
-    //    public async Task<ActionResult> DetailsOfParticularUsingUserId(int userId)
-    //    {
-    //        var details = await _context.ArticleTbls.Where(x => x.UserId == userId || x.RowId==userId).ToListAsync();
-    //        return Ok(details);
-    //    }
-        
-    //}
 
     public class ArticlePinedController : GenericCollectionController<ArticlePinedTbl>
     {
@@ -130,7 +115,55 @@ namespace JopPortal.Controllers
         public async Task<ActionResult> DetailsOfParticularUsingUserId(int userId)
         {
             var details = await _context.SortedProfilesTbls.Where(x => x.SelectBy == userId).ToListAsync();
-            return Ok(details);
+            List<int> SortedSelectId = new List<int>();
+            foreach (var selectId in details)
+            {
+                SortedSelectId.Add(selectId.SortedProfile);
+            }
+
+            List<PersonalDetailsTbl> data = new List<PersonalDetailsTbl>();
+            List<UserProfilePhotoTbl> Photodata = new List<UserProfilePhotoTbl>();
+            foreach (var Idvalue in SortedSelectId)
+            {
+                var ArticleTitleData = await _context.PersonalDetailsTbl.Where(x => x.UserId == Idvalue).ToListAsync();
+                foreach (var item1 in ArticleTitleData)
+                {
+                    data.Add(item1);
+                }
+                var PhotoData = await _context.UserProfilePhotoTbls.Where(x => x.UserId == Idvalue).ToListAsync();
+                foreach (var item1 in PhotoData)
+                {
+                    Photodata.Add(item1);
+                }
+            }
+
+            var photoDetails = (from t1 in details
+                                join t2 in Photodata
+                                on t1.SortedProfile equals t2.UserId
+                                select new
+                                {
+                                    t1.RowId,
+                                    t1.SelectBy,
+                                    t1.SortedProfile,
+                                    t2.PhotoPath
+                                }).ToList();
+
+            var finalData = (from t1 in photoDetails
+                             join t2 in data
+                             on t1.SortedProfile equals t2.UserId
+                             select new
+                             {
+                                 t1.RowId,
+                                 t1.SelectBy,
+                                 t1.SortedProfile,
+                                 t1.PhotoPath,
+                                 Name = t2.FirstName + " "+t2.LastName,
+                                 t2.Email,
+                                 t2.Skills,
+                                 t2.Experience
+                             }).ToList();
+            
+            return Ok(finalData);
         }
     }
 
