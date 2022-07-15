@@ -4,8 +4,8 @@
     ViewData["Title"] = "SignUpPostData";
     Layout = null;
 }
-<link rel="stylesheet" href="~/css/style.css"/>
-<link rel="stylesheet" href="~/css/chosen.css"/>
+<link rel="stylesheet" href="~/css/style.css" />
+<link rel="stylesheet" href="~/css/chosen.css" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.10.2/jquery.js"></script>
 <script src="~/js/chosen.jquery.js"></script>
 <link rel="stylesheet" href="~/css/SignUp.css">
@@ -14,7 +14,7 @@
         <header>
             <h1>Welcome to JobPortal</h1>
         </header>
-        <form asp-controller="Home" asp-action="SignUpPostData" enctype="multipart/form-data">
+        <form asp-controller="Home" asp-action="PersonalDetailsNotFilled" enctype="multipart/form-data">
             <div class="row">
                 <div class="form-group">
                     <label asp-for="photo" class="control-label"></label>
@@ -58,7 +58,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="Skills" class="control-label"></label>
-                @Html.DropDownListFor(x =>x.Skills, new SelectList(Enum.GetValues(typeof(Skill))),new { @class="form-control chosen-select",@multiple=true})
+                @Html.DropDownListFor(x => x.Skills, new SelectList(Enum.GetValues(typeof(Skill))), new { @class = "form-control chosen-select", @multiple = true })
                 @*@Html.DropDownListFor(m => m.Skills, new MultiSelectList(Enum.GetValues(typeof(Skill))), new { @class="selectpicker",@multiple =true})*@
                 @*@Html.DropDownList("listbox", new SelectList(Enum.GetValues(typeof(Skill))), new { style = "width:100%", multiple = "multiple", name = "Skills" })*@
                 @*<select asp-for="Skills" class="form-control" placeholder="Enter Your Skill" id="Skills" />*@
@@ -141,7 +141,7 @@
 </div>
 
 <script>
-    
+
     $(document).ready(function () {
         $('.chosen-select').chosen();
     });

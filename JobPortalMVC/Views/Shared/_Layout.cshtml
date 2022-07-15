@@ -39,6 +39,9 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="SortedView">Sorted Profiles</a>
                         </li>
+                        <li class="nav-item">
+                            @Html.ActionLink("Sign Out", "LogOff", new { @class = "nav-link text-dark btn-danger" }, new { @onclick = "return confirm('Do You Want to Log Out?');" })
+                        </li>
                     </ul>
                 </div>
             </div>

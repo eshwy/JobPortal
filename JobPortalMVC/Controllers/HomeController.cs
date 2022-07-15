@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -16,6 +17,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using X.PagedList;
 
@@ -84,12 +86,40 @@ namespace JobPortalMVC.Controllers
 
             if (response.IsSuccessStatusCode)
             {
-                string token = await response.Content.ReadAsStringAsync();
-                HttpContext.Session.SetString("JWToken", token);
-                return RedirectToAction("DeatilsView");
+                var StatusData = response.Content.ReadAsStringAsync().Result;
+                
+                JObject result = JObject.Parse(StatusData);
+                var tokenData = result["token"].Value<string>();                
+                HttpContext.Session.SetString("JWToken", tokenData);
+                
+                if (result.ContainsKey("info"))
+                {
+                    var clientarray = result["info"].Value<string>();
+                    if (clientarray == "PersonalDetailsNotFilled")
+                    {
+                        var Oblejctarray = result["personalData"].ToObject<PersonalDetailsTbl>();
+                        Console.WriteLine(Oblejctarray);
+                        return RedirectToAction("personaldetailsnotfilled", Oblejctarray);
+                    }
+                    else if (clientarray == "WorkDetailsNotFilled")
+                    {
+                        return RedirectToAction("WorkDetailsNotFilled");
+                    }
+                    else if (clientarray == "EducationDetailsNotFilled")
+                    {
+                        return RedirectToAction("EducationDetailsNotFilled");
+                    }
+                }             
+                    return RedirectToAction("deatilsview");
             }
             ViewBag.Error = "***  Invalid Valid User or Password  ***";
             return View();
+        }
+
+        public IActionResult LogOff()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("Login");
         }
 
         public IActionResult SignUp()
@@ -106,9 +136,16 @@ namespace JobPortalMVC.Controllers
             var response = await cli.PostAsync(cli.BaseAddress + "api/LoginTbls/SignUp", content);
             if (response.IsSuccessStatusCode)
             {
-                var Value = response.Content.ReadAsStringAsync().Result;
-                data = Value;
-                TempData["Id"] = data;
+                var StatusData = response.Content.ReadAsStringAsync().Result;
+
+                JObject result = JObject.Parse(StatusData);
+                var tokenData = result["token"].Value<string>();
+                HttpContext.Session.SetString("JWToken", tokenData);
+                
+                
+                TempData["EmailRowId"] = result["emailRowId"].Value<string>();
+                TempData["EmailId"] = result["emailId"].Value<string>();
+                TempData["UserId"] = result["userId"].Value<string>();
 
                 return RedirectToAction("SignUpPostData");
             }
@@ -117,16 +154,26 @@ namespace JobPortalMVC.Controllers
 
         public string TempDataUserValue()
         {
-            string data = "";
+            string EmailRowId = "";
+            string EmailId = "";
+            string UserId = "";
 
 
-            if (TempData.ContainsKey("Id"))
+            if (TempData.ContainsKey("EmailRowId"))
             {
-                data = TempData["Id"].ToString();                
+                EmailRowId = TempData["EmailRowId"].ToString();                
             }
-                
-            
-            return data;
+            if (TempData.ContainsKey("EmailId"))
+            {
+                EmailId = TempData["EmailId"].ToString();
+            }
+            if (TempData.ContainsKey("UserId"))
+            {
+                UserId = TempData["UserId"].ToString();
+            }
+
+
+            return UserId+"|"+ EmailRowId +"|"+EmailId ;
         }
         public IActionResult SignUpPostData()
         {
@@ -153,8 +200,7 @@ namespace JobPortalMVC.Controllers
 
            
             Console.WriteLine(UserData.UserId);
-            //if (ModelState.IsValid)
-            //{
+            
                 if (UserData.photo != null)
                 {
                     string extension = Path.GetExtension(UserData.photo.FileName);
@@ -180,8 +226,7 @@ namespace JobPortalMVC.Controllers
                     PersonalData.Gender = UserData.Gender;
                     PersonalData.DateOfBirth = UserData.DateOfBirth;
                     PersonalData.Experience = UserData.Experience;
-                    //string SkillData = string.Join(",", UserData.Skills);
-                    //PersonalData.Skills = SkillData;
+                    
                     StringContent Personalcontent = Serialization(PersonalData);
                     var Personalresponse = await cli.PostAsync(cli.BaseAddress + "api/PersonalDetails/Put", Personalcontent);
                     if (Personalresponse.IsSuccessStatusCode)
@@ -208,12 +253,96 @@ namespace JobPortalMVC.Controllers
                 }
             return View();
         }
-        public IActionResult Photo()
+
+        public IActionResult PersonalDetailsNotFilled(PersonalDetailsTbl UserDetails)
         {
+            TempData["UserId"] = UserDetails.UserId;
+            TempData["UserEmail"] = UserDetails.Email;
+            TempData["PersonalRowId"] = UserDetails.RowId;
             return View();
         }
 
-        
+        [HttpPost]
+        public async Task<IActionResult> PersonalDetailsNotFilled(UserSignUpDataAll UserData)
+        {
+            UserProfilePhotoTbl Data = new UserProfilePhotoTbl();
+            PersonalDetailsTbl PersonalData = new PersonalDetailsTbl();
+            UserAdressTbl addressData = new UserAdressTbl();
+
+            string SkillData = string.Join(",", UserData.Skills);
+            PersonalData.Skills = SkillData;
+
+            HttpClient cli = TokenValue();
+            if (TempData.ContainsKey("UserId"))
+            {
+                UserData.UserId = Convert.ToInt32(TempData["UserId"]);
+            };
+            if (TempData.ContainsKey("PersonalRowId"))
+            {
+                PersonalData.RowId = Convert.ToInt32(TempData["PersonalRowId"]);
+            };
+            if (TempData.ContainsKey("UserEmail"))
+            {
+                PersonalData.Email = Convert.ToString(TempData["UserEmail"]);
+            }
+            Console.WriteLine(UserData.UserId);
+            //if (ModelState.IsValid)
+            //{
+            if (UserData.photo != null)
+            {
+                string extension = Path.GetExtension(UserData.photo.FileName);
+                string CurrentDateTime = DateTime.Now.ToString();
+                CurrentDateTime = CurrentDateTime.Replace(" ", "_").Replace("/", "_").Replace(":", "_");
+                UserData.PhotoPath = "/Image/" + UserData.UserId + "_" + UserData.FirstName + "_" + CurrentDateTime + extension;
+
+                Data.UserId = UserData.UserId;
+                Data.PhotoPath = UserData.PhotoPath;
+                StringContent content = Serialization(Data);
+                var response = await cli.PostAsync(cli.BaseAddress + "api/UserProfilePhoto", content);
+                if (response.IsSuccessStatusCode)
+                {
+                    string wwwRootPath = _hostEnvironment.WebRootPath;
+                    string path = Path.Combine(wwwRootPath + UserData.PhotoPath);
+
+                    await UserData.photo.CopyToAsync(new FileStream(path, FileMode.Create));
+                }
+                PersonalData.UserId = UserData.UserId;
+                PersonalData.FirstName = UserData.FirstName;
+                PersonalData.LastName = UserData.LastName;
+                PersonalData.PhoneNumber = UserData.PhoneNumber;
+                PersonalData.Gender = UserData.Gender;
+                PersonalData.DateOfBirth = UserData.DateOfBirth;
+                PersonalData.Experience = UserData.Experience;
+                //string SkillData = string.Join(",", UserData.Skills);
+                //PersonalData.Skills = SkillData;
+                StringContent Personalcontent = Serialization(PersonalData);
+                var Personalresponse = await cli.PostAsync(cli.BaseAddress + "api/PersonalDetails/Put", Personalcontent);
+                if (Personalresponse.IsSuccessStatusCode)
+                {
+                    Console.WriteLine("worked");
+                }
+                addressData.UserId = UserData.UserId;
+                addressData.PermantentDoorNumber = UserData.PermantentDoorNumber;
+                addressData.PermantentStreetName = UserData.PermantentStreetName;
+                addressData.PermantentArea = UserData.PermantentArea;
+                addressData.PermantentCity = UserData.PermantentCity;
+                addressData.PermantentPinCode = UserData.PermantentPinCode;
+                addressData.CurrentDoorNumber = UserData.CurrentDoorNumber;
+                addressData.CurrentStreetName = UserData.CurrentStreetName;
+                addressData.CurrentArea = UserData.CurrentArea;
+                addressData.CurrentCity = UserData.CurrentCity;
+                addressData.CurrentPinCode = UserData.CurrentPinCode;
+                StringContent addressDataContent = Serialization(addressData);
+                var AddressDetailsResponce = await cli.PostAsync(cli.BaseAddress + "api/UserAdress", addressDataContent);
+                if (AddressDetailsResponce.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Login");
+                }
+            }
+            return View();
+        }
+
+
         public IActionResult UserEducationAndWorkPost()
         {
             return View();
@@ -273,6 +402,70 @@ namespace JobPortalMVC.Controllers
                 if (!WorkDetailsResponce.IsSuccessStatusCode)
                 {
                     return View();
+                }
+            }
+
+            return RedirectToAction("DeatilsView");
+        }
+        public IActionResult EducationDetailsNotFilled()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> EducationDetailsNotFilled(IFormCollection educationAndWork)
+        {
+            HttpClient cli = TokenValue();
+            UserEducationTbl usereducation = new UserEducationTbl();
+
+            var d1 = educationAndWork["ListId"].Count();
+            //var authors = TempDataUserValue();
+            //string[] authorsList = authors.Split("|");
+
+            usereducation.UserId = Int32.Parse(UserClaim());
+
+
+            for (int i = 0; i < educationAndWork["EducationType"].Count(); i++)
+            {
+                usereducation.EducationType = educationAndWork["EducationType"][i];
+                usereducation.GroupName = educationAndWork["GroupName"][i];
+                usereducation.CompletedEducationIn = educationAndWork["CompletedEducationIn"][i];
+                usereducation.YearOfStart = Int32.Parse(educationAndWork["YearOfStart"][i]);
+                usereducation.YearOfEnd = Int32.Parse(educationAndWork["YearOfEnd"][i]);
+                usereducation.PercentageObtained = decimal.Parse(educationAndWork["PercentageObtained"][i]);
+                StringContent EducationContent = Serialization(usereducation);
+                var AddressDetailsResponce = await cli.PostAsync(cli.BaseAddress + "api/UserEducation", EducationContent);
+                if (!AddressDetailsResponce.IsSuccessStatusCode)
+                {
+                    return View();
+                }
+            }
+            return RedirectToAction("Login");
+        }
+        public IActionResult WorkDetailsNotFilled()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> WorkDetailsNotFilled(IFormCollection Work)
+        {
+            HttpClient cli = TokenValue();
+            UserWorkTbl userWork = new UserWorkTbl();
+
+            var authors = TempDataUserValue();
+            //string[] authorsList = authors.Split("|");
+            userWork.UserId = Int32.Parse(UserClaim());
+
+            for (int i = 0; i < Work["CompanyName"].Count(); i++)
+            {
+                userWork.CompanyName = Work["CompanyName"][i];
+                userWork.WorkedFrom = Int32.Parse(Work["WorkedFrom"][i]);
+                userWork.WorkedTill = Int32.Parse(Work["WorkedTill"][i]);
+                StringContent WorkContent = Serialization(userWork);
+                var WorkDetailsResponce = await cli.PostAsync(cli.BaseAddress + "api/UserWork", WorkContent);
+                if (!WorkDetailsResponce.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Login");
                 }
             }
 

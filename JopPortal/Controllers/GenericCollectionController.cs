@@ -35,7 +35,7 @@ namespace JopPortal.Controllers
             
         //}
 
-
+        
         [HttpPost]
         public async Task<ActionResult<T>> PostDetails(T Details)
         {
@@ -45,7 +45,7 @@ namespace JopPortal.Controllers
 
             return Ok();
         }
-
+        
         [HttpPost]
         [Route("Put")]
         public async Task<IActionResult> PutDetails(T Details)

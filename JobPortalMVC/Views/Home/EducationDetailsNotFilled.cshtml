@@ -1,0 +1,123 @@
+﻿@{
+    ViewData["Title"] = "EducationDetailsNotFilled";
+    Layout = null;
+}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+<link href="https://formden.com/static/cdn/bootstrap-iso.css" rel="stylesheet" />
+
+<link rel="stylesheet" href="~/css/SignUp.css">
+<div class="container">
+    <div class="form-wrap">
+        <header>
+            <h1>Welcome to Crowdise</h1>
+        </header>
+        <form asp-controller="Home" asp-action="EducationDetailsNotFilled">
+            <div id="Container1">
+                <input id="ListId" name="ListId" type="hidden" value="1" />
+                <div id="DivId0">
+                    <div class="form-group">
+                        <label for="EducationType">Education Persumed</label>
+                        <select name="EducationType" id="cars" required>
+                            <option value="Primary Education">Primary Education</option>
+                            <option value="Secondary Education">Secondary Education</option>
+                            <option value="Polytechnic">Polytechnic</option>
+                            <option value="Under Graduation">Under Graduation</option>
+                            <option value="Post Graduation">Post Graduation</option>
+                            <option value="PHD">PHD</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="GroupName">Group Name</label>
+                        <input id="GroupName" name="GroupName" placeholder="Enter Group Name" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="CompletedEducationIn">Completed From</label>
+                        <input id="CompletedEducationIn" name="CompletedEducationIn" placeholder="Enter name of university" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="YearOfStart">Started From Year</label>
+                        <input id="YearOfStart" name="YearOfStart" type="number" placeholder="From 2000" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="YearOfEnd">Till</label>
+                        <input id="YearOfEnd" name="YearOfEnd" type="number" placeholder="From 2004" required />
+                    </div>
+                    <div class="form-group">
+                        <label for="PercentageObtained">Total Percentage</label>
+                        <input id="PercentageObtained" name="PercentageObtained" type="number" step="any" placeholder="80" required />
+                    </div>
+                    <hr align="center" width="85%" style="height:2px;border-width:0;color:gray;background-color:gray" />
+                </div>
+            </div>
+
+            <button type="submit" value="Create" class="btn btn-block btn-success">Next</button>
+        </form>
+        <button class="btn btn-block" id="add">Add More</button>
+        <button class="btn btn-block" id="remove">Remove</button>
+    </div>
+</div>
+
+<script>
+    document.getElementById('add').onclick = duplicate;
+    document.getElementById('remove').onclick = removeduplicate;
+
+    var i = 0;
+    function duplicate() {
+        var original = document.getElementById('DivId' + i);
+
+        var clone = original.cloneNode(true);
+
+        clone.id = "DivId" + ++i;
+        original.parentNode.appendChild(clone);
+        $("#DivId" + i).find('input,textarea').val('');
+    }
+    function removeduplicate() {
+
+        var list = document.getElementById('DivId' + i).remove();
+        i -= 1;
+    }
+
+
+    function AddWork() {
+
+        WorkListNumber += 1;
+        var breakNode = document.createElement("br");
+        breakNode.className = "Work" + WorkListNumber.toString();
+
+        var input7 = document.createElement("input");
+        input7.type = "hidden";
+        input7.name = "WorkId";
+        input7.value = EducationListNumber.toString();
+        input7.className = "Work" + WorkListNumber.toString();
+
+        var input8 = document.createElement("input");
+        input8.type = "text";
+        input8.name = "CompanyName";
+        input8.setAttribute('required', '');
+        input8.className = "Work" + WorkListNumber.toString();
+
+        var input9 = document.createElement("input");
+        input9.type = "number";
+        input9.name = "WorkedFrom";
+        input9.setAttribute('required', '');
+        input9.className = "Work" + WorkListNumber.toString();
+
+        var input10 = document.createElement("input");
+        input10.type = "number";
+        input10.name = "WorkedTill";
+        input10.setAttribute('required', '');
+        input10.className = "Work" + WorkListNumber.toString();
+
+        var container = document.getElementById('Container1');
+        Container1.appendChild(breakNode);
+        Container1.appendChild(input7);
+        Container1.appendChild(input8);
+        Container1.appendChild(input9);
+        Container1.appendChild(input10);
+    }
+    function RemoveWorkDetails() {
+        $("input").remove(".Work" + WorkListNumber);
+        $("br").remove(".Work" + WorkListNumber);
+        WorkListNumber -= 1;
+    }
+</script>

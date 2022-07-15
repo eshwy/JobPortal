@@ -43,7 +43,33 @@ namespace JopPortal.Controllers
             {
                 return Unauthorized();
             }
-            return Ok(token);
+
+            var data = _context.LoginTbls.FirstOrDefault(x => x.UserName == login.UserName && x.PassWord == login.PassWord);
+            var userId = data.UserId;
+            var PersonalData = _context.PersonalDetailsTbl.FirstOrDefault(x => x.UserId == userId);
+            if (PersonalData.Skills == null)
+            {
+                List<string> val = new List<string>();
+                var info="PersonalDetailsNotFilled";
+                val.Add(Convert.ToString(PersonalData));
+                return Ok(new { token,info, PersonalData});
+            };
+
+            var WorkData = _context.UserWorkTbls.FirstOrDefault(x => x.UserId == userId);
+            if (WorkData == null)
+            {
+                var info = "WorkDetailsNotFilled";
+                return Ok(new { token,info, userId });
+            };
+
+            var EducationData = _context.UserEducationTbls.FirstOrDefault(x => x.UserId == userId);
+            if(EducationData == null)
+            {
+                var info = "EducationDetailsNotFilled";
+                return Ok(new{ token,info,userId});
+            };
+            
+            return Ok(new { token });
         }
 
 
@@ -68,6 +94,7 @@ namespace JopPortal.Controllers
 
                 var data= CreatedAtAction("GetLoginTbl", new { id = LoginTbl.UserId }, LoginTbl);
                 var d = data.Value;
+                var token = _jWTManager.Authenticate((LoginTbl)d);
                 var list = new List<LoginTbl>();
                 
                 list.Add((LoginTbl)d);
@@ -87,12 +114,13 @@ namespace JopPortal.Controllers
                 var list1 = new List<PersonalDetailsTbl>();
 
                 list1.Add((PersonalDetailsTbl)d1);
-                var value1 = list1.Select(x => x.RowId).FirstOrDefault();
-                var value2 = list1.Select(x => x.Email).FirstOrDefault();
-                string UserId1 = value1.ToString();
-                string UserId2 = value2.ToString();
+                var EmailRowId = list1.Select(x => x.RowId).FirstOrDefault();
+                var EmailId = list1.Select(x => x.Email).FirstOrDefault();
+                //string UserId1 = value1.ToString();
+                //string UserId2 = value2.ToString();
 
-                return UserId +"|" +UserId1 + "|"+ UserId2;
+                return Ok(new { token, EmailRowId, EmailId, UserId });
+                //return UserId +"|" +UserId1 + "|"+ UserId2;
             }
             return BadRequest();
             
