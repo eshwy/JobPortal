@@ -166,3 +166,37 @@ WHERE [u].[UserId] = @__userId_0
 2022-07-15 12:57:13.101 +05:30  INF]  Request finished HTTP/2 GET https://localhost:44352/swagger/index.html - - - 200 - text/html;charset=utf-8 160.9254ms
 2022-07-15 12:57:13.229 +05:30  INF]  Request starting HTTP/2 GET https://localhost:44352/swagger/v1/swagger.json - -
 2022-07-15 12:57:13.332 +05:30  INF]  Request finished HTTP/2 GET https://localhost:44352/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 102.7886ms
+2022-07-15 16:57:42.160 +05:30  INF]  **********JobPortal Application Started************
+2022-07-15 16:57:47.801 +05:30  INF]  User profile is available. Using 'C:\Users\Merit\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-07-15 16:57:49.318 +05:30  INF]  Application started. Press Ctrl+C to shut down.
+2022-07-15 16:57:49.318 +05:30  INF]  Hosting environment: Development
+2022-07-15 16:57:49.318 +05:30  INF]  Content root path: C:\Users\Merit\Desktop\dotnetHandsOnFiles\JopPortal\JopPortal
+2022-07-15 16:57:49.397 +05:30  INF]  Request starting HTTP/2 GET https://localhost:44352/swagger/index.html - -
+2022-07-15 16:57:49.833 +05:30  INF]  Request finished HTTP/2 GET https://localhost:44352/swagger/index.html - - - 200 - text/html;charset=utf-8 440.4298ms
+2022-07-15 16:57:50.102 +05:30  INF]  Request starting HTTP/2 GET https://localhost:44352/swagger/v1/swagger.json - -
+2022-07-15 16:57:50.544 +05:30  INF]  Request finished HTTP/2 GET https://localhost:44352/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 442.8052ms
+2022-07-15 17:03:08.636 +05:30  INF]  **********JobPortal Application Started************
+2022-07-15 17:03:10.585 +05:30  INF]  User profile is available. Using 'C:\Users\Merit\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-07-15 17:03:11.097 +05:30  INF]  Application started. Press Ctrl+C to shut down.
+2022-07-15 17:03:11.097 +05:30  INF]  Hosting environment: Development
+2022-07-15 17:03:11.098 +05:30  INF]  Content root path: C:\Users\Merit\Desktop\dotnetHandsOnFiles\JopPortal\JopPortal
+2022-07-15 17:03:11.168 +05:30  INF]  Request starting HTTP/2 GET https://localhost:44352/swagger/index.html - -
+2022-07-15 17:03:11.418 +05:30  INF]  Request finished HTTP/2 GET https://localhost:44352/swagger/index.html - - - 200 - text/html;charset=utf-8 256.8182ms
+2022-07-15 17:03:29.376 +05:30  INF]  **********JobPortal Application Started************
+2022-07-15 17:03:31.916 +05:30  INF]  User profile is available. Using 'C:\Users\Merit\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-07-15 17:03:32.901 +05:30  INF]  Application started. Press Ctrl+C to shut down.
+2022-07-15 17:03:32.902 +05:30  INF]  Hosting environment: Development
+2022-07-15 17:03:32.902 +05:30  INF]  Content root path: C:\Users\Merit\Desktop\dotnetHandsOnFiles\JopPortal\JopPortal
+2022-07-15 17:03:33.004 +05:30  INF]  Request starting HTTP/2 GET https://localhost:44352/swagger/index.html - -
+2022-07-15 17:03:33.456 +05:30  INF]  Request finished HTTP/2 GET https://localhost:44352/swagger/index.html - - - 200 - text/html;charset=utf-8 457.2102ms
+2022-07-15 17:03:33.692 +05:30  INF]  Request starting HTTP/2 GET https://localhost:44352/swagger/v1/swagger.json - -
+2022-07-15 17:03:33.938 +05:30  INF]  Request finished HTTP/2 GET https://localhost:44352/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 245.1905ms
+2022-07-15 17:06:59.495 +05:30  INF]  **********JobPortal Application Started************
+2022-07-15 17:07:01.712 +05:30  INF]  User profile is available. Using 'C:\Users\Merit\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-07-15 17:07:02.666 +05:30  INF]  Application started. Press Ctrl+C to shut down.
+2022-07-15 17:07:02.666 +05:30  INF]  Hosting environment: Development
+2022-07-15 17:07:02.667 +05:30  INF]  Content root path: C:\Users\Merit\Desktop\dotnetHandsOnFiles\JopPortal\JopPortal
+2022-07-15 17:07:02.726 +05:30  INF]  Request starting HTTP/2 GET https://localhost:44352/swagger/index.html - -
+2022-07-15 17:07:02.972 +05:30  INF]  Request finished HTTP/2 GET https://localhost:44352/swagger/index.html - - - 200 - text/html;charset=utf-8 250.4536ms
+2022-07-15 17:07:03.309 +05:30  INF]  Request starting HTTP/2 GET https://localhost:44352/swagger/v1/swagger.json - -
+2022-07-15 17:07:03.507 +05:30  INF]  Request finished HTTP/2 GET https://localhost:44352/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 198.0176ms

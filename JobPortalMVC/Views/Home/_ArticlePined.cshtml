@@ -1,12 +1,72 @@
 ﻿@*@model IEnumerable<JopPortalMVC.Models.ArticlePinedTbl>*@
 @{int UserIdData = 0; }
 
-<h3>H4</h3>
+
+<div class="d-flex align-items-center justify-content-center">
+    <h3>Article Pinned</h3>
+</div>
+<div class="row">
+    @foreach (var item in Model.ArticlePinnedDetails)
+    {
+        UserIdData = @item.UserId;
+        <div class="col-md-7">
+
+            @item.Category<br />
+        </div>
+        <div class="col-md-4">
+            @if (UserIdData == @Model.UserData)
+            {
+                <button type="button" class="btn btn-light " data-toggle="modal" data-target="#EditArticlePinned_@item.RowId">
+                    <span class="bi bi-pencil"></span>
+                </button>
+            }
+        </div>
+    }
+</div>
 @foreach (var item in Model.ArticlePinnedDetails)
 {
-    <div class="row">
+    <div class="modal fade" id=@("EditArticlePinned_"+item.RowId) tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <form asp-controller="Edit" asp-action="EditAddress" id="EditAddress">
+                        <div class="row">
+                            <input value="@item.RowId" name="RowId" type="hidden" />
+                            <input value="@item.UserId" name="UserId" type="hidden" />
+                            <div class="col-md-6">
+                                <h6><b>Category :</b></h6>
+                                @item.Category
+                                <br />
+                                <h6><b>Title :</b></h6>
+                                @item.Title
+                            </div>
+                            <div class="col-md-3">
+                                <table></table>
+                                <h6> </h6>
+                                @Html.ActionLink("View", "ViewArticle", "Home", new { userId = item.PinedArticleId }, new { @class = "btn btn-outline-primary" })
+
+                            </div>
+                            <div class="col-md-3">
+                                <table></table>
+                                <h6> </h6>
+                                @Html.ActionLink("Remove", "RemoveFromPinned", "Edit", new { RowId = item.RowId, userId = item.UserId }, new { @class = "btn btn-danger btn-small", @onclick = "return confirm('Do You Want to Delete This Article?');" })
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+
+@*<div class="row">
         <div class="col-md-9">
-            @item.RowId
 
             @item.UserId
 
@@ -14,5 +74,4 @@
         </div>
     </div>
 
-    UserIdData = item.UserId;
-}
+    UserIdData = item.UserId;*@

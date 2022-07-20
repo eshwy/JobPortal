@@ -61,10 +61,10 @@ namespace JobPortalMVC
 
             
             app.UseEndpoints(endpoints =>
-            {
+            {               
                 endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Login}/{id?}");
+                name: "default",                
+                pattern: "{controller=Home}/{action=Login}/{id?}");
             });
         }
     }

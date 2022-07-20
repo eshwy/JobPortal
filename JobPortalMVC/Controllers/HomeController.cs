@@ -574,6 +574,8 @@ namespace JobPortalMVC.Controllers
             List<FollowingFollowerNameDetails> FollowingData = new List<FollowingFollowerNameDetails>();
             List<UserWorkTbl> WorkData = new List<UserWorkTbl>();
             
+            List<SortedProfileList> SortedResultdata = new List<SortedProfileList>();
+
 
             HttpResponseMessage PhotoDetails = await cli.GetAsync("api/UserProfilePhoto/" + UserId);
             if (PhotoDetails.IsSuccessStatusCode)
@@ -593,7 +595,7 @@ namespace JobPortalMVC.Controllers
                 var AddressRes = AddressDetails.Content.ReadAsStringAsync().Result;
                 AddressData = JsonConvert.DeserializeObject<List<UserAdressTbl>>(AddressRes);
             }
-            HttpResponseMessage ArticleDetails = await cli.GetAsync("api/Article/" + UserId);
+            HttpResponseMessage ArticleDetails = await cli.GetAsync("api/ArticleAndTitle/" + UserId);
             if (ArticleDetails.IsSuccessStatusCode)
             {
                 var ArticleRes = ArticleDetails.Content.ReadAsStringAsync().Result;

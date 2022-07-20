@@ -203,6 +203,18 @@ namespace JobPortalMVC.Controllers
             }
             return RedirectToAction("SortedView", "Home");
         }
+        [HttpGet]
+        public async Task<IActionResult> DeleteAticle(int RowId,int userId)
+        {
+            HttpClient cli = TokenValue();
+            
+            var response = await cli.DeleteAsync(cli.BaseAddress + "api/ArticleAndTitle/" + RowId);
+            if (response.IsSuccessStatusCode)
+            {
+                return RedirectToAction("ParticularView", "Home", new { UserId = userId });
+            }
+            return RedirectToAction("ParticularView", "Home", new { UserId = userId });
+        }
 
 
     }

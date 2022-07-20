@@ -1,0 +1,982 @@
+2022-07-20 14:50:47.861 +05:30  INF]  **********JobPortal Application Started************
+2022-07-20 14:50:52.159 +05:30  INF]  User profile is available. Using 'C:\Users\Merit\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-07-20 14:50:52.839 +05:30  INF]  Application started. Press Ctrl+C to shut down.
+2022-07-20 14:50:52.839 +05:30  INF]  Hosting environment: Development
+2022-07-20 14:50:52.839 +05:30  INF]  Content root path: C:\Users\Merit\Desktop\dotnetHandsOnFiles\JopPortal\JopPortal
+2022-07-20 14:50:52.940 +05:30  INF]  Request starting HTTP/2 GET https://localhost:44352/swagger/index.html - -
+2022-07-20 14:50:53.175 +05:30  INF]  Request finished HTTP/2 GET https://localhost:44352/swagger/index.html - - - 200 - text/html;charset=utf-8 238.0280ms
+2022-07-20 14:50:53.449 +05:30  INF]  Request starting HTTP/2 GET https://localhost:44352/swagger/v1/swagger.json - -
+2022-07-20 14:50:53.607 +05:30  INF]  Request finished HTTP/2 GET https://localhost:44352/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 157.4474ms
+2022-07-20 14:51:35.435 +05:30  INF]  Request starting HTTP/1.1 POST https://localhost:44352/api/LoginTbls application/json;+charset=utf-8 51
+2022-07-20 14:51:35.698 +05:30  INF]  Executing endpoint 'JopPortal.Controllers.LoginTblsController.GetLoginTbl (JopPortal)'
+2022-07-20 14:51:35.723 +05:30  INF]  Route matched with {action = "GetLoginTbl", controller = "LoginTbls"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[JopPortal.Models.LoginTbl] GetLoginTbl(JopPortal.Models.LoginTbl) on controller JopPortal.Controllers.LoginTblsController (JopPortal).
+2022-07-20 14:51:36.627 +05:30  INF]  Entity Framework Core 5.0.17 initialized 'JobPortal2Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-07-20 14:51:37.522 +05:30  INF]  Executed DbCommand (50ms) [Parameters=[@__users_UserName_0='?' (Size = 50), @__users_PassWord_1='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[UserId], [l].[PassWord], [l].[UserName]
+FROM [LoginTbl] AS [l]
+WHERE ([l].[UserName] = @__users_UserName_0) AND ([l].[PassWord] = @__users_PassWord_1)
+2022-07-20 14:51:37.549 +05:30  INF]  Executing ObjectResult, writing value of type 'Microsoft.AspNetCore.Mvc.ProblemDetails'.
+2022-07-20 14:51:37.567 +05:30  INF]  Executed action JopPortal.Controllers.LoginTblsController.GetLoginTbl (JopPortal) in 1839.0524ms
+2022-07-20 14:51:37.568 +05:30  INF]  Executed endpoint 'JopPortal.Controllers.LoginTblsController.GetLoginTbl (JopPortal)'
+2022-07-20 14:51:37.572 +05:30  INF]  Request finished HTTP/1.1 POST https://localhost:44352/api/LoginTbls application/json;+charset=utf-8 51 - 401 - application/problem+json;+charset=utf-8 2137.0144ms
+2022-07-20 14:51:44.590 +05:30  INF]  Request starting HTTP/1.1 POST https://localhost:44352/api/LoginTbls application/json;+charset=utf-8 52
+2022-07-20 14:51:44.593 +05:30  INF]  Executing endpoint 'JopPortal.Controllers.LoginTblsController.GetLoginTbl (JopPortal)'
+2022-07-20 14:51:44.594 +05:30  INF]  Route matched with {action = "GetLoginTbl", controller = "LoginTbls"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[JopPortal.Models.LoginTbl] GetLoginTbl(JopPortal.Models.LoginTbl) on controller JopPortal.Controllers.LoginTblsController (JopPortal).
+2022-07-20 14:51:44.628 +05:30  INF]  Entity Framework Core 5.0.17 initialized 'JobPortal2Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-07-20 14:51:44.635 +05:30  INF]  Executed DbCommand (2ms) [Parameters=[@__users_UserName_0='?' (Size = 50), @__users_PassWord_1='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[UserId], [l].[PassWord], [l].[UserName]
+FROM [LoginTbl] AS [l]
+WHERE ([l].[UserName] = @__users_UserName_0) AND ([l].[PassWord] = @__users_PassWord_1)
+2022-07-20 14:51:44.871 +05:30  INF]  Executed DbCommand (1ms) [Parameters=[@__login_UserName_0='?' (Size = 50), @__login_PassWord_1='?' (Size = 50)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [l].[UserId], [l].[PassWord], [l].[UserName]
+FROM [LoginTbl] AS [l]
+WHERE ([l].[UserName] = @__login_UserName_0) AND ([l].[PassWord] = @__login_PassWord_1)
+2022-07-20 14:51:44.880 +05:30  INF]  Executed DbCommand (4ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [p].[RowId], [p].[DateOfBirth], [p].[Email], [p].[Experience], [p].[FirstName], [p].[Gender], [p].[LastName], [p].[PhoneNumber], [p].[Skills], [p].[UserId]
+FROM [PersonalDetailsTbl] AS [p]
+WHERE [p].[UserId] = @__userId_0
+2022-07-20 14:51:44.914 +05:30  INF]  Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[RowId], [u].[CompanyName], [u].[UserId], [u].[WorkedFrom], [u].[WorkedTill]
+FROM [UserWorkTbl] AS [u]
+WHERE [u].[UserId] = @__userId_0
+2022-07-20 14:51:44.928 +05:30  INF]  Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [u].[RowId], [u].[CompletedEducationIn], [u].[EducationType], [u].[GroupName], [u].[PercentageObtained], [u].[UserId], [u].[YearOfEnd], [u].[YearOfStart]
+FROM [UserEducationTbl] AS [u]
+WHERE [u].[UserId] = @__userId_0
+2022-07-20 14:51:44.950 +05:30  INF]  Executing OkObjectResult, writing value of type '<>f__AnonymousType13`1[[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+2022-07-20 14:51:44.954 +05:30  INF]  Executed action JopPortal.Controllers.LoginTblsController.GetLoginTbl (JopPortal) in 359.7802ms
+2022-07-20 14:51:44.954 +05:30  INF]  Executed endpoint 'JopPortal.Controllers.LoginTblsController.GetLoginTbl (JopPortal)'
+2022-07-20 14:51:44.954 +05:30  INF]  Request finished HTTP/1.1 POST https://localhost:44352/api/LoginTbls application/json;+charset=utf-8 52 - 200 - application/json;+charset=utf-8 363.9801ms
+2022-07-20 14:51:45.016 +05:30  INF]  Request starting HTTP/1.1 GET https://localhost:44352/api/AllDetailsView - -
+2022-07-20 14:51:45.075 +05:30  INF]  Successfully validated the token.
+2022-07-20 14:51:45.079 +05:30  INF]  Authorization was successful.
+2022-07-20 14:51:45.080 +05:30  INF]  Executing endpoint 'JopPortal.Controllers.AllDetailsViewController.DetailsView (JopPortal)'
+2022-07-20 14:51:45.082 +05:30  INF]  Route matched with {action = "DetailsView", controller = "AllDetailsView"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult DetailsView() on controller JopPortal.Controllers.AllDetailsViewController (JopPortal).
+2022-07-20 14:51:45.091 +05:30  INF]  Entity Framework Core 5.0.17 initialized 'JobPortal2Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-07-20 14:51:45.127 +05:30  INF]  Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[UserId], [u].[PhotoPath], [p].[Email], (COALESCE([p].[FirstName], '') + ' ') + COALESCE([p].[LastName], '') AS [FullName], [p].[PhoneNumber], [p].[Gender], [p].[DateOfBirth], [p].[Experience], [p].[Skills]
+FROM [PersonalDetailsTbl] AS [p]
+INNER JOIN [UserProfilePhotoTbl] AS [u] ON [p].[UserId] = [u].[UserId]
+2022-07-20 14:51:45.128 +05:30  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[<>f__AnonymousType0`9[[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], JopPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2022-07-20 14:51:45.136 +05:30  INF]  Executed action JopPortal.Controllers.AllDetailsViewController.DetailsView (JopPortal) in 54.1713ms
+2022-07-20 14:51:45.136 +05:30  INF]  Executed endpoint 'JopPortal.Controllers.AllDetailsViewController.DetailsView (JopPortal)'
+2022-07-20 14:51:45.137 +05:30  INF]  Request finished HTTP/1.1 GET https://localhost:44352/api/AllDetailsView - - - 200 - application/json;+charset=utf-8 120.9407ms
+2022-07-20 14:51:54.258 +05:30  INF]  Request starting HTTP/1.1 GET https://localhost:44352/api/AllDetailsView - -
+2022-07-20 14:51:54.258 +05:30  INF]  Successfully validated the token.
+2022-07-20 14:51:54.259 +05:30  INF]  Authorization was successful.
+2022-07-20 14:51:54.259 +05:30  INF]  Executing endpoint 'JopPortal.Controllers.AllDetailsViewController.DetailsView (JopPortal)'
+2022-07-20 14:51:54.259 +05:30  INF]  Route matched with {action = "DetailsView", controller = "AllDetailsView"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult DetailsView() on controller JopPortal.Controllers.AllDetailsViewController (JopPortal).
+2022-07-20 14:51:54.260 +05:30  INF]  Entity Framework Core 5.0.17 initialized 'JobPortal2Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-07-20 14:51:54.264 +05:30  INF]  Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[UserId], [u].[PhotoPath], [p].[Email], (COALESCE([p].[FirstName], '') + ' ') + COALESCE([p].[LastName], '') AS [FullName], [p].[PhoneNumber], [p].[Gender], [p].[DateOfBirth], [p].[Experience], [p].[Skills]
+FROM [PersonalDetailsTbl] AS [p]
+INNER JOIN [UserProfilePhotoTbl] AS [u] ON [p].[UserId] = [u].[UserId]
+2022-07-20 14:51:54.265 +05:30  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[<>f__AnonymousType0`9[[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], JopPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2022-07-20 14:51:54.266 +05:30  INF]  Executed action JopPortal.Controllers.AllDetailsViewController.DetailsView (JopPortal) in 6.7251ms
+2022-07-20 14:51:54.266 +05:30  INF]  Executed endpoint 'JopPortal.Controllers.AllDetailsViewController.DetailsView (JopPortal)'
+2022-07-20 14:51:54.267 +05:30  INF]  Request finished HTTP/1.1 GET https://localhost:44352/api/AllDetailsView - - - 200 - application/json;+charset=utf-8 9.0464ms
+2022-07-20 14:51:56.449 +05:30  INF]  Request starting HTTP/1.1 GET https://localhost:44352/api/AllDetailsView - -
+2022-07-20 14:51:56.450 +05:30  INF]  Successfully validated the token.
+2022-07-20 14:51:56.450 +05:30  INF]  Authorization was successful.
+2022-07-20 14:51:56.450 +05:30  INF]  Executing endpoint 'JopPortal.Controllers.AllDetailsViewController.DetailsView (JopPortal)'
+2022-07-20 14:51:56.450 +05:30  INF]  Route matched with {action = "DetailsView", controller = "AllDetailsView"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult DetailsView() on controller JopPortal.Controllers.AllDetailsViewController (JopPortal).
+2022-07-20 14:51:56.451 +05:30  INF]  Entity Framework Core 5.0.17 initialized 'JobPortal2Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-07-20 14:51:56.455 +05:30  INF]  Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[UserId], [u].[PhotoPath], [p].[Email], (COALESCE([p].[FirstName], '') + ' ') + COALESCE([p].[LastName], '') AS [FullName], [p].[PhoneNumber], [p].[Gender], [p].[DateOfBirth], [p].[Experience], [p].[Skills]
+FROM [PersonalDetailsTbl] AS [p]
+INNER JOIN [UserProfilePhotoTbl] AS [u] ON [p].[UserId] = [u].[UserId]
+2022-07-20 14:51:56.456 +05:30  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[<>f__AnonymousType0`9[[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], JopPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2022-07-20 14:51:56.457 +05:30  INF]  Executed action JopPortal.Controllers.AllDetailsViewController.DetailsView (JopPortal) in 6.7252ms
+2022-07-20 14:51:56.457 +05:30  INF]  Executed endpoint 'JopPortal.Controllers.AllDetailsViewController.DetailsView (JopPortal)'
+2022-07-20 14:51:56.458 +05:30  INF]  Request finished HTTP/1.1 GET https://localhost:44352/api/AllDetailsView - - - 200 - application/json;+charset=utf-8 8.9347ms
+2022-07-20 14:52:05.124 +05:30  INF]  Request starting HTTP/1.1 GET https://localhost:44352/api/AllDetailsView - -
+2022-07-20 14:52:05.124 +05:30  INF]  Successfully validated the token.
+2022-07-20 14:52:05.124 +05:30  INF]  Authorization was successful.
+2022-07-20 14:52:05.124 +05:30  INF]  Executing endpoint 'JopPortal.Controllers.AllDetailsViewController.DetailsView (JopPortal)'
+2022-07-20 14:52:05.124 +05:30  INF]  Route matched with {action = "DetailsView", controller = "AllDetailsView"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult DetailsView() on controller JopPortal.Controllers.AllDetailsViewController (JopPortal).
+2022-07-20 14:52:05.125 +05:30  INF]  Entity Framework Core 5.0.17 initialized 'JobPortal2Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-07-20 14:52:05.128 +05:30  INF]  Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[UserId], [u].[PhotoPath], [p].[Email], (COALESCE([p].[FirstName], '') + ' ') + COALESCE([p].[LastName], '') AS [FullName], [p].[PhoneNumber], [p].[Gender], [p].[DateOfBirth], [p].[Experience], [p].[Skills]
+FROM [PersonalDetailsTbl] AS [p]
+INNER JOIN [UserProfilePhotoTbl] AS [u] ON [p].[UserId] = [u].[UserId]
+2022-07-20 14:52:05.128 +05:30  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[<>f__AnonymousType0`9[[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], JopPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2022-07-20 14:52:05.129 +05:30  INF]  Executed action JopPortal.Controllers.AllDetailsViewController.DetailsView (JopPortal) in 4.4175ms
+2022-07-20 14:52:05.129 +05:30  INF]  Executed endpoint 'JopPortal.Controllers.AllDetailsViewController.DetailsView (JopPortal)'
+2022-07-20 14:52:05.129 +05:30  INF]  Request finished HTTP/1.1 GET https://localhost:44352/api/AllDetailsView - - - 200 - application/json;+charset=utf-8 5.6450ms
+2022-07-20 14:52:14.197 +05:30  INF]  Request starting HTTP/1.1 GET https://localhost:44352/api/UserProfilePhoto/1070 - -
+2022-07-20 14:52:14.197 +05:30  INF]  Successfully validated the token.
+2022-07-20 14:52:14.198 +05:30  INF]  Authorization was successful.
+2022-07-20 14:52:14.198 +05:30  INF]  Executing endpoint 'JopPortal.Controllers.UserProfilePhotoController.DetailsOfParticularUsingUserId (JopPortal)'
+2022-07-20 14:52:14.204 +05:30  INF]  Route matched with {action = "DetailsOfParticularUsingUserId", controller = "UserProfilePhoto"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] DetailsOfParticularUsingUserId(Int32) on controller JopPortal.Controllers.UserProfilePhotoController (JopPortal).
+2022-07-20 14:52:14.209 +05:30  INF]  Entity Framework Core 5.0.17 initialized 'JobPortal2Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-07-20 14:52:14.253 +05:30  INF]  Executed DbCommand (16ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[RowId], [u].[PhotoPath], [u].[UserId]
+FROM [UserProfilePhotoTbl] AS [u]
+WHERE [u].[UserId] = @__userId_0
+2022-07-20 14:52:14.280 +05:30  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[JopPortal.Models.UserProfilePhotoTbl, JopPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2022-07-20 14:52:14.283 +05:30  INF]  Executed action JopPortal.Controllers.UserProfilePhotoController.DetailsOfParticularUsingUserId (JopPortal) in 78.5231ms
+2022-07-20 14:52:14.284 +05:30  INF]  Executed endpoint 'JopPortal.Controllers.UserProfilePhotoController.DetailsOfParticularUsingUserId (JopPortal)'
+2022-07-20 14:52:14.288 +05:30  INF]  Request finished HTTP/1.1 GET https://localhost:44352/api/UserProfilePhoto/1070 - - - 200 - application/json;+charset=utf-8 91.0803ms
+2022-07-20 14:52:14.305 +05:30  INF]  Request starting HTTP/1.1 GET https://localhost:44352/api/PersonalDetails/1070 - -
+2022-07-20 14:52:14.305 +05:30  INF]  Successfully validated the token.
+2022-07-20 14:52:14.305 +05:30  INF]  Authorization was successful.
+2022-07-20 14:52:14.305 +05:30  INF]  Executing endpoint 'JopPortal.Controllers.PersonalDetailsController.DetailsOfParticularUsingUserId (JopPortal)'
+2022-07-20 14:52:14.310 +05:30  INF]  Route matched with {action = "DetailsOfParticularUsingUserId", controller = "PersonalDetails"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] DetailsOfParticularUsingUserId(Int32) on controller JopPortal.Controllers.PersonalDetailsController (JopPortal).
+2022-07-20 14:52:14.312 +05:30  INF]  Entity Framework Core 5.0.17 initialized 'JobPortal2Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-07-20 14:52:14.323 +05:30  INF]  Executed DbCommand (6ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[RowId], [p].[DateOfBirth], [p].[Email], [p].[Experience], [p].[FirstName], [p].[Gender], [p].[LastName], [p].[PhoneNumber], [p].[Skills], [p].[UserId]
+FROM [PersonalDetailsTbl] AS [p]
+WHERE [p].[UserId] = @__userId_0
+2022-07-20 14:52:14.324 +05:30  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[JopPortal.Models.PersonalDetailsTbl, JopPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2022-07-20 14:52:14.328 +05:30  INF]  Executed action JopPortal.Controllers.PersonalDetailsController.DetailsOfParticularUsingUserId (JopPortal) in 18.2508ms
+2022-07-20 14:52:14.328 +05:30  INF]  Executed endpoint 'JopPortal.Controllers.PersonalDetailsController.DetailsOfParticularUsingUserId (JopPortal)'
+2022-07-20 14:52:14.333 +05:30  INF]  Request finished HTTP/1.1 GET https://localhost:44352/api/PersonalDetails/1070 - - - 200 - application/json;+charset=utf-8 28.4655ms
+2022-07-20 14:52:14.344 +05:30  INF]  Request starting HTTP/1.1 GET https://localhost:44352/api/UserAdress/1070 - -
+2022-07-20 14:52:14.344 +05:30  INF]  Successfully validated the token.
+2022-07-20 14:52:14.344 +05:30  INF]  Authorization was successful.
+2022-07-20 14:52:14.344 +05:30  INF]  Executing endpoint 'JopPortal.Controllers.UserAdressController.DetailsOfParticularUsingUserId (JopPortal)'
+2022-07-20 14:52:14.348 +05:30  INF]  Route matched with {action = "DetailsOfParticularUsingUserId", controller = "UserAdress"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] DetailsOfParticularUsingUserId(Int32) on controller JopPortal.Controllers.UserAdressController (JopPortal).
+2022-07-20 14:52:14.350 +05:30  INF]  Entity Framework Core 5.0.17 initialized 'JobPortal2Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-07-20 14:52:14.360 +05:30  INF]  Executed DbCommand (5ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[RowId], [u].[CurrentArea], [u].[CurrentCity], [u].[CurrentDoorNumber], [u].[CurrentPinCode], [u].[CurrentStreetName], [u].[PermantentArea], [u].[PermantentCity], [u].[PermantentDoorNumber], [u].[PermantentPinCode], [u].[PermantentStreetName], [u].[UserId]
+FROM [UserAdressTbl] AS [u]
+WHERE [u].[UserId] = @__userId_0
+2022-07-20 14:52:14.378 +05:30  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[JopPortal.Models.UserAdressTbl, JopPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2022-07-20 14:52:14.381 +05:30  INF]  Executed action JopPortal.Controllers.UserAdressController.DetailsOfParticularUsingUserId (JopPortal) in 33.3042ms
+2022-07-20 14:52:14.381 +05:30  INF]  Executed endpoint 'JopPortal.Controllers.UserAdressController.DetailsOfParticularUsingUserId (JopPortal)'
+2022-07-20 14:52:14.381 +05:30  INF]  Request finished HTTP/1.1 GET https://localhost:44352/api/UserAdress/1070 - - - 200 - application/json;+charset=utf-8 37.6877ms
+2022-07-20 14:52:14.391 +05:30  INF]  Request starting HTTP/1.1 GET https://localhost:44352/api/ArticleAndTitle/1070 - -
+2022-07-20 14:52:14.392 +05:30  INF]  Successfully validated the token.
+2022-07-20 14:52:14.392 +05:30  INF]  Authorization was successful.
+2022-07-20 14:52:14.392 +05:30  INF]  Executing endpoint 'JopPortal.Controllers.ArticleAndTitleController.GetArticle (JopPortal)'
+2022-07-20 14:52:14.395 +05:30  INF]  Route matched with {action = "GetArticle", controller = "ArticleAndTitle"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] GetArticle(Int32) on controller JopPortal.Controllers.ArticleAndTitleController (JopPortal).
+2022-07-20 14:52:14.397 +05:30  INF]  Entity Framework Core 5.0.17 initialized 'JobPortal2Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-07-20 14:52:14.406 +05:30  INF]  Executed DbCommand (4ms) [Parameters=[@__userId_0='?' (DbType = Int32), @__userId_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[RowId], [a].[Category], [a].[Content], [a].[UserId]
+FROM [ArticleTbl] AS [a]
+WHERE ([a].[UserId] = @__userId_0) OR ([a].[RowId] = @__userId_1)
+2022-07-20 14:52:14.423 +05:30  INF]  Executed DbCommand (2ms) [Parameters=[@__Idvalue_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[ArticleId], [a].[Title]
+FROM [ArticleTitleTbl] AS [a]
+WHERE [a].[ArticleId] = @__Idvalue_0
+2022-07-20 14:52:14.430 +05:30  INF]  Executed DbCommand (1ms) [Parameters=[@__Idvalue_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[ArticleId], [a].[Title]
+FROM [ArticleTitleTbl] AS [a]
+WHERE [a].[ArticleId] = @__Idvalue_0
+2022-07-20 14:52:14.437 +05:30  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[<>f__AnonymousType3`5[[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], JopPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2022-07-20 14:52:14.446 +05:30  INF]  Executed action JopPortal.Controllers.ArticleAndTitleController.GetArticle (JopPortal) in 50.9496ms
+2022-07-20 14:52:14.446 +05:30  INF]  Executed endpoint 'JopPortal.Controllers.ArticleAndTitleController.GetArticle (JopPortal)'
+2022-07-20 14:52:14.446 +05:30  INF]  Request finished HTTP/1.1 GET https://localhost:44352/api/ArticleAndTitle/1070 - - - 200 - application/json;+charset=utf-8 54.5472ms
+2022-07-20 14:52:14.452 +05:30  INF]  Request starting HTTP/1.1 GET https://localhost:44352/api/ArticlePined/1070 - -
+2022-07-20 14:52:14.452 +05:30  INF]  Successfully validated the token.
+2022-07-20 14:52:14.452 +05:30  INF]  Authorization was successful.
+2022-07-20 14:52:14.452 +05:30  INF]  Executing endpoint 'JopPortal.Controllers.ArticlePinedController.DetailsOfParticularUsingUserId (JopPortal)'
+2022-07-20 14:52:14.455 +05:30  INF]  Route matched with {action = "DetailsOfParticularUsingUserId", controller = "ArticlePined"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] DetailsOfParticularUsingUserId(Int32) on controller JopPortal.Controllers.ArticlePinedController (JopPortal).
+2022-07-20 14:52:14.461 +05:30  INF]  Entity Framework Core 5.0.17 initialized 'JobPortal2Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-07-20 14:52:14.469 +05:30  INF]  Executed DbCommand (3ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[RowId], [a].[PinedArticleId], [a].[UserId]
+FROM [ArticlePinedTbl] AS [a]
+WHERE [a].[UserId] = @__userId_0
+2022-07-20 14:52:14.480 +05:30  INF]  Executed DbCommand (2ms) [Parameters=[@__Idvalue_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[RowId], [a].[Category], [a].[Content], [a].[UserId]
+FROM [ArticleTbl] AS [a]
+WHERE [a].[RowId] = @__Idvalue_0
+2022-07-20 14:52:14.483 +05:30  INF]  Executed DbCommand (1ms) [Parameters=[@__Idvalue_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[ArticleId], [a].[Title]
+FROM [ArticleTitleTbl] AS [a]
+WHERE [a].[ArticleId] = @__Idvalue_0
+2022-07-20 14:52:14.490 +05:30  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[<>f__AnonymousType7`5[[System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], JopPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2022-07-20 14:52:14.492 +05:30  INF]  Executed action JopPortal.Controllers.ArticlePinedController.DetailsOfParticularUsingUserId (JopPortal) in 36.4286ms
+2022-07-20 14:52:14.492 +05:30  INF]  Executed endpoint 'JopPortal.Controllers.ArticlePinedController.DetailsOfParticularUsingUserId (JopPortal)'
+2022-07-20 14:52:14.492 +05:30  INF]  Request finished HTTP/1.1 GET https://localhost:44352/api/ArticlePined/1070 - - - 200 - application/json;+charset=utf-8 40.1552ms
+2022-07-20 14:52:14.497 +05:30  INF]  Request starting HTTP/1.1 GET https://localhost:44352/api/UserEducation/1070 - -
+2022-07-20 14:52:14.497 +05:30  INF]  Successfully validated the token.
+2022-07-20 14:52:14.497 +05:30  INF]  Authorization was successful.
+2022-07-20 14:52:14.497 +05:30  INF]  Executing endpoint 'JopPortal.Controllers.UserEducationController.DetailsOfParticularUsingUserId (JopPortal)'
+2022-07-20 14:52:14.500 +05:30  INF]  Route matched with {action = "DetailsOfParticularUsingUserId", controller = "UserEducation"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] DetailsOfParticularUsingUserId(Int32) on controller JopPortal.Controllers.UserEducationController (JopPortal).
+2022-07-20 14:52:14.501 +05:30  INF]  Entity Framework Core 5.0.17 initialized 'JobPortal2Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-07-20 14:52:14.510 +05:30  INF]  Executed DbCommand (3ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[RowId], [u].[CompletedEducationIn], [u].[EducationType], [u].[GroupName], [u].[PercentageObtained], [u].[UserId], [u].[YearOfEnd], [u].[YearOfStart]
+FROM [UserEducationTbl] AS [u]
+WHERE [u].[UserId] = @__userId_0
+2022-07-20 14:52:14.511 +05:30  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[JopPortal.Models.UserEducationTbl, JopPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2022-07-20 14:52:14.517 +05:30  INF]  Executed action JopPortal.Controllers.UserEducationController.DetailsOfParticularUsingUserId (JopPortal) in 16.9002ms
+2022-07-20 14:52:14.517 +05:30  INF]  Executed endpoint 'JopPortal.Controllers.UserEducationController.DetailsOfParticularUsingUserId (JopPortal)'
+2022-07-20 14:52:14.517 +05:30  INF]  Request finished HTTP/1.1 GET https://localhost:44352/api/UserEducation/1070 - - - 200 - application/json;+charset=utf-8 20.7664ms
+2022-07-20 14:52:14.530 +05:30  INF]  Request starting HTTP/1.1 GET https://localhost:44352/api/FollowersAndFollowing/1070 - -
+2022-07-20 14:52:14.531 +05:30  INF]  Successfully validated the token.
+2022-07-20 14:52:14.531 +05:30  INF]  Authorization was successful.
+2022-07-20 14:52:14.531 +05:30  INF]  Executing endpoint 'JopPortal.Controllers.FollowersAndFollowingController.DetailsOfParticularUsingUserId (JopPortal)'
+2022-07-20 14:52:14.534 +05:30  INF]  Route matched with {action = "DetailsOfParticularUsingUserId", controller = "FollowersAndFollowing"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] DetailsOfParticularUsingUserId(Int32) on controller JopPortal.Controllers.FollowersAndFollowingController (JopPortal).
+2022-07-20 14:52:14.538 +05:30  INF]  Entity Framework Core 5.0.17 initialized 'JobPortal2Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-07-20 14:52:14.547 +05:30  INF]  Executed DbCommand (3ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[RowId], [f].[FollowerId], [f].[UserId]
+FROM [FollowersAndFollowingTbl] AS [f]
+WHERE [f].[UserId] = @__userId_0
+2022-07-20 14:52:14.561 +05:30  INF]  Executed DbCommand (3ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[RowId], [f].[FollowerId], [f].[UserId]
+FROM [FollowersAndFollowingTbl] AS [f]
+WHERE [f].[FollowerId] = @__userId_0
+2022-07-20 14:52:14.570 +05:30  INF]  Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[RowId], [p].[DateOfBirth], [p].[Email], [p].[Experience], [p].[FirstName], [p].[Gender], [p].[LastName], [p].[PhoneNumber], [p].[Skills], [p].[UserId]
+FROM [PersonalDetailsTbl] AS [p]
+2022-07-20 14:52:14.574 +05:30  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[JopPortal.Models.FollowingFollowerNameDetails, JopPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2022-07-20 14:52:14.577 +05:30  INF]  Executed action JopPortal.Controllers.FollowersAndFollowingController.DetailsOfParticularUsingUserId (JopPortal) in 42.9277ms
+2022-07-20 14:52:14.577 +05:30  INF]  Executed endpoint 'JopPortal.Controllers.FollowersAndFollowingController.DetailsOfParticularUsingUserId (JopPortal)'
+2022-07-20 14:52:14.577 +05:30  INF]  Request finished HTTP/1.1 GET https://localhost:44352/api/FollowersAndFollowing/1070 - - - 200 - application/json;+charset=utf-8 46.6753ms
+2022-07-20 14:52:14.586 +05:30  INF]  Request starting HTTP/1.1 GET https://localhost:44352/api/UserWork/1070 - -
+2022-07-20 14:52:14.587 +05:30  INF]  Successfully validated the token.
+2022-07-20 14:52:14.587 +05:30  INF]  Authorization was successful.
+2022-07-20 14:52:14.587 +05:30  INF]  Executing endpoint 'JopPortal.Controllers.UserWorkController.DetailsOfParticularUsingUserId (JopPortal)'
+2022-07-20 14:52:14.592 +05:30  INF]  Route matched with {action = "DetailsOfParticularUsingUserId", controller = "UserWork"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] DetailsOfParticularUsingUserId(Int32) on controller JopPortal.Controllers.UserWorkController (JopPortal).
+2022-07-20 14:52:14.594 +05:30  INF]  Entity Framework Core 5.0.17 initialized 'JobPortal2Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-07-20 14:52:14.602 +05:30  INF]  Executed DbCommand (3ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[RowId], [u].[CompanyName], [u].[UserId], [u].[WorkedFrom], [u].[WorkedTill]
+FROM [UserWorkTbl] AS [u]
+WHERE [u].[UserId] = @__userId_0
+2022-07-20 14:52:14.603 +05:30  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[JopPortal.Models.UserWorkTbl, JopPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2022-07-20 14:52:14.604 +05:30  INF]  Executed action JopPortal.Controllers.UserWorkController.DetailsOfParticularUsingUserId (JopPortal) in 12.0278ms
+2022-07-20 14:52:14.604 +05:30  INF]  Executed endpoint 'JopPortal.Controllers.UserWorkController.DetailsOfParticularUsingUserId (JopPortal)'
+2022-07-20 14:52:14.605 +05:30  INF]  Request finished HTTP/1.1 GET https://localhost:44352/api/UserWork/1070 - - - 200 - application/json;+charset=utf-8 18.6304ms
+2022-07-20 14:52:47.381 +05:30  INF]  Request starting HTTP/1.1 GET https://localhost:44352/api/ArticleAndTitle/8 - -
+2022-07-20 14:52:47.383 +05:30  INF]  Successfully validated the token.
+2022-07-20 14:52:47.383 +05:30  INF]  Authorization was successful.
+2022-07-20 14:52:47.383 +05:30  INF]  Executing endpoint 'JopPortal.Controllers.ArticleAndTitleController.GetArticle (JopPortal)'
+2022-07-20 14:52:47.383 +05:30  INF]  Route matched with {action = "GetArticle", controller = "ArticleAndTitle"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] GetArticle(Int32) on controller JopPortal.Controllers.ArticleAndTitleController (JopPortal).
+2022-07-20 14:52:47.384 +05:30  INF]  Entity Framework Core 5.0.17 initialized 'JobPortal2Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-07-20 14:52:47.398 +05:30  INF]  Executed DbCommand (11ms) [Parameters=[@__userId_0='?' (DbType = Int32), @__userId_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[RowId], [a].[Category], [a].[Content], [a].[UserId]
+FROM [ArticleTbl] AS [a]
+WHERE ([a].[UserId] = @__userId_0) OR ([a].[RowId] = @__userId_1)
+2022-07-20 14:52:47.404 +05:30  INF]  Executed DbCommand (2ms) [Parameters=[@__Idvalue_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[ArticleId], [a].[Title]
+FROM [ArticleTitleTbl] AS [a]
+WHERE [a].[ArticleId] = @__Idvalue_0
+2022-07-20 14:52:47.406 +05:30  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[<>f__AnonymousType3`5[[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], JopPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2022-07-20 14:52:47.411 +05:30  INF]  Executed action JopPortal.Controllers.ArticleAndTitleController.GetArticle (JopPortal) in 28.1466ms
+2022-07-20 14:52:47.411 +05:30  INF]  Executed endpoint 'JopPortal.Controllers.ArticleAndTitleController.GetArticle (JopPortal)'
+2022-07-20 14:52:47.415 +05:30  INF]  Request finished HTTP/1.1 GET https://localhost:44352/api/ArticleAndTitle/8 - - - 200 - application/json;+charset=utf-8 32.9714ms
+2022-07-20 14:52:49.298 +05:30  INF]  Request starting HTTP/1.1 GET https://localhost:44352/api/UserProfilePhoto/1070 - -
+2022-07-20 14:52:49.298 +05:30  INF]  Successfully validated the token.
+2022-07-20 14:52:49.298 +05:30  INF]  Authorization was successful.
+2022-07-20 14:52:49.298 +05:30  INF]  Executing endpoint 'JopPortal.Controllers.UserProfilePhotoController.DetailsOfParticularUsingUserId (JopPortal)'
+2022-07-20 14:52:49.298 +05:30  INF]  Route matched with {action = "DetailsOfParticularUsingUserId", controller = "UserProfilePhoto"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] DetailsOfParticularUsingUserId(Int32) on controller JopPortal.Controllers.UserProfilePhotoController (JopPortal).
+2022-07-20 14:52:49.299 +05:30  INF]  Entity Framework Core 5.0.17 initialized 'JobPortal2Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-07-20 14:52:49.303 +05:30  INF]  Executed DbCommand (3ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[RowId], [u].[PhotoPath], [u].[UserId]
+FROM [UserProfilePhotoTbl] AS [u]
+WHERE [u].[UserId] = @__userId_0
+2022-07-20 14:52:49.303 +05:30  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[JopPortal.Models.UserProfilePhotoTbl, JopPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2022-07-20 14:52:49.303 +05:30  INF]  Executed action JopPortal.Controllers.UserProfilePhotoController.DetailsOfParticularUsingUserId (JopPortal) in 5.0696ms
+2022-07-20 14:52:49.304 +05:30  INF]  Executed endpoint 'JopPortal.Controllers.UserProfilePhotoController.DetailsOfParticularUsingUserId (JopPortal)'
+2022-07-20 14:52:49.304 +05:30  INF]  Request finished HTTP/1.1 GET https://localhost:44352/api/UserProfilePhoto/1070 - - - 200 - application/json;+charset=utf-8 6.5027ms
+2022-07-20 14:52:49.311 +05:30  INF]  Request starting HTTP/1.1 GET https://localhost:44352/api/PersonalDetails/1070 - -
+2022-07-20 14:52:49.311 +05:30  INF]  Successfully validated the token.
+2022-07-20 14:52:49.311 +05:30  INF]  Authorization was successful.
+2022-07-20 14:52:49.311 +05:30  INF]  Executing endpoint 'JopPortal.Controllers.PersonalDetailsController.DetailsOfParticularUsingUserId (JopPortal)'
+2022-07-20 14:52:49.311 +05:30  INF]  Route matched with {action = "DetailsOfParticularUsingUserId", controller = "PersonalDetails"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] DetailsOfParticularUsingUserId(Int32) on controller JopPortal.Controllers.PersonalDetailsController (JopPortal).
+2022-07-20 14:52:49.311 +05:30  INF]  Entity Framework Core 5.0.17 initialized 'JobPortal2Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-07-20 14:52:49.314 +05:30  INF]  Executed DbCommand (3ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[RowId], [p].[DateOfBirth], [p].[Email], [p].[Experience], [p].[FirstName], [p].[Gender], [p].[LastName], [p].[PhoneNumber], [p].[Skills], [p].[UserId]
+FROM [PersonalDetailsTbl] AS [p]
+WHERE [p].[UserId] = @__userId_0
+2022-07-20 14:52:49.315 +05:30  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[JopPortal.Models.PersonalDetailsTbl, JopPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2022-07-20 14:52:49.315 +05:30  INF]  Executed action JopPortal.Controllers.PersonalDetailsController.DetailsOfParticularUsingUserId (JopPortal) in 3.8894ms
+2022-07-20 14:52:49.315 +05:30  INF]  Executed endpoint 'JopPortal.Controllers.PersonalDetailsController.DetailsOfParticularUsingUserId (JopPortal)'
+2022-07-20 14:52:49.315 +05:30  INF]  Request finished HTTP/1.1 GET https://localhost:44352/api/PersonalDetails/1070 - - - 200 - application/json;+charset=utf-8 4.7721ms
+2022-07-20 14:52:49.317 +05:30  INF]  Request starting HTTP/1.1 GET https://localhost:44352/api/UserAdress/1070 - -
+2022-07-20 14:52:49.317 +05:30  INF]  Successfully validated the token.
+2022-07-20 14:52:49.317 +05:30  INF]  Authorization was successful.
+2022-07-20 14:52:49.317 +05:30  INF]  Executing endpoint 'JopPortal.Controllers.UserAdressController.DetailsOfParticularUsingUserId (JopPortal)'
+2022-07-20 14:52:49.317 +05:30  INF]  Route matched with {action = "DetailsOfParticularUsingUserId", controller = "UserAdress"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] DetailsOfParticularUsingUserId(Int32) on controller JopPortal.Controllers.UserAdressController (JopPortal).
+2022-07-20 14:52:49.318 +05:30  INF]  Entity Framework Core 5.0.17 initialized 'JobPortal2Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-07-20 14:52:49.321 +05:30  INF]  Executed DbCommand (3ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[RowId], [u].[CurrentArea], [u].[CurrentCity], [u].[CurrentDoorNumber], [u].[CurrentPinCode], [u].[CurrentStreetName], [u].[PermantentArea], [u].[PermantentCity], [u].[PermantentDoorNumber], [u].[PermantentPinCode], [u].[PermantentStreetName], [u].[UserId]
+FROM [UserAdressTbl] AS [u]
+WHERE [u].[UserId] = @__userId_0
+2022-07-20 14:52:49.321 +05:30  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[JopPortal.Models.UserAdressTbl, JopPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2022-07-20 14:52:49.321 +05:30  INF]  Executed action JopPortal.Controllers.UserAdressController.DetailsOfParticularUsingUserId (JopPortal) in 3.9857ms
+2022-07-20 14:52:49.321 +05:30  INF]  Executed endpoint 'JopPortal.Controllers.UserAdressController.DetailsOfParticularUsingUserId (JopPortal)'
+2022-07-20 14:52:49.322 +05:30  INF]  Request finished HTTP/1.1 GET https://localhost:44352/api/UserAdress/1070 - - - 200 - application/json;+charset=utf-8 4.8717ms
+2022-07-20 14:52:49.323 +05:30  INF]  Request starting HTTP/1.1 GET https://localhost:44352/api/ArticleAndTitle/1070 - -
+2022-07-20 14:52:49.324 +05:30  INF]  Successfully validated the token.
+2022-07-20 14:52:49.324 +05:30  INF]  Authorization was successful.
+2022-07-20 14:52:49.324 +05:30  INF]  Executing endpoint 'JopPortal.Controllers.ArticleAndTitleController.GetArticle (JopPortal)'
+2022-07-20 14:52:49.324 +05:30  INF]  Route matched with {action = "GetArticle", controller = "ArticleAndTitle"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] GetArticle(Int32) on controller JopPortal.Controllers.ArticleAndTitleController (JopPortal).
+2022-07-20 14:52:49.324 +05:30  INF]  Entity Framework Core 5.0.17 initialized 'JobPortal2Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-07-20 14:52:49.326 +05:30  INF]  Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (DbType = Int32), @__userId_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[RowId], [a].[Category], [a].[Content], [a].[UserId]
+FROM [ArticleTbl] AS [a]
+WHERE ([a].[UserId] = @__userId_0) OR ([a].[RowId] = @__userId_1)
+2022-07-20 14:52:49.329 +05:30  INF]  Executed DbCommand (1ms) [Parameters=[@__Idvalue_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[ArticleId], [a].[Title]
+FROM [ArticleTitleTbl] AS [a]
+WHERE [a].[ArticleId] = @__Idvalue_0
+2022-07-20 14:52:49.331 +05:30  INF]  Executed DbCommand (1ms) [Parameters=[@__Idvalue_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[ArticleId], [a].[Title]
+FROM [ArticleTitleTbl] AS [a]
+WHERE [a].[ArticleId] = @__Idvalue_0
+2022-07-20 14:52:49.331 +05:30  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[<>f__AnonymousType3`5[[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], JopPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2022-07-20 14:52:49.331 +05:30  INF]  Executed action JopPortal.Controllers.ArticleAndTitleController.GetArticle (JopPortal) in 7.3853ms
+2022-07-20 14:52:49.331 +05:30  INF]  Executed endpoint 'JopPortal.Controllers.ArticleAndTitleController.GetArticle (JopPortal)'
+2022-07-20 14:52:49.332 +05:30  INF]  Request finished HTTP/1.1 GET https://localhost:44352/api/ArticleAndTitle/1070 - - - 200 - application/json;+charset=utf-8 8.2763ms
+2022-07-20 14:52:49.333 +05:30  INF]  Request starting HTTP/1.1 GET https://localhost:44352/api/ArticlePined/1070 - -
+2022-07-20 14:52:49.333 +05:30  INF]  Successfully validated the token.
+2022-07-20 14:52:49.333 +05:30  INF]  Authorization was successful.
+2022-07-20 14:52:49.333 +05:30  INF]  Executing endpoint 'JopPortal.Controllers.ArticlePinedController.DetailsOfParticularUsingUserId (JopPortal)'
+2022-07-20 14:52:49.333 +05:30  INF]  Route matched with {action = "DetailsOfParticularUsingUserId", controller = "ArticlePined"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] DetailsOfParticularUsingUserId(Int32) on controller JopPortal.Controllers.ArticlePinedController (JopPortal).
+2022-07-20 14:52:49.334 +05:30  INF]  Entity Framework Core 5.0.17 initialized 'JobPortal2Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-07-20 14:52:49.336 +05:30  INF]  Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[RowId], [a].[PinedArticleId], [a].[UserId]
+FROM [ArticlePinedTbl] AS [a]
+WHERE [a].[UserId] = @__userId_0
+2022-07-20 14:52:49.338 +05:30  INF]  Executed DbCommand (1ms) [Parameters=[@__Idvalue_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[RowId], [a].[Category], [a].[Content], [a].[UserId]
+FROM [ArticleTbl] AS [a]
+WHERE [a].[RowId] = @__Idvalue_0
+2022-07-20 14:52:49.340 +05:30  INF]  Executed DbCommand (2ms) [Parameters=[@__Idvalue_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[ArticleId], [a].[Title]
+FROM [ArticleTitleTbl] AS [a]
+WHERE [a].[ArticleId] = @__Idvalue_0
+2022-07-20 14:52:49.341 +05:30  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[<>f__AnonymousType7`5[[System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], JopPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2022-07-20 14:52:49.341 +05:30  INF]  Executed action JopPortal.Controllers.ArticlePinedController.DetailsOfParticularUsingUserId (JopPortal) in 7.4466ms
+2022-07-20 14:52:49.341 +05:30  INF]  Executed endpoint 'JopPortal.Controllers.ArticlePinedController.DetailsOfParticularUsingUserId (JopPortal)'
+2022-07-20 14:52:49.341 +05:30  INF]  Request finished HTTP/1.1 GET https://localhost:44352/api/ArticlePined/1070 - - - 200 - application/json;+charset=utf-8 8.1754ms
+2022-07-20 14:52:49.343 +05:30  INF]  Request starting HTTP/1.1 GET https://localhost:44352/api/UserEducation/1070 - -
+2022-07-20 14:52:49.343 +05:30  INF]  Successfully validated the token.
+2022-07-20 14:52:49.343 +05:30  INF]  Authorization was successful.
+2022-07-20 14:52:49.343 +05:30  INF]  Executing endpoint 'JopPortal.Controllers.UserEducationController.DetailsOfParticularUsingUserId (JopPortal)'
+2022-07-20 14:52:49.343 +05:30  INF]  Route matched with {action = "DetailsOfParticularUsingUserId", controller = "UserEducation"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] DetailsOfParticularUsingUserId(Int32) on controller JopPortal.Controllers.UserEducationController (JopPortal).
+2022-07-20 14:52:49.344 +05:30  INF]  Entity Framework Core 5.0.17 initialized 'JobPortal2Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-07-20 14:52:49.346 +05:30  INF]  Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[RowId], [u].[CompletedEducationIn], [u].[EducationType], [u].[GroupName], [u].[PercentageObtained], [u].[UserId], [u].[YearOfEnd], [u].[YearOfStart]
+FROM [UserEducationTbl] AS [u]
+WHERE [u].[UserId] = @__userId_0
+2022-07-20 14:52:49.347 +05:30  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[JopPortal.Models.UserEducationTbl, JopPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2022-07-20 14:52:49.347 +05:30  INF]  Executed action JopPortal.Controllers.UserEducationController.DetailsOfParticularUsingUserId (JopPortal) in 3.8084ms
+2022-07-20 14:52:49.347 +05:30  INF]  Executed endpoint 'JopPortal.Controllers.UserEducationController.DetailsOfParticularUsingUserId (JopPortal)'
+2022-07-20 14:52:49.347 +05:30  INF]  Request finished HTTP/1.1 GET https://localhost:44352/api/UserEducation/1070 - - - 200 - application/json;+charset=utf-8 4.5412ms
+2022-07-20 14:52:49.349 +05:30  INF]  Request starting HTTP/1.1 GET https://localhost:44352/api/FollowersAndFollowing/1070 - -
+2022-07-20 14:52:49.349 +05:30  INF]  Successfully validated the token.
+2022-07-20 14:52:49.349 +05:30  INF]  Authorization was successful.
+2022-07-20 14:52:49.349 +05:30  INF]  Executing endpoint 'JopPortal.Controllers.FollowersAndFollowingController.DetailsOfParticularUsingUserId (JopPortal)'
+2022-07-20 14:52:49.349 +05:30  INF]  Route matched with {action = "DetailsOfParticularUsingUserId", controller = "FollowersAndFollowing"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] DetailsOfParticularUsingUserId(Int32) on controller JopPortal.Controllers.FollowersAndFollowingController (JopPortal).
+2022-07-20 14:52:49.350 +05:30  INF]  Entity Framework Core 5.0.17 initialized 'JobPortal2Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-07-20 14:52:49.352 +05:30  INF]  Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[RowId], [f].[FollowerId], [f].[UserId]
+FROM [FollowersAndFollowingTbl] AS [f]
+WHERE [f].[UserId] = @__userId_0
+2022-07-20 14:52:49.354 +05:30  INF]  Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[RowId], [f].[FollowerId], [f].[UserId]
+FROM [FollowersAndFollowingTbl] AS [f]
+WHERE [f].[FollowerId] = @__userId_0
+2022-07-20 14:52:49.356 +05:30  INF]  Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[RowId], [p].[DateOfBirth], [p].[Email], [p].[Experience], [p].[FirstName], [p].[Gender], [p].[LastName], [p].[PhoneNumber], [p].[Skills], [p].[UserId]
+FROM [PersonalDetailsTbl] AS [p]
+2022-07-20 14:52:49.357 +05:30  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[JopPortal.Models.FollowingFollowerNameDetails, JopPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2022-07-20 14:52:49.357 +05:30  INF]  Executed action JopPortal.Controllers.FollowersAndFollowingController.DetailsOfParticularUsingUserId (JopPortal) in 7.6773ms
+2022-07-20 14:52:49.357 +05:30  INF]  Executed endpoint 'JopPortal.Controllers.FollowersAndFollowingController.DetailsOfParticularUsingUserId (JopPortal)'
+2022-07-20 14:52:49.357 +05:30  INF]  Request finished HTTP/1.1 GET https://localhost:44352/api/FollowersAndFollowing/1070 - - - 200 - application/json;+charset=utf-8 8.4566ms
+2022-07-20 14:52:49.359 +05:30  INF]  Request starting HTTP/1.1 GET https://localhost:44352/api/UserWork/1070 - -
+2022-07-20 14:52:49.359 +05:30  INF]  Successfully validated the token.
+2022-07-20 14:52:49.360 +05:30  INF]  Authorization was successful.
+2022-07-20 14:52:49.360 +05:30  INF]  Executing endpoint 'JopPortal.Controllers.UserWorkController.DetailsOfParticularUsingUserId (JopPortal)'
+2022-07-20 14:52:49.360 +05:30  INF]  Route matched with {action = "DetailsOfParticularUsingUserId", controller = "UserWork"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] DetailsOfParticularUsingUserId(Int32) on controller JopPortal.Controllers.UserWorkController (JopPortal).
+2022-07-20 14:52:49.360 +05:30  INF]  Entity Framework Core 5.0.17 initialized 'JobPortal2Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-07-20 14:52:49.362 +05:30  INF]  Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[RowId], [u].[CompanyName], [u].[UserId], [u].[WorkedFrom], [u].[WorkedTill]
+FROM [UserWorkTbl] AS [u]
+WHERE [u].[UserId] = @__userId_0
+2022-07-20 14:52:49.363 +05:30  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[JopPortal.Models.UserWorkTbl, JopPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2022-07-20 14:52:49.363 +05:30  INF]  Executed action JopPortal.Controllers.UserWorkController.DetailsOfParticularUsingUserId (JopPortal) in 3.4754ms
+2022-07-20 14:52:49.363 +05:30  INF]  Executed endpoint 'JopPortal.Controllers.UserWorkController.DetailsOfParticularUsingUserId (JopPortal)'
+2022-07-20 14:52:49.363 +05:30  INF]  Request finished HTTP/1.1 GET https://localhost:44352/api/UserWork/1070 - - - 200 - application/json;+charset=utf-8 4.3936ms
+2022-07-20 14:52:55.053 +05:30  INF]  Request starting HTTP/1.1 GET https://localhost:44352/api/ArticleAndTitle - -
+2022-07-20 14:52:55.053 +05:30  INF]  Successfully validated the token.
+2022-07-20 14:52:55.053 +05:30  INF]  Authorization was successful.
+2022-07-20 14:52:55.053 +05:30  INF]  Executing endpoint 'JopPortal.Controllers.ArticleAndTitleController.GetArticle (JopPortal)'
+2022-07-20 14:52:55.056 +05:30  INF]  Route matched with {action = "GetArticle", controller = "ArticleAndTitle"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] GetArticle() on controller JopPortal.Controllers.ArticleAndTitleController (JopPortal).
+2022-07-20 14:52:55.058 +05:30  INF]  Entity Framework Core 5.0.17 initialized 'JobPortal2Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-07-20 14:52:55.063 +05:30  INF]  Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[RowId], [a].[Category], [a].[Content], [a].[UserId]
+FROM [ArticleTbl] AS [a]
+2022-07-20 14:52:55.066 +05:30  INF]  Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[RowId], [p].[DateOfBirth], [p].[Email], [p].[Experience], [p].[FirstName], [p].[Gender], [p].[LastName], [p].[PhoneNumber], [p].[Skills], [p].[UserId]
+FROM [PersonalDetailsTbl] AS [p]
+2022-07-20 14:52:55.068 +05:30  INF]  Executed DbCommand (1ms) [Parameters=[@__Idvalue_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[ArticleId], [a].[Title]
+FROM [ArticleTitleTbl] AS [a]
+WHERE [a].[ArticleId] = @__Idvalue_0
+2022-07-20 14:52:55.070 +05:30  INF]  Executed DbCommand (1ms) [Parameters=[@__Idvalue_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[ArticleId], [a].[Title]
+FROM [ArticleTitleTbl] AS [a]
+WHERE [a].[ArticleId] = @__Idvalue_0
+2022-07-20 14:52:55.071 +05:30  INF]  Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+<JoinIterator>d__105`4[[<>f__AnonymousType3`5[[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], JopPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[JopPortal.Models.PersonalDetailsTbl, JopPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[<>f__AnonymousType4`8[[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], JopPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2022-07-20 14:52:55.075 +05:30  INF]  Executed action JopPortal.Controllers.ArticleAndTitleController.GetArticle (JopPortal) in 18.9353ms
+2022-07-20 14:52:55.075 +05:30  INF]  Executed endpoint 'JopPortal.Controllers.ArticleAndTitleController.GetArticle (JopPortal)'
+2022-07-20 14:52:55.075 +05:30  INF]  Request finished HTTP/1.1 GET https://localhost:44352/api/ArticleAndTitle - - - 200 - application/json;+charset=utf-8 22.6130ms
+2022-07-20 14:53:14.682 +05:30  INF]  Request starting HTTP/1.1 GET https://localhost:44352/api/ArticleAndTitle - -
+2022-07-20 14:53:14.683 +05:30  INF]  Successfully validated the token.
+2022-07-20 14:53:14.683 +05:30  INF]  Authorization was successful.
+2022-07-20 14:53:14.683 +05:30  INF]  Executing endpoint 'JopPortal.Controllers.ArticleAndTitleController.GetArticle (JopPortal)'
+2022-07-20 14:53:14.683 +05:30  INF]  Route matched with {action = "GetArticle", controller = "ArticleAndTitle"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] GetArticle() on controller JopPortal.Controllers.ArticleAndTitleController (JopPortal).
+2022-07-20 14:53:14.684 +05:30  INF]  Entity Framework Core 5.0.17 initialized 'JobPortal2Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-07-20 14:53:14.688 +05:30  INF]  Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[RowId], [a].[Category], [a].[Content], [a].[UserId]
+FROM [ArticleTbl] AS [a]
+2022-07-20 14:53:14.691 +05:30  INF]  Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[RowId], [p].[DateOfBirth], [p].[Email], [p].[Experience], [p].[FirstName], [p].[Gender], [p].[LastName], [p].[PhoneNumber], [p].[Skills], [p].[UserId]
+FROM [PersonalDetailsTbl] AS [p]
+2022-07-20 14:53:14.694 +05:30  INF]  Executed DbCommand (2ms) [Parameters=[@__Idvalue_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[ArticleId], [a].[Title]
+FROM [ArticleTitleTbl] AS [a]
+WHERE [a].[ArticleId] = @__Idvalue_0
+2022-07-20 14:53:14.696 +05:30  INF]  Executed DbCommand (1ms) [Parameters=[@__Idvalue_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[ArticleId], [a].[Title]
+FROM [ArticleTitleTbl] AS [a]
+WHERE [a].[ArticleId] = @__Idvalue_0
+2022-07-20 14:53:14.697 +05:30  INF]  Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+<JoinIterator>d__105`4[[<>f__AnonymousType3`5[[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], JopPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[JopPortal.Models.PersonalDetailsTbl, JopPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[<>f__AnonymousType4`8[[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], JopPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2022-07-20 14:53:14.697 +05:30  INF]  Executed action JopPortal.Controllers.ArticleAndTitleController.GetArticle (JopPortal) in 14.1793ms
+2022-07-20 14:53:14.697 +05:30  INF]  Executed endpoint 'JopPortal.Controllers.ArticleAndTitleController.GetArticle (JopPortal)'
+2022-07-20 14:53:14.698 +05:30  INF]  Request finished HTTP/1.1 GET https://localhost:44352/api/ArticleAndTitle - - - 200 - application/json;+charset=utf-8 15.8542ms
+2022-07-20 14:53:26.497 +05:30  INF]  Request starting HTTP/1.1 GET https://localhost:44352/api/ArticleAndTitle - -
+2022-07-20 14:53:26.498 +05:30  INF]  Successfully validated the token.
+2022-07-20 14:53:26.498 +05:30  INF]  Authorization was successful.
+2022-07-20 14:53:26.498 +05:30  INF]  Executing endpoint 'JopPortal.Controllers.ArticleAndTitleController.GetArticle (JopPortal)'
+2022-07-20 14:53:26.498 +05:30  INF]  Route matched with {action = "GetArticle", controller = "ArticleAndTitle"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] GetArticle() on controller JopPortal.Controllers.ArticleAndTitleController (JopPortal).
+2022-07-20 14:53:26.498 +05:30  INF]  Entity Framework Core 5.0.17 initialized 'JobPortal2Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-07-20 14:53:26.501 +05:30  INF]  Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[RowId], [a].[Category], [a].[Content], [a].[UserId]
+FROM [ArticleTbl] AS [a]
+2022-07-20 14:53:26.504 +05:30  INF]  Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[RowId], [p].[DateOfBirth], [p].[Email], [p].[Experience], [p].[FirstName], [p].[Gender], [p].[LastName], [p].[PhoneNumber], [p].[Skills], [p].[UserId]
+FROM [PersonalDetailsTbl] AS [p]
+2022-07-20 14:53:26.506 +05:30  INF]  Executed DbCommand (1ms) [Parameters=[@__Idvalue_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[ArticleId], [a].[Title]
+FROM [ArticleTitleTbl] AS [a]
+WHERE [a].[ArticleId] = @__Idvalue_0
+2022-07-20 14:53:26.508 +05:30  INF]  Executed DbCommand (1ms) [Parameters=[@__Idvalue_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[ArticleId], [a].[Title]
+FROM [ArticleTitleTbl] AS [a]
+WHERE [a].[ArticleId] = @__Idvalue_0
+2022-07-20 14:53:26.508 +05:30  INF]  Executing OkObjectResult, writing value of type 'System.Linq.Enumerable+<JoinIterator>d__105`4[[<>f__AnonymousType3`5[[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], JopPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[JopPortal.Models.PersonalDetailsTbl, JopPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null],[System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[<>f__AnonymousType4`8[[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], JopPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2022-07-20 14:53:26.508 +05:30  INF]  Executed action JopPortal.Controllers.ArticleAndTitleController.GetArticle (JopPortal) in 10.1774ms
+2022-07-20 14:53:26.508 +05:30  INF]  Executed endpoint 'JopPortal.Controllers.ArticleAndTitleController.GetArticle (JopPortal)'
+2022-07-20 14:53:26.509 +05:30  INF]  Request finished HTTP/1.1 GET https://localhost:44352/api/ArticleAndTitle - - - 200 - application/json;+charset=utf-8 11.5900ms
+2022-07-20 14:53:29.317 +05:30  INF]  Request starting HTTP/1.1 GET https://localhost:44352/api/SortedProfiles/1070 - -
+2022-07-20 14:53:29.317 +05:30  INF]  Successfully validated the token.
+2022-07-20 14:53:29.317 +05:30  INF]  Authorization was successful.
+2022-07-20 14:53:29.318 +05:30  INF]  Executing endpoint 'JopPortal.Controllers.SortedProfilesController.DetailsOfParticularUsingUserId (JopPortal)'
+2022-07-20 14:53:29.321 +05:30  INF]  Route matched with {action = "DetailsOfParticularUsingUserId", controller = "SortedProfiles"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] DetailsOfParticularUsingUserId(Int32) on controller JopPortal.Controllers.SortedProfilesController (JopPortal).
+2022-07-20 14:53:29.326 +05:30  INF]  Entity Framework Core 5.0.17 initialized 'JobPortal2Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-07-20 14:53:29.335 +05:30  INF]  Executed DbCommand (4ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[RowId], [s].[SelectBy], [s].[SortedProfile]
+FROM [SortedProfilesTbl] AS [s]
+WHERE [s].[SelectBy] = @__userId_0
+2022-07-20 14:53:29.349 +05:30  INF]  Executed DbCommand (2ms) [Parameters=[@__Idvalue_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[RowId], [p].[DateOfBirth], [p].[Email], [p].[Experience], [p].[FirstName], [p].[Gender], [p].[LastName], [p].[PhoneNumber], [p].[Skills], [p].[UserId]
+FROM [PersonalDetailsTbl] AS [p]
+WHERE [p].[UserId] = @__Idvalue_0
+2022-07-20 14:53:29.353 +05:30  INF]  Executed DbCommand (2ms) [Parameters=[@__Idvalue_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[RowId], [u].[PhotoPath], [u].[UserId]
+FROM [UserProfilePhotoTbl] AS [u]
+WHERE [u].[UserId] = @__Idvalue_0
+2022-07-20 14:53:29.355 +05:30  INF]  Executed DbCommand (1ms) [Parameters=[@__Idvalue_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[RowId], [p].[DateOfBirth], [p].[Email], [p].[Experience], [p].[FirstName], [p].[Gender], [p].[LastName], [p].[PhoneNumber], [p].[Skills], [p].[UserId]
+FROM [PersonalDetailsTbl] AS [p]
+WHERE [p].[UserId] = @__Idvalue_0
+2022-07-20 14:53:29.357 +05:30  INF]  Executed DbCommand (2ms) [Parameters=[@__Idvalue_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[RowId], [u].[PhotoPath], [u].[UserId]
+FROM [UserProfilePhotoTbl] AS [u]
+WHERE [u].[UserId] = @__Idvalue_0
+2022-07-20 14:53:29.359 +05:30  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[<>f__AnonymousType10`8[[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], JopPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2022-07-20 14:53:29.361 +05:30  INF]  Executed action JopPortal.Controllers.SortedProfilesController.DetailsOfParticularUsingUserId (JopPortal) in 39.8703ms
+2022-07-20 14:53:29.361 +05:30  INF]  Executed endpoint 'JopPortal.Controllers.SortedProfilesController.DetailsOfParticularUsingUserId (JopPortal)'
+2022-07-20 14:53:29.363 +05:30  INF]  Request finished HTTP/1.1 GET https://localhost:44352/api/SortedProfiles/1070 - - - 200 - application/json;+charset=utf-8 45.8598ms
+2022-07-20 14:53:33.720 +05:30  INF]  Request starting HTTP/1.1 GET https://localhost:44352/api/AllDetailsView - -
+2022-07-20 14:53:33.721 +05:30  INF]  Successfully validated the token.
+2022-07-20 14:53:33.721 +05:30  INF]  Authorization was successful.
+2022-07-20 14:53:33.721 +05:30  INF]  Executing endpoint 'JopPortal.Controllers.AllDetailsViewController.DetailsView (JopPortal)'
+2022-07-20 14:53:33.721 +05:30  INF]  Route matched with {action = "DetailsView", controller = "AllDetailsView"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult DetailsView() on controller JopPortal.Controllers.AllDetailsViewController (JopPortal).
+2022-07-20 14:53:33.722 +05:30  INF]  Entity Framework Core 5.0.17 initialized 'JobPortal2Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-07-20 14:53:33.725 +05:30  INF]  Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[UserId], [u].[PhotoPath], [p].[Email], (COALESCE([p].[FirstName], '') + ' ') + COALESCE([p].[LastName], '') AS [FullName], [p].[PhoneNumber], [p].[Gender], [p].[DateOfBirth], [p].[Experience], [p].[Skills]
+FROM [PersonalDetailsTbl] AS [p]
+INNER JOIN [UserProfilePhotoTbl] AS [u] ON [p].[UserId] = [u].[UserId]
+2022-07-20 14:53:33.725 +05:30  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[<>f__AnonymousType0`9[[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], JopPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2022-07-20 14:53:33.726 +05:30  INF]  Executed action JopPortal.Controllers.AllDetailsViewController.DetailsView (JopPortal) in 4.1969ms
+2022-07-20 14:53:33.726 +05:30  INF]  Executed endpoint 'JopPortal.Controllers.AllDetailsViewController.DetailsView (JopPortal)'
+2022-07-20 14:53:33.726 +05:30  INF]  Request finished HTTP/1.1 GET https://localhost:44352/api/AllDetailsView - - - 200 - application/json;+charset=utf-8 6.2087ms
+2022-07-20 14:53:36.794 +05:30  INF]  Request starting HTTP/1.1 GET https://localhost:44352/api/AllDetailsView - -
+2022-07-20 14:53:36.794 +05:30  INF]  Successfully validated the token.
+2022-07-20 14:53:36.795 +05:30  INF]  Authorization was successful.
+2022-07-20 14:53:36.795 +05:30  INF]  Executing endpoint 'JopPortal.Controllers.AllDetailsViewController.DetailsView (JopPortal)'
+2022-07-20 14:53:36.795 +05:30  INF]  Route matched with {action = "DetailsView", controller = "AllDetailsView"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult DetailsView() on controller JopPortal.Controllers.AllDetailsViewController (JopPortal).
+2022-07-20 14:53:36.795 +05:30  INF]  Entity Framework Core 5.0.17 initialized 'JobPortal2Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-07-20 14:53:36.796 +05:30  INF]  Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[UserId], [u].[PhotoPath], [p].[Email], (COALESCE([p].[FirstName], '') + ' ') + COALESCE([p].[LastName], '') AS [FullName], [p].[PhoneNumber], [p].[Gender], [p].[DateOfBirth], [p].[Experience], [p].[Skills]
+FROM [PersonalDetailsTbl] AS [p]
+INNER JOIN [UserProfilePhotoTbl] AS [u] ON [p].[UserId] = [u].[UserId]
+2022-07-20 14:53:36.796 +05:30  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[<>f__AnonymousType0`9[[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], JopPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2022-07-20 14:53:36.797 +05:30  INF]  Executed action JopPortal.Controllers.AllDetailsViewController.DetailsView (JopPortal) in 2.1083ms
+2022-07-20 14:53:36.797 +05:30  INF]  Executed endpoint 'JopPortal.Controllers.AllDetailsViewController.DetailsView (JopPortal)'
+2022-07-20 14:53:36.797 +05:30  INF]  Request finished HTTP/1.1 GET https://localhost:44352/api/AllDetailsView - - - 200 - application/json;+charset=utf-8 3.2205ms
+2022-07-20 14:53:38.620 +05:30  INF]  Request starting HTTP/1.1 GET https://localhost:44352/api/AllDetailsView - -
+2022-07-20 14:53:38.621 +05:30  INF]  Successfully validated the token.
+2022-07-20 14:53:38.621 +05:30  INF]  Authorization was successful.
+2022-07-20 14:53:38.621 +05:30  INF]  Executing endpoint 'JopPortal.Controllers.AllDetailsViewController.DetailsView (JopPortal)'
+2022-07-20 14:53:38.621 +05:30  INF]  Route matched with {action = "DetailsView", controller = "AllDetailsView"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult DetailsView() on controller JopPortal.Controllers.AllDetailsViewController (JopPortal).
+2022-07-20 14:53:38.621 +05:30  INF]  Entity Framework Core 5.0.17 initialized 'JobPortal2Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-07-20 14:53:38.624 +05:30  INF]  Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[UserId], [u].[PhotoPath], [p].[Email], (COALESCE([p].[FirstName], '') + ' ') + COALESCE([p].[LastName], '') AS [FullName], [p].[PhoneNumber], [p].[Gender], [p].[DateOfBirth], [p].[Experience], [p].[Skills]
+FROM [PersonalDetailsTbl] AS [p]
+INNER JOIN [UserProfilePhotoTbl] AS [u] ON [p].[UserId] = [u].[UserId]
+2022-07-20 14:53:38.624 +05:30  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[<>f__AnonymousType0`9[[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], JopPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2022-07-20 14:53:38.625 +05:30  INF]  Executed action JopPortal.Controllers.AllDetailsViewController.DetailsView (JopPortal) in 4.4533ms
+2022-07-20 14:53:38.626 +05:30  INF]  Executed endpoint 'JopPortal.Controllers.AllDetailsViewController.DetailsView (JopPortal)'
+2022-07-20 14:53:38.626 +05:30  INF]  Request finished HTTP/1.1 GET https://localhost:44352/api/AllDetailsView - - - 200 - application/json;+charset=utf-8 6.2042ms
+2022-07-20 14:53:40.094 +05:30  INF]  Request starting HTTP/1.1 GET https://localhost:44352/api/UserProfilePhoto/1072 - -
+2022-07-20 14:53:40.095 +05:30  INF]  Successfully validated the token.
+2022-07-20 14:53:40.095 +05:30  INF]  Authorization was successful.
+2022-07-20 14:53:40.095 +05:30  INF]  Executing endpoint 'JopPortal.Controllers.UserProfilePhotoController.DetailsOfParticularUsingUserId (JopPortal)'
+2022-07-20 14:53:40.095 +05:30  INF]  Route matched with {action = "DetailsOfParticularUsingUserId", controller = "UserProfilePhoto"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] DetailsOfParticularUsingUserId(Int32) on controller JopPortal.Controllers.UserProfilePhotoController (JopPortal).
+2022-07-20 14:53:40.095 +05:30  INF]  Entity Framework Core 5.0.17 initialized 'JobPortal2Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-07-20 14:53:40.098 +05:30  INF]  Executed DbCommand (3ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[RowId], [u].[PhotoPath], [u].[UserId]
+FROM [UserProfilePhotoTbl] AS [u]
+WHERE [u].[UserId] = @__userId_0
+2022-07-20 14:53:40.099 +05:30  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[JopPortal.Models.UserProfilePhotoTbl, JopPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2022-07-20 14:53:40.099 +05:30  INF]  Executed action JopPortal.Controllers.UserProfilePhotoController.DetailsOfParticularUsingUserId (JopPortal) in 4.67ms
+2022-07-20 14:53:40.100 +05:30  INF]  Executed endpoint 'JopPortal.Controllers.UserProfilePhotoController.DetailsOfParticularUsingUserId (JopPortal)'
+2022-07-20 14:53:40.100 +05:30  INF]  Request finished HTTP/1.1 GET https://localhost:44352/api/UserProfilePhoto/1072 - - - 200 - application/json;+charset=utf-8 5.4788ms
+2022-07-20 14:53:40.101 +05:30  INF]  Request starting HTTP/1.1 GET https://localhost:44352/api/PersonalDetails/1072 - -
+2022-07-20 14:53:40.101 +05:30  INF]  Successfully validated the token.
+2022-07-20 14:53:40.102 +05:30  INF]  Authorization was successful.
+2022-07-20 14:53:40.102 +05:30  INF]  Executing endpoint 'JopPortal.Controllers.PersonalDetailsController.DetailsOfParticularUsingUserId (JopPortal)'
+2022-07-20 14:53:40.102 +05:30  INF]  Route matched with {action = "DetailsOfParticularUsingUserId", controller = "PersonalDetails"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] DetailsOfParticularUsingUserId(Int32) on controller JopPortal.Controllers.PersonalDetailsController (JopPortal).
+2022-07-20 14:53:40.102 +05:30  INF]  Entity Framework Core 5.0.17 initialized 'JobPortal2Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-07-20 14:53:40.105 +05:30  INF]  Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[RowId], [p].[DateOfBirth], [p].[Email], [p].[Experience], [p].[FirstName], [p].[Gender], [p].[LastName], [p].[PhoneNumber], [p].[Skills], [p].[UserId]
+FROM [PersonalDetailsTbl] AS [p]
+WHERE [p].[UserId] = @__userId_0
+2022-07-20 14:53:40.106 +05:30  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[JopPortal.Models.PersonalDetailsTbl, JopPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2022-07-20 14:53:40.107 +05:30  INF]  Executed action JopPortal.Controllers.PersonalDetailsController.DetailsOfParticularUsingUserId (JopPortal) in 4.8832ms
+2022-07-20 14:53:40.107 +05:30  INF]  Executed endpoint 'JopPortal.Controllers.PersonalDetailsController.DetailsOfParticularUsingUserId (JopPortal)'
+2022-07-20 14:53:40.107 +05:30  INF]  Request finished HTTP/1.1 GET https://localhost:44352/api/PersonalDetails/1072 - - - 200 - application/json;+charset=utf-8 5.9406ms
+2022-07-20 14:53:40.110 +05:30  INF]  Request starting HTTP/1.1 GET https://localhost:44352/api/UserAdress/1072 - -
+2022-07-20 14:53:40.111 +05:30  INF]  Successfully validated the token.
+2022-07-20 14:53:40.111 +05:30  INF]  Authorization was successful.
+2022-07-20 14:53:40.111 +05:30  INF]  Executing endpoint 'JopPortal.Controllers.UserAdressController.DetailsOfParticularUsingUserId (JopPortal)'
+2022-07-20 14:53:40.112 +05:30  INF]  Route matched with {action = "DetailsOfParticularUsingUserId", controller = "UserAdress"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] DetailsOfParticularUsingUserId(Int32) on controller JopPortal.Controllers.UserAdressController (JopPortal).
+2022-07-20 14:53:40.112 +05:30  INF]  Entity Framework Core 5.0.17 initialized 'JobPortal2Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-07-20 14:53:40.116 +05:30  INF]  Executed DbCommand (3ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[RowId], [u].[CurrentArea], [u].[CurrentCity], [u].[CurrentDoorNumber], [u].[CurrentPinCode], [u].[CurrentStreetName], [u].[PermantentArea], [u].[PermantentCity], [u].[PermantentDoorNumber], [u].[PermantentPinCode], [u].[PermantentStreetName], [u].[UserId]
+FROM [UserAdressTbl] AS [u]
+WHERE [u].[UserId] = @__userId_0
+2022-07-20 14:53:40.117 +05:30  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[JopPortal.Models.UserAdressTbl, JopPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2022-07-20 14:53:40.117 +05:30  INF]  Executed action JopPortal.Controllers.UserAdressController.DetailsOfParticularUsingUserId (JopPortal) in 5.8064ms
+2022-07-20 14:53:40.117 +05:30  INF]  Executed endpoint 'JopPortal.Controllers.UserAdressController.DetailsOfParticularUsingUserId (JopPortal)'
+2022-07-20 14:53:40.118 +05:30  INF]  Request finished HTTP/1.1 GET https://localhost:44352/api/UserAdress/1072 - - - 200 - application/json;+charset=utf-8 7.3932ms
+2022-07-20 14:53:40.120 +05:30  INF]  Request starting HTTP/1.1 GET https://localhost:44352/api/ArticleAndTitle/1072 - -
+2022-07-20 14:53:40.120 +05:30  INF]  Successfully validated the token.
+2022-07-20 14:53:40.120 +05:30  INF]  Authorization was successful.
+2022-07-20 14:53:40.120 +05:30  INF]  Executing endpoint 'JopPortal.Controllers.ArticleAndTitleController.GetArticle (JopPortal)'
+2022-07-20 14:53:40.120 +05:30  INF]  Route matched with {action = "GetArticle", controller = "ArticleAndTitle"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] GetArticle(Int32) on controller JopPortal.Controllers.ArticleAndTitleController (JopPortal).
+2022-07-20 14:53:40.121 +05:30  INF]  Entity Framework Core 5.0.17 initialized 'JobPortal2Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-07-20 14:53:40.125 +05:30  INF]  Executed DbCommand (3ms) [Parameters=[@__userId_0='?' (DbType = Int32), @__userId_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[RowId], [a].[Category], [a].[Content], [a].[UserId]
+FROM [ArticleTbl] AS [a]
+WHERE ([a].[UserId] = @__userId_0) OR ([a].[RowId] = @__userId_1)
+2022-07-20 14:53:40.126 +05:30  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[<>f__AnonymousType3`5[[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], JopPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2022-07-20 14:53:40.126 +05:30  INF]  Executed action JopPortal.Controllers.ArticleAndTitleController.GetArticle (JopPortal) in 5.7117ms
+2022-07-20 14:53:40.126 +05:30  INF]  Executed endpoint 'JopPortal.Controllers.ArticleAndTitleController.GetArticle (JopPortal)'
+2022-07-20 14:53:40.127 +05:30  INF]  Request finished HTTP/1.1 GET https://localhost:44352/api/ArticleAndTitle/1072 - - - 200 - application/json;+charset=utf-8 6.4610ms
+2022-07-20 14:53:40.128 +05:30  INF]  Request starting HTTP/1.1 GET https://localhost:44352/api/ArticlePined/1072 - -
+2022-07-20 14:53:40.128 +05:30  INF]  Successfully validated the token.
+2022-07-20 14:53:40.128 +05:30  INF]  Authorization was successful.
+2022-07-20 14:53:40.129 +05:30  INF]  Executing endpoint 'JopPortal.Controllers.ArticlePinedController.DetailsOfParticularUsingUserId (JopPortal)'
+2022-07-20 14:53:40.129 +05:30  INF]  Route matched with {action = "DetailsOfParticularUsingUserId", controller = "ArticlePined"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] DetailsOfParticularUsingUserId(Int32) on controller JopPortal.Controllers.ArticlePinedController (JopPortal).
+2022-07-20 14:53:40.129 +05:30  INF]  Entity Framework Core 5.0.17 initialized 'JobPortal2Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-07-20 14:53:40.132 +05:30  INF]  Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[RowId], [a].[PinedArticleId], [a].[UserId]
+FROM [ArticlePinedTbl] AS [a]
+WHERE [a].[UserId] = @__userId_0
+2022-07-20 14:53:40.133 +05:30  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[<>f__AnonymousType7`5[[System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], JopPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2022-07-20 14:53:40.133 +05:30  INF]  Executed action JopPortal.Controllers.ArticlePinedController.DetailsOfParticularUsingUserId (JopPortal) in 4.6367ms
+2022-07-20 14:53:40.133 +05:30  INF]  Executed endpoint 'JopPortal.Controllers.ArticlePinedController.DetailsOfParticularUsingUserId (JopPortal)'
+2022-07-20 14:53:40.133 +05:30  INF]  Request finished HTTP/1.1 GET https://localhost:44352/api/ArticlePined/1072 - - - 200 - application/json;+charset=utf-8 5.3124ms
+2022-07-20 14:53:40.135 +05:30  INF]  Request starting HTTP/1.1 GET https://localhost:44352/api/UserEducation/1072 - -
+2022-07-20 14:53:40.135 +05:30  INF]  Successfully validated the token.
+2022-07-20 14:53:40.135 +05:30  INF]  Authorization was successful.
+2022-07-20 14:53:40.135 +05:30  INF]  Executing endpoint 'JopPortal.Controllers.UserEducationController.DetailsOfParticularUsingUserId (JopPortal)'
+2022-07-20 14:53:40.135 +05:30  INF]  Route matched with {action = "DetailsOfParticularUsingUserId", controller = "UserEducation"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] DetailsOfParticularUsingUserId(Int32) on controller JopPortal.Controllers.UserEducationController (JopPortal).
+2022-07-20 14:53:40.136 +05:30  INF]  Entity Framework Core 5.0.17 initialized 'JobPortal2Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-07-20 14:53:40.138 +05:30  INF]  Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[RowId], [u].[CompletedEducationIn], [u].[EducationType], [u].[GroupName], [u].[PercentageObtained], [u].[UserId], [u].[YearOfEnd], [u].[YearOfStart]
+FROM [UserEducationTbl] AS [u]
+WHERE [u].[UserId] = @__userId_0
+2022-07-20 14:53:40.139 +05:30  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[JopPortal.Models.UserEducationTbl, JopPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2022-07-20 14:53:40.140 +05:30  INF]  Executed action JopPortal.Controllers.UserEducationController.DetailsOfParticularUsingUserId (JopPortal) in 4.5692ms
+2022-07-20 14:53:40.140 +05:30  INF]  Executed endpoint 'JopPortal.Controllers.UserEducationController.DetailsOfParticularUsingUserId (JopPortal)'
+2022-07-20 14:53:40.140 +05:30  INF]  Request finished HTTP/1.1 GET https://localhost:44352/api/UserEducation/1072 - - - 200 - application/json;+charset=utf-8 5.4029ms
+2022-07-20 14:53:40.143 +05:30  INF]  Request starting HTTP/1.1 GET https://localhost:44352/api/FollowersAndFollowing/1072 - -
+2022-07-20 14:53:40.143 +05:30  INF]  Successfully validated the token.
+2022-07-20 14:53:40.143 +05:30  INF]  Authorization was successful.
+2022-07-20 14:53:40.143 +05:30  INF]  Executing endpoint 'JopPortal.Controllers.FollowersAndFollowingController.DetailsOfParticularUsingUserId (JopPortal)'
+2022-07-20 14:53:40.143 +05:30  INF]  Route matched with {action = "DetailsOfParticularUsingUserId", controller = "FollowersAndFollowing"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] DetailsOfParticularUsingUserId(Int32) on controller JopPortal.Controllers.FollowersAndFollowingController (JopPortal).
+2022-07-20 14:53:40.144 +05:30  INF]  Entity Framework Core 5.0.17 initialized 'JobPortal2Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-07-20 14:53:40.147 +05:30  INF]  Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[RowId], [f].[FollowerId], [f].[UserId]
+FROM [FollowersAndFollowingTbl] AS [f]
+WHERE [f].[UserId] = @__userId_0
+2022-07-20 14:53:40.148 +05:30  INF]  Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[RowId], [f].[FollowerId], [f].[UserId]
+FROM [FollowersAndFollowingTbl] AS [f]
+WHERE [f].[FollowerId] = @__userId_0
+2022-07-20 14:53:40.150 +05:30  INF]  Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[RowId], [p].[DateOfBirth], [p].[Email], [p].[Experience], [p].[FirstName], [p].[Gender], [p].[LastName], [p].[PhoneNumber], [p].[Skills], [p].[UserId]
+FROM [PersonalDetailsTbl] AS [p]
+2022-07-20 14:53:40.150 +05:30  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[JopPortal.Models.FollowingFollowerNameDetails, JopPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2022-07-20 14:53:40.150 +05:30  INF]  Executed action JopPortal.Controllers.FollowersAndFollowingController.DetailsOfParticularUsingUserId (JopPortal) in 7.1227ms
+2022-07-20 14:53:40.150 +05:30  INF]  Executed endpoint 'JopPortal.Controllers.FollowersAndFollowingController.DetailsOfParticularUsingUserId (JopPortal)'
+2022-07-20 14:53:40.151 +05:30  INF]  Request finished HTTP/1.1 GET https://localhost:44352/api/FollowersAndFollowing/1072 - - - 200 - application/json;+charset=utf-8 7.9158ms
+2022-07-20 14:53:40.152 +05:30  INF]  Request starting HTTP/1.1 GET https://localhost:44352/api/UserWork/1072 - -
+2022-07-20 14:53:40.152 +05:30  INF]  Successfully validated the token.
+2022-07-20 14:53:40.152 +05:30  INF]  Authorization was successful.
+2022-07-20 14:53:40.152 +05:30  INF]  Executing endpoint 'JopPortal.Controllers.UserWorkController.DetailsOfParticularUsingUserId (JopPortal)'
+2022-07-20 14:53:40.152 +05:30  INF]  Route matched with {action = "DetailsOfParticularUsingUserId", controller = "UserWork"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] DetailsOfParticularUsingUserId(Int32) on controller JopPortal.Controllers.UserWorkController (JopPortal).
+2022-07-20 14:53:40.153 +05:30  INF]  Entity Framework Core 5.0.17 initialized 'JobPortal2Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-07-20 14:53:40.155 +05:30  INF]  Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[RowId], [u].[CompanyName], [u].[UserId], [u].[WorkedFrom], [u].[WorkedTill]
+FROM [UserWorkTbl] AS [u]
+WHERE [u].[UserId] = @__userId_0
+2022-07-20 14:53:40.157 +05:30  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[JopPortal.Models.UserWorkTbl, JopPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2022-07-20 14:53:40.157 +05:30  INF]  Executed action JopPortal.Controllers.UserWorkController.DetailsOfParticularUsingUserId (JopPortal) in 4.7099ms
+2022-07-20 14:53:40.157 +05:30  INF]  Executed endpoint 'JopPortal.Controllers.UserWorkController.DetailsOfParticularUsingUserId (JopPortal)'
+2022-07-20 14:53:40.157 +05:30  INF]  Request finished HTTP/1.1 GET https://localhost:44352/api/UserWork/1072 - - - 200 - application/json;+charset=utf-8 5.5710ms
+2022-07-20 14:53:48.289 +05:30  INF]  Request starting HTTP/1.1 GET https://localhost:44352/api/SortedProfiles/1070 - -
+2022-07-20 14:53:48.289 +05:30  INF]  Successfully validated the token.
+2022-07-20 14:53:48.290 +05:30  INF]  Authorization was successful.
+2022-07-20 14:53:48.290 +05:30  INF]  Executing endpoint 'JopPortal.Controllers.SortedProfilesController.DetailsOfParticularUsingUserId (JopPortal)'
+2022-07-20 14:53:48.290 +05:30  INF]  Route matched with {action = "DetailsOfParticularUsingUserId", controller = "SortedProfiles"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] DetailsOfParticularUsingUserId(Int32) on controller JopPortal.Controllers.SortedProfilesController (JopPortal).
+2022-07-20 14:53:48.290 +05:30  INF]  Entity Framework Core 5.0.17 initialized 'JobPortal2Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-07-20 14:53:48.292 +05:30  INF]  Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [s].[RowId], [s].[SelectBy], [s].[SortedProfile]
+FROM [SortedProfilesTbl] AS [s]
+WHERE [s].[SelectBy] = @__userId_0
+2022-07-20 14:53:48.294 +05:30  INF]  Executed DbCommand (1ms) [Parameters=[@__Idvalue_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[RowId], [p].[DateOfBirth], [p].[Email], [p].[Experience], [p].[FirstName], [p].[Gender], [p].[LastName], [p].[PhoneNumber], [p].[Skills], [p].[UserId]
+FROM [PersonalDetailsTbl] AS [p]
+WHERE [p].[UserId] = @__Idvalue_0
+2022-07-20 14:53:48.295 +05:30  INF]  Executed DbCommand (1ms) [Parameters=[@__Idvalue_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[RowId], [u].[PhotoPath], [u].[UserId]
+FROM [UserProfilePhotoTbl] AS [u]
+WHERE [u].[UserId] = @__Idvalue_0
+2022-07-20 14:53:48.297 +05:30  INF]  Executed DbCommand (1ms) [Parameters=[@__Idvalue_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[RowId], [p].[DateOfBirth], [p].[Email], [p].[Experience], [p].[FirstName], [p].[Gender], [p].[LastName], [p].[PhoneNumber], [p].[Skills], [p].[UserId]
+FROM [PersonalDetailsTbl] AS [p]
+WHERE [p].[UserId] = @__Idvalue_0
+2022-07-20 14:53:48.298 +05:30  INF]  Executed DbCommand (1ms) [Parameters=[@__Idvalue_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[RowId], [u].[PhotoPath], [u].[UserId]
+FROM [UserProfilePhotoTbl] AS [u]
+WHERE [u].[UserId] = @__Idvalue_0
+2022-07-20 14:53:48.299 +05:30  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[<>f__AnonymousType10`8[[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], JopPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2022-07-20 14:53:48.299 +05:30  INF]  Executed action JopPortal.Controllers.SortedProfilesController.DetailsOfParticularUsingUserId (JopPortal) in 9.661ms
+2022-07-20 14:53:48.300 +05:30  INF]  Executed endpoint 'JopPortal.Controllers.SortedProfilesController.DetailsOfParticularUsingUserId (JopPortal)'
+2022-07-20 14:53:48.300 +05:30  INF]  Request finished HTTP/1.1 GET https://localhost:44352/api/SortedProfiles/1070 - - - 200 - application/json;+charset=utf-8 11.1332ms
+2022-07-20 14:53:54.665 +05:30  INF]  Request starting HTTP/1.1 GET https://localhost:44352/api/UserProfilePhoto/1072 - -
+2022-07-20 14:53:54.666 +05:30  INF]  Successfully validated the token.
+2022-07-20 14:53:54.666 +05:30  INF]  Authorization was successful.
+2022-07-20 14:53:54.666 +05:30  INF]  Executing endpoint 'JopPortal.Controllers.UserProfilePhotoController.DetailsOfParticularUsingUserId (JopPortal)'
+2022-07-20 14:53:54.666 +05:30  INF]  Route matched with {action = "DetailsOfParticularUsingUserId", controller = "UserProfilePhoto"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] DetailsOfParticularUsingUserId(Int32) on controller JopPortal.Controllers.UserProfilePhotoController (JopPortal).
+2022-07-20 14:53:54.667 +05:30  INF]  Entity Framework Core 5.0.17 initialized 'JobPortal2Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-07-20 14:53:54.669 +05:30  INF]  Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[RowId], [u].[PhotoPath], [u].[UserId]
+FROM [UserProfilePhotoTbl] AS [u]
+WHERE [u].[UserId] = @__userId_0
+2022-07-20 14:53:54.671 +05:30  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[JopPortal.Models.UserProfilePhotoTbl, JopPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2022-07-20 14:53:54.671 +05:30  INF]  Executed action JopPortal.Controllers.UserProfilePhotoController.DetailsOfParticularUsingUserId (JopPortal) in 4.9303ms
+2022-07-20 14:53:54.671 +05:30  INF]  Executed endpoint 'JopPortal.Controllers.UserProfilePhotoController.DetailsOfParticularUsingUserId (JopPortal)'
+2022-07-20 14:53:54.672 +05:30  INF]  Request finished HTTP/1.1 GET https://localhost:44352/api/UserProfilePhoto/1072 - - - 200 - application/json;+charset=utf-8 6.6580ms
+2022-07-20 14:53:54.674 +05:30  INF]  Request starting HTTP/1.1 GET https://localhost:44352/api/PersonalDetails/1072 - -
+2022-07-20 14:53:54.675 +05:30  INF]  Successfully validated the token.
+2022-07-20 14:53:54.675 +05:30  INF]  Authorization was successful.
+2022-07-20 14:53:54.675 +05:30  INF]  Executing endpoint 'JopPortal.Controllers.PersonalDetailsController.DetailsOfParticularUsingUserId (JopPortal)'
+2022-07-20 14:53:54.675 +05:30  INF]  Route matched with {action = "DetailsOfParticularUsingUserId", controller = "PersonalDetails"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] DetailsOfParticularUsingUserId(Int32) on controller JopPortal.Controllers.PersonalDetailsController (JopPortal).
+2022-07-20 14:53:54.675 +05:30  INF]  Entity Framework Core 5.0.17 initialized 'JobPortal2Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-07-20 14:53:54.677 +05:30  INF]  Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[RowId], [p].[DateOfBirth], [p].[Email], [p].[Experience], [p].[FirstName], [p].[Gender], [p].[LastName], [p].[PhoneNumber], [p].[Skills], [p].[UserId]
+FROM [PersonalDetailsTbl] AS [p]
+WHERE [p].[UserId] = @__userId_0
+2022-07-20 14:53:54.679 +05:30  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[JopPortal.Models.PersonalDetailsTbl, JopPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2022-07-20 14:53:54.679 +05:30  INF]  Executed action JopPortal.Controllers.PersonalDetailsController.DetailsOfParticularUsingUserId (JopPortal) in 4.0428ms
+2022-07-20 14:53:54.679 +05:30  INF]  Executed endpoint 'JopPortal.Controllers.PersonalDetailsController.DetailsOfParticularUsingUserId (JopPortal)'
+2022-07-20 14:53:54.679 +05:30  INF]  Request finished HTTP/1.1 GET https://localhost:44352/api/PersonalDetails/1072 - - - 200 - application/json;+charset=utf-8 4.8896ms
+2022-07-20 14:53:54.681 +05:30  INF]  Request starting HTTP/1.1 GET https://localhost:44352/api/UserAdress/1072 - -
+2022-07-20 14:53:54.689 +05:30  INF]  Successfully validated the token.
+2022-07-20 14:53:54.689 +05:30  INF]  Authorization was successful.
+2022-07-20 14:53:54.690 +05:30  INF]  Executing endpoint 'JopPortal.Controllers.UserAdressController.DetailsOfParticularUsingUserId (JopPortal)'
+2022-07-20 14:53:54.690 +05:30  INF]  Route matched with {action = "DetailsOfParticularUsingUserId", controller = "UserAdress"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] DetailsOfParticularUsingUserId(Int32) on controller JopPortal.Controllers.UserAdressController (JopPortal).
+2022-07-20 14:53:54.690 +05:30  INF]  Entity Framework Core 5.0.17 initialized 'JobPortal2Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-07-20 14:53:54.696 +05:30  INF]  Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[RowId], [u].[CurrentArea], [u].[CurrentCity], [u].[CurrentDoorNumber], [u].[CurrentPinCode], [u].[CurrentStreetName], [u].[PermantentArea], [u].[PermantentCity], [u].[PermantentDoorNumber], [u].[PermantentPinCode], [u].[PermantentStreetName], [u].[UserId]
+FROM [UserAdressTbl] AS [u]
+WHERE [u].[UserId] = @__userId_0
+2022-07-20 14:53:54.697 +05:30  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[JopPortal.Models.UserAdressTbl, JopPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2022-07-20 14:53:54.698 +05:30  INF]  Executed action JopPortal.Controllers.UserAdressController.DetailsOfParticularUsingUserId (JopPortal) in 8.0004ms
+2022-07-20 14:53:54.698 +05:30  INF]  Executed endpoint 'JopPortal.Controllers.UserAdressController.DetailsOfParticularUsingUserId (JopPortal)'
+2022-07-20 14:53:54.699 +05:30  INF]  Request finished HTTP/1.1 GET https://localhost:44352/api/UserAdress/1072 - - - 200 - application/json;+charset=utf-8 17.9576ms
+2022-07-20 14:53:54.701 +05:30  INF]  Request starting HTTP/1.1 GET https://localhost:44352/api/ArticleAndTitle/1072 - -
+2022-07-20 14:53:54.701 +05:30  INF]  Successfully validated the token.
+2022-07-20 14:53:54.701 +05:30  INF]  Authorization was successful.
+2022-07-20 14:53:54.701 +05:30  INF]  Executing endpoint 'JopPortal.Controllers.ArticleAndTitleController.GetArticle (JopPortal)'
+2022-07-20 14:53:54.701 +05:30  INF]  Route matched with {action = "GetArticle", controller = "ArticleAndTitle"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] GetArticle(Int32) on controller JopPortal.Controllers.ArticleAndTitleController (JopPortal).
+2022-07-20 14:53:54.701 +05:30  INF]  Entity Framework Core 5.0.17 initialized 'JobPortal2Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-07-20 14:53:54.703 +05:30  INF]  Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (DbType = Int32), @__userId_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[RowId], [a].[Category], [a].[Content], [a].[UserId]
+FROM [ArticleTbl] AS [a]
+WHERE ([a].[UserId] = @__userId_0) OR ([a].[RowId] = @__userId_1)
+2022-07-20 14:53:54.705 +05:30  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[<>f__AnonymousType3`5[[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], JopPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2022-07-20 14:53:54.706 +05:30  INF]  Executed action JopPortal.Controllers.ArticleAndTitleController.GetArticle (JopPortal) in 4.7571ms
+2022-07-20 14:53:54.706 +05:30  INF]  Executed endpoint 'JopPortal.Controllers.ArticleAndTitleController.GetArticle (JopPortal)'
+2022-07-20 14:53:54.706 +05:30  INF]  Request finished HTTP/1.1 GET https://localhost:44352/api/ArticleAndTitle/1072 - - - 200 - application/json;+charset=utf-8 5.5386ms
+2022-07-20 14:53:54.709 +05:30  INF]  Request starting HTTP/1.1 GET https://localhost:44352/api/ArticlePined/1072 - -
+2022-07-20 14:53:54.709 +05:30  INF]  Successfully validated the token.
+2022-07-20 14:53:54.709 +05:30  INF]  Authorization was successful.
+2022-07-20 14:53:54.709 +05:30  INF]  Executing endpoint 'JopPortal.Controllers.ArticlePinedController.DetailsOfParticularUsingUserId (JopPortal)'
+2022-07-20 14:53:54.709 +05:30  INF]  Route matched with {action = "DetailsOfParticularUsingUserId", controller = "ArticlePined"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] DetailsOfParticularUsingUserId(Int32) on controller JopPortal.Controllers.ArticlePinedController (JopPortal).
+2022-07-20 14:53:54.709 +05:30  INF]  Entity Framework Core 5.0.17 initialized 'JobPortal2Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-07-20 14:53:54.710 +05:30  INF]  Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[RowId], [a].[PinedArticleId], [a].[UserId]
+FROM [ArticlePinedTbl] AS [a]
+WHERE [a].[UserId] = @__userId_0
+2022-07-20 14:53:54.711 +05:30  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[<>f__AnonymousType7`5[[System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], JopPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2022-07-20 14:53:54.712 +05:30  INF]  Executed action JopPortal.Controllers.ArticlePinedController.DetailsOfParticularUsingUserId (JopPortal) in 3.0491ms
+2022-07-20 14:53:54.712 +05:30  INF]  Executed endpoint 'JopPortal.Controllers.ArticlePinedController.DetailsOfParticularUsingUserId (JopPortal)'
+2022-07-20 14:53:54.713 +05:30  INF]  Request finished HTTP/1.1 GET https://localhost:44352/api/ArticlePined/1072 - - - 200 - application/json;+charset=utf-8 3.9239ms
+2022-07-20 14:53:54.714 +05:30  INF]  Request starting HTTP/1.1 GET https://localhost:44352/api/UserEducation/1072 - -
+2022-07-20 14:53:54.714 +05:30  INF]  Successfully validated the token.
+2022-07-20 14:53:54.714 +05:30  INF]  Authorization was successful.
+2022-07-20 14:53:54.714 +05:30  INF]  Executing endpoint 'JopPortal.Controllers.UserEducationController.DetailsOfParticularUsingUserId (JopPortal)'
+2022-07-20 14:53:54.714 +05:30  INF]  Route matched with {action = "DetailsOfParticularUsingUserId", controller = "UserEducation"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] DetailsOfParticularUsingUserId(Int32) on controller JopPortal.Controllers.UserEducationController (JopPortal).
+2022-07-20 14:53:54.714 +05:30  INF]  Entity Framework Core 5.0.17 initialized 'JobPortal2Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-07-20 14:53:54.716 +05:30  INF]  Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[RowId], [u].[CompletedEducationIn], [u].[EducationType], [u].[GroupName], [u].[PercentageObtained], [u].[UserId], [u].[YearOfEnd], [u].[YearOfStart]
+FROM [UserEducationTbl] AS [u]
+WHERE [u].[UserId] = @__userId_0
+2022-07-20 14:53:54.718 +05:30  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[JopPortal.Models.UserEducationTbl, JopPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2022-07-20 14:53:54.718 +05:30  INF]  Executed action JopPortal.Controllers.UserEducationController.DetailsOfParticularUsingUserId (JopPortal) in 3.9632ms
+2022-07-20 14:53:54.718 +05:30  INF]  Executed endpoint 'JopPortal.Controllers.UserEducationController.DetailsOfParticularUsingUserId (JopPortal)'
+2022-07-20 14:53:54.718 +05:30  INF]  Request finished HTTP/1.1 GET https://localhost:44352/api/UserEducation/1072 - - - 200 - application/json;+charset=utf-8 4.6557ms
+2022-07-20 14:53:54.720 +05:30  INF]  Request starting HTTP/1.1 GET https://localhost:44352/api/FollowersAndFollowing/1072 - -
+2022-07-20 14:53:54.720 +05:30  INF]  Successfully validated the token.
+2022-07-20 14:53:54.720 +05:30  INF]  Authorization was successful.
+2022-07-20 14:53:54.720 +05:30  INF]  Executing endpoint 'JopPortal.Controllers.FollowersAndFollowingController.DetailsOfParticularUsingUserId (JopPortal)'
+2022-07-20 14:53:54.720 +05:30  INF]  Route matched with {action = "DetailsOfParticularUsingUserId", controller = "FollowersAndFollowing"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] DetailsOfParticularUsingUserId(Int32) on controller JopPortal.Controllers.FollowersAndFollowingController (JopPortal).
+2022-07-20 14:53:54.721 +05:30  INF]  Entity Framework Core 5.0.17 initialized 'JobPortal2Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-07-20 14:53:54.722 +05:30  INF]  Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[RowId], [f].[FollowerId], [f].[UserId]
+FROM [FollowersAndFollowingTbl] AS [f]
+WHERE [f].[UserId] = @__userId_0
+2022-07-20 14:53:54.725 +05:30  INF]  Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[RowId], [f].[FollowerId], [f].[UserId]
+FROM [FollowersAndFollowingTbl] AS [f]
+WHERE [f].[FollowerId] = @__userId_0
+2022-07-20 14:53:54.726 +05:30  INF]  Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[RowId], [p].[DateOfBirth], [p].[Email], [p].[Experience], [p].[FirstName], [p].[Gender], [p].[LastName], [p].[PhoneNumber], [p].[Skills], [p].[UserId]
+FROM [PersonalDetailsTbl] AS [p]
+2022-07-20 14:53:54.726 +05:30  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[JopPortal.Models.FollowingFollowerNameDetails, JopPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2022-07-20 14:53:54.726 +05:30  INF]  Executed action JopPortal.Controllers.FollowersAndFollowingController.DetailsOfParticularUsingUserId (JopPortal) in 5.9342ms
+2022-07-20 14:53:54.726 +05:30  INF]  Executed endpoint 'JopPortal.Controllers.FollowersAndFollowingController.DetailsOfParticularUsingUserId (JopPortal)'
+2022-07-20 14:53:54.726 +05:30  INF]  Request finished HTTP/1.1 GET https://localhost:44352/api/FollowersAndFollowing/1072 - - - 200 - application/json;+charset=utf-8 6.5899ms
+2022-07-20 14:53:54.727 +05:30  INF]  Request starting HTTP/1.1 GET https://localhost:44352/api/UserWork/1072 - -
+2022-07-20 14:53:54.728 +05:30  INF]  Successfully validated the token.
+2022-07-20 14:53:54.728 +05:30  INF]  Authorization was successful.
+2022-07-20 14:53:54.728 +05:30  INF]  Executing endpoint 'JopPortal.Controllers.UserWorkController.DetailsOfParticularUsingUserId (JopPortal)'
+2022-07-20 14:53:54.728 +05:30  INF]  Route matched with {action = "DetailsOfParticularUsingUserId", controller = "UserWork"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] DetailsOfParticularUsingUserId(Int32) on controller JopPortal.Controllers.UserWorkController (JopPortal).
+2022-07-20 14:53:54.728 +05:30  INF]  Entity Framework Core 5.0.17 initialized 'JobPortal2Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-07-20 14:53:54.729 +05:30  INF]  Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[RowId], [u].[CompanyName], [u].[UserId], [u].[WorkedFrom], [u].[WorkedTill]
+FROM [UserWorkTbl] AS [u]
+WHERE [u].[UserId] = @__userId_0
+2022-07-20 14:53:54.730 +05:30  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[JopPortal.Models.UserWorkTbl, JopPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2022-07-20 14:53:54.731 +05:30  INF]  Executed action JopPortal.Controllers.UserWorkController.DetailsOfParticularUsingUserId (JopPortal) in 2.9638ms
+2022-07-20 14:53:54.731 +05:30  INF]  Executed endpoint 'JopPortal.Controllers.UserWorkController.DetailsOfParticularUsingUserId (JopPortal)'
+2022-07-20 14:53:54.731 +05:30  INF]  Request finished HTTP/1.1 GET https://localhost:44352/api/UserWork/1072 - - - 200 - application/json;+charset=utf-8 3.4954ms
+2022-07-20 14:53:58.943 +05:30  INF]  Request starting HTTP/1.1 GET https://localhost:44352/api/AllDetailsView - -
+2022-07-20 14:53:58.944 +05:30  INF]  Successfully validated the token.
+2022-07-20 14:53:58.944 +05:30  INF]  Authorization was successful.
+2022-07-20 14:53:58.944 +05:30  INF]  Executing endpoint 'JopPortal.Controllers.AllDetailsViewController.DetailsView (JopPortal)'
+2022-07-20 14:53:58.944 +05:30  INF]  Route matched with {action = "DetailsView", controller = "AllDetailsView"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult DetailsView() on controller JopPortal.Controllers.AllDetailsViewController (JopPortal).
+2022-07-20 14:53:58.945 +05:30  INF]  Entity Framework Core 5.0.17 initialized 'JobPortal2Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-07-20 14:53:58.946 +05:30  INF]  Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[UserId], [u].[PhotoPath], [p].[Email], (COALESCE([p].[FirstName], '') + ' ') + COALESCE([p].[LastName], '') AS [FullName], [p].[PhoneNumber], [p].[Gender], [p].[DateOfBirth], [p].[Experience], [p].[Skills]
+FROM [PersonalDetailsTbl] AS [p]
+INNER JOIN [UserProfilePhotoTbl] AS [u] ON [p].[UserId] = [u].[UserId]
+2022-07-20 14:53:58.946 +05:30  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[<>f__AnonymousType0`9[[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], JopPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2022-07-20 14:53:58.947 +05:30  INF]  Executed action JopPortal.Controllers.AllDetailsViewController.DetailsView (JopPortal) in 2.2216ms
+2022-07-20 14:53:58.947 +05:30  INF]  Executed endpoint 'JopPortal.Controllers.AllDetailsViewController.DetailsView (JopPortal)'
+2022-07-20 14:53:58.947 +05:30  INF]  Request finished HTTP/1.1 GET https://localhost:44352/api/AllDetailsView - - - 200 - application/json;+charset=utf-8 3.8706ms
+2022-07-20 14:54:01.221 +05:30  INF]  Request starting HTTP/1.1 GET https://localhost:44352/api/AllDetailsView - -
+2022-07-20 14:54:01.221 +05:30  INF]  Successfully validated the token.
+2022-07-20 14:54:01.221 +05:30  INF]  Authorization was successful.
+2022-07-20 14:54:01.221 +05:30  INF]  Executing endpoint 'JopPortal.Controllers.AllDetailsViewController.DetailsView (JopPortal)'
+2022-07-20 14:54:01.221 +05:30  INF]  Route matched with {action = "DetailsView", controller = "AllDetailsView"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult DetailsView() on controller JopPortal.Controllers.AllDetailsViewController (JopPortal).
+2022-07-20 14:54:01.221 +05:30  INF]  Entity Framework Core 5.0.17 initialized 'JobPortal2Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-07-20 14:54:01.223 +05:30  INF]  Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[UserId], [u].[PhotoPath], [p].[Email], (COALESCE([p].[FirstName], '') + ' ') + COALESCE([p].[LastName], '') AS [FullName], [p].[PhoneNumber], [p].[Gender], [p].[DateOfBirth], [p].[Experience], [p].[Skills]
+FROM [PersonalDetailsTbl] AS [p]
+INNER JOIN [UserProfilePhotoTbl] AS [u] ON [p].[UserId] = [u].[UserId]
+2022-07-20 14:54:01.223 +05:30  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[<>f__AnonymousType0`9[[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], JopPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2022-07-20 14:54:01.223 +05:30  INF]  Executed action JopPortal.Controllers.AllDetailsViewController.DetailsView (JopPortal) in 2.4001ms
+2022-07-20 14:54:01.223 +05:30  INF]  Executed endpoint 'JopPortal.Controllers.AllDetailsViewController.DetailsView (JopPortal)'
+2022-07-20 14:54:01.224 +05:30  INF]  Request finished HTTP/1.1 GET https://localhost:44352/api/AllDetailsView - - - 200 - application/json;+charset=utf-8 3.7428ms
+2022-07-20 14:54:02.666 +05:30  INF]  Request starting HTTP/1.1 GET https://localhost:44352/api/UserProfilePhoto/1070 - -
+2022-07-20 14:54:02.666 +05:30  INF]  Successfully validated the token.
+2022-07-20 14:54:02.666 +05:30  INF]  Authorization was successful.
+2022-07-20 14:54:02.666 +05:30  INF]  Executing endpoint 'JopPortal.Controllers.UserProfilePhotoController.DetailsOfParticularUsingUserId (JopPortal)'
+2022-07-20 14:54:02.667 +05:30  INF]  Route matched with {action = "DetailsOfParticularUsingUserId", controller = "UserProfilePhoto"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] DetailsOfParticularUsingUserId(Int32) on controller JopPortal.Controllers.UserProfilePhotoController (JopPortal).
+2022-07-20 14:54:02.667 +05:30  INF]  Entity Framework Core 5.0.17 initialized 'JobPortal2Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-07-20 14:54:02.668 +05:30  INF]  Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[RowId], [u].[PhotoPath], [u].[UserId]
+FROM [UserProfilePhotoTbl] AS [u]
+WHERE [u].[UserId] = @__userId_0
+2022-07-20 14:54:02.670 +05:30  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[JopPortal.Models.UserProfilePhotoTbl, JopPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2022-07-20 14:54:02.670 +05:30  INF]  Executed action JopPortal.Controllers.UserProfilePhotoController.DetailsOfParticularUsingUserId (JopPortal) in 3.8534ms
+2022-07-20 14:54:02.670 +05:30  INF]  Executed endpoint 'JopPortal.Controllers.UserProfilePhotoController.DetailsOfParticularUsingUserId (JopPortal)'
+2022-07-20 14:54:02.671 +05:30  INF]  Request finished HTTP/1.1 GET https://localhost:44352/api/UserProfilePhoto/1070 - - - 200 - application/json;+charset=utf-8 4.6024ms
+2022-07-20 14:54:02.672 +05:30  INF]  Request starting HTTP/1.1 GET https://localhost:44352/api/PersonalDetails/1070 - -
+2022-07-20 14:54:02.672 +05:30  INF]  Successfully validated the token.
+2022-07-20 14:54:02.672 +05:30  INF]  Authorization was successful.
+2022-07-20 14:54:02.672 +05:30  INF]  Executing endpoint 'JopPortal.Controllers.PersonalDetailsController.DetailsOfParticularUsingUserId (JopPortal)'
+2022-07-20 14:54:02.672 +05:30  INF]  Route matched with {action = "DetailsOfParticularUsingUserId", controller = "PersonalDetails"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] DetailsOfParticularUsingUserId(Int32) on controller JopPortal.Controllers.PersonalDetailsController (JopPortal).
+2022-07-20 14:54:02.672 +05:30  INF]  Entity Framework Core 5.0.17 initialized 'JobPortal2Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-07-20 14:54:02.674 +05:30  INF]  Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[RowId], [p].[DateOfBirth], [p].[Email], [p].[Experience], [p].[FirstName], [p].[Gender], [p].[LastName], [p].[PhoneNumber], [p].[Skills], [p].[UserId]
+FROM [PersonalDetailsTbl] AS [p]
+WHERE [p].[UserId] = @__userId_0
+2022-07-20 14:54:02.675 +05:30  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[JopPortal.Models.PersonalDetailsTbl, JopPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2022-07-20 14:54:02.676 +05:30  INF]  Executed action JopPortal.Controllers.PersonalDetailsController.DetailsOfParticularUsingUserId (JopPortal) in 3.633ms
+2022-07-20 14:54:02.676 +05:30  INF]  Executed endpoint 'JopPortal.Controllers.PersonalDetailsController.DetailsOfParticularUsingUserId (JopPortal)'
+2022-07-20 14:54:02.676 +05:30  INF]  Request finished HTTP/1.1 GET https://localhost:44352/api/PersonalDetails/1070 - - - 200 - application/json;+charset=utf-8 4.2821ms
+2022-07-20 14:54:02.678 +05:30  INF]  Request starting HTTP/1.1 GET https://localhost:44352/api/UserAdress/1070 - -
+2022-07-20 14:54:02.678 +05:30  INF]  Successfully validated the token.
+2022-07-20 14:54:02.678 +05:30  INF]  Authorization was successful.
+2022-07-20 14:54:02.678 +05:30  INF]  Executing endpoint 'JopPortal.Controllers.UserAdressController.DetailsOfParticularUsingUserId (JopPortal)'
+2022-07-20 14:54:02.678 +05:30  INF]  Route matched with {action = "DetailsOfParticularUsingUserId", controller = "UserAdress"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] DetailsOfParticularUsingUserId(Int32) on controller JopPortal.Controllers.UserAdressController (JopPortal).
+2022-07-20 14:54:02.679 +05:30  INF]  Entity Framework Core 5.0.17 initialized 'JobPortal2Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-07-20 14:54:02.682 +05:30  INF]  Executed DbCommand (2ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[RowId], [u].[CurrentArea], [u].[CurrentCity], [u].[CurrentDoorNumber], [u].[CurrentPinCode], [u].[CurrentStreetName], [u].[PermantentArea], [u].[PermantentCity], [u].[PermantentDoorNumber], [u].[PermantentPinCode], [u].[PermantentStreetName], [u].[UserId]
+FROM [UserAdressTbl] AS [u]
+WHERE [u].[UserId] = @__userId_0
+2022-07-20 14:54:02.684 +05:30  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[JopPortal.Models.UserAdressTbl, JopPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2022-07-20 14:54:02.684 +05:30  INF]  Executed action JopPortal.Controllers.UserAdressController.DetailsOfParticularUsingUserId (JopPortal) in 5.9903ms
+2022-07-20 14:54:02.684 +05:30  INF]  Executed endpoint 'JopPortal.Controllers.UserAdressController.DetailsOfParticularUsingUserId (JopPortal)'
+2022-07-20 14:54:02.685 +05:30  INF]  Request finished HTTP/1.1 GET https://localhost:44352/api/UserAdress/1070 - - - 200 - application/json;+charset=utf-8 6.7468ms
+2022-07-20 14:54:02.686 +05:30  INF]  Request starting HTTP/1.1 GET https://localhost:44352/api/ArticleAndTitle/1070 - -
+2022-07-20 14:54:02.686 +05:30  INF]  Successfully validated the token.
+2022-07-20 14:54:02.686 +05:30  INF]  Authorization was successful.
+2022-07-20 14:54:02.686 +05:30  INF]  Executing endpoint 'JopPortal.Controllers.ArticleAndTitleController.GetArticle (JopPortal)'
+2022-07-20 14:54:02.686 +05:30  INF]  Route matched with {action = "GetArticle", controller = "ArticleAndTitle"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] GetArticle(Int32) on controller JopPortal.Controllers.ArticleAndTitleController (JopPortal).
+2022-07-20 14:54:02.687 +05:30  INF]  Entity Framework Core 5.0.17 initialized 'JobPortal2Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-07-20 14:54:02.688 +05:30  INF]  Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (DbType = Int32), @__userId_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[RowId], [a].[Category], [a].[Content], [a].[UserId]
+FROM [ArticleTbl] AS [a]
+WHERE ([a].[UserId] = @__userId_0) OR ([a].[RowId] = @__userId_1)
+2022-07-20 14:54:02.691 +05:30  INF]  Executed DbCommand (1ms) [Parameters=[@__Idvalue_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[ArticleId], [a].[Title]
+FROM [ArticleTitleTbl] AS [a]
+WHERE [a].[ArticleId] = @__Idvalue_0
+2022-07-20 14:54:02.692 +05:30  INF]  Executed DbCommand (1ms) [Parameters=[@__Idvalue_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[ArticleId], [a].[Title]
+FROM [ArticleTitleTbl] AS [a]
+WHERE [a].[ArticleId] = @__Idvalue_0
+2022-07-20 14:54:02.692 +05:30  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[<>f__AnonymousType3`5[[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], JopPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2022-07-20 14:54:02.693 +05:30  INF]  Executed action JopPortal.Controllers.ArticleAndTitleController.GetArticle (JopPortal) in 6.3961ms
+2022-07-20 14:54:02.693 +05:30  INF]  Executed endpoint 'JopPortal.Controllers.ArticleAndTitleController.GetArticle (JopPortal)'
+2022-07-20 14:54:02.693 +05:30  INF]  Request finished HTTP/1.1 GET https://localhost:44352/api/ArticleAndTitle/1070 - - - 200 - application/json;+charset=utf-8 6.9654ms
+2022-07-20 14:54:02.694 +05:30  INF]  Request starting HTTP/1.1 GET https://localhost:44352/api/ArticlePined/1070 - -
+2022-07-20 14:54:02.695 +05:30  INF]  Successfully validated the token.
+2022-07-20 14:54:02.695 +05:30  INF]  Authorization was successful.
+2022-07-20 14:54:02.695 +05:30  INF]  Executing endpoint 'JopPortal.Controllers.ArticlePinedController.DetailsOfParticularUsingUserId (JopPortal)'
+2022-07-20 14:54:02.695 +05:30  INF]  Route matched with {action = "DetailsOfParticularUsingUserId", controller = "ArticlePined"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] DetailsOfParticularUsingUserId(Int32) on controller JopPortal.Controllers.ArticlePinedController (JopPortal).
+2022-07-20 14:54:02.695 +05:30  INF]  Entity Framework Core 5.0.17 initialized 'JobPortal2Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-07-20 14:54:02.697 +05:30  INF]  Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[RowId], [a].[PinedArticleId], [a].[UserId]
+FROM [ArticlePinedTbl] AS [a]
+WHERE [a].[UserId] = @__userId_0
+2022-07-20 14:54:02.701 +05:30  INF]  Executed DbCommand (1ms) [Parameters=[@__Idvalue_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[RowId], [a].[Category], [a].[Content], [a].[UserId]
+FROM [ArticleTbl] AS [a]
+WHERE [a].[RowId] = @__Idvalue_0
+2022-07-20 14:54:02.702 +05:30  INF]  Executed DbCommand (1ms) [Parameters=[@__Idvalue_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [a].[Id], [a].[ArticleId], [a].[Title]
+FROM [ArticleTitleTbl] AS [a]
+WHERE [a].[ArticleId] = @__Idvalue_0
+2022-07-20 14:54:02.703 +05:30  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[<>f__AnonymousType7`5[[System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], JopPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2022-07-20 14:54:02.703 +05:30  INF]  Executed action JopPortal.Controllers.ArticlePinedController.DetailsOfParticularUsingUserId (JopPortal) in 8.3733ms
+2022-07-20 14:54:02.703 +05:30  INF]  Executed endpoint 'JopPortal.Controllers.ArticlePinedController.DetailsOfParticularUsingUserId (JopPortal)'
+2022-07-20 14:54:02.704 +05:30  INF]  Request finished HTTP/1.1 GET https://localhost:44352/api/ArticlePined/1070 - - - 200 - application/json;+charset=utf-8 9.1354ms
+2022-07-20 14:54:02.706 +05:30  INF]  Request starting HTTP/1.1 GET https://localhost:44352/api/UserEducation/1070 - -
+2022-07-20 14:54:02.706 +05:30  INF]  Successfully validated the token.
+2022-07-20 14:54:02.706 +05:30  INF]  Authorization was successful.
+2022-07-20 14:54:02.706 +05:30  INF]  Executing endpoint 'JopPortal.Controllers.UserEducationController.DetailsOfParticularUsingUserId (JopPortal)'
+2022-07-20 14:54:02.706 +05:30  INF]  Route matched with {action = "DetailsOfParticularUsingUserId", controller = "UserEducation"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] DetailsOfParticularUsingUserId(Int32) on controller JopPortal.Controllers.UserEducationController (JopPortal).
+2022-07-20 14:54:02.706 +05:30  INF]  Entity Framework Core 5.0.17 initialized 'JobPortal2Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-07-20 14:54:02.708 +05:30  INF]  Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[RowId], [u].[CompletedEducationIn], [u].[EducationType], [u].[GroupName], [u].[PercentageObtained], [u].[UserId], [u].[YearOfEnd], [u].[YearOfStart]
+FROM [UserEducationTbl] AS [u]
+WHERE [u].[UserId] = @__userId_0
+2022-07-20 14:54:02.709 +05:30  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[JopPortal.Models.UserEducationTbl, JopPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2022-07-20 14:54:02.710 +05:30  INF]  Executed action JopPortal.Controllers.UserEducationController.DetailsOfParticularUsingUserId (JopPortal) in 3.9465ms
+2022-07-20 14:54:02.710 +05:30  INF]  Executed endpoint 'JopPortal.Controllers.UserEducationController.DetailsOfParticularUsingUserId (JopPortal)'
+2022-07-20 14:54:02.710 +05:30  INF]  Request finished HTTP/1.1 GET https://localhost:44352/api/UserEducation/1070 - - - 200 - application/json;+charset=utf-8 4.5212ms
+2022-07-20 14:54:02.711 +05:30  INF]  Request starting HTTP/1.1 GET https://localhost:44352/api/FollowersAndFollowing/1070 - -
+2022-07-20 14:54:02.712 +05:30  INF]  Successfully validated the token.
+2022-07-20 14:54:02.712 +05:30  INF]  Authorization was successful.
+2022-07-20 14:54:02.712 +05:30  INF]  Executing endpoint 'JopPortal.Controllers.FollowersAndFollowingController.DetailsOfParticularUsingUserId (JopPortal)'
+2022-07-20 14:54:02.712 +05:30  INF]  Route matched with {action = "DetailsOfParticularUsingUserId", controller = "FollowersAndFollowing"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] DetailsOfParticularUsingUserId(Int32) on controller JopPortal.Controllers.FollowersAndFollowingController (JopPortal).
+2022-07-20 14:54:02.712 +05:30  INF]  Entity Framework Core 5.0.17 initialized 'JobPortal2Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-07-20 14:54:02.714 +05:30  INF]  Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[RowId], [f].[FollowerId], [f].[UserId]
+FROM [FollowersAndFollowingTbl] AS [f]
+WHERE [f].[UserId] = @__userId_0
+2022-07-20 14:54:02.718 +05:30  INF]  Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [f].[RowId], [f].[FollowerId], [f].[UserId]
+FROM [FollowersAndFollowingTbl] AS [f]
+WHERE [f].[FollowerId] = @__userId_0
+2022-07-20 14:54:02.718 +05:30  INF]  Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[RowId], [p].[DateOfBirth], [p].[Email], [p].[Experience], [p].[FirstName], [p].[Gender], [p].[LastName], [p].[PhoneNumber], [p].[Skills], [p].[UserId]
+FROM [PersonalDetailsTbl] AS [p]
+2022-07-20 14:54:02.719 +05:30  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[JopPortal.Models.FollowingFollowerNameDetails, JopPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2022-07-20 14:54:02.719 +05:30  INF]  Executed action JopPortal.Controllers.FollowersAndFollowingController.DetailsOfParticularUsingUserId (JopPortal) in 6.8191ms
+2022-07-20 14:54:02.719 +05:30  INF]  Executed endpoint 'JopPortal.Controllers.FollowersAndFollowingController.DetailsOfParticularUsingUserId (JopPortal)'
+2022-07-20 14:54:02.719 +05:30  INF]  Request finished HTTP/1.1 GET https://localhost:44352/api/FollowersAndFollowing/1070 - - - 200 - application/json;+charset=utf-8 7.4907ms
+2022-07-20 14:54:02.720 +05:30  INF]  Request starting HTTP/1.1 GET https://localhost:44352/api/UserWork/1070 - -
+2022-07-20 14:54:02.720 +05:30  INF]  Successfully validated the token.
+2022-07-20 14:54:02.720 +05:30  INF]  Authorization was successful.
+2022-07-20 14:54:02.720 +05:30  INF]  Executing endpoint 'JopPortal.Controllers.UserWorkController.DetailsOfParticularUsingUserId (JopPortal)'
+2022-07-20 14:54:02.720 +05:30  INF]  Route matched with {action = "DetailsOfParticularUsingUserId", controller = "UserWork"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult] DetailsOfParticularUsingUserId(Int32) on controller JopPortal.Controllers.UserWorkController (JopPortal).
+2022-07-20 14:54:02.721 +05:30  INF]  Entity Framework Core 5.0.17 initialized 'JobPortal2Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-07-20 14:54:02.723 +05:30  INF]  Executed DbCommand (1ms) [Parameters=[@__userId_0='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT [u].[RowId], [u].[CompanyName], [u].[UserId], [u].[WorkedFrom], [u].[WorkedTill]
+FROM [UserWorkTbl] AS [u]
+WHERE [u].[UserId] = @__userId_0
+2022-07-20 14:54:02.724 +05:30  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[JopPortal.Models.UserWorkTbl, JopPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2022-07-20 14:54:02.725 +05:30  INF]  Executed action JopPortal.Controllers.UserWorkController.DetailsOfParticularUsingUserId (JopPortal) in 4.3183ms
+2022-07-20 14:54:02.725 +05:30  INF]  Executed endpoint 'JopPortal.Controllers.UserWorkController.DetailsOfParticularUsingUserId (JopPortal)'
+2022-07-20 14:54:02.725 +05:30  INF]  Request finished HTTP/1.1 GET https://localhost:44352/api/UserWork/1070 - - - 200 - application/json;+charset=utf-8 4.9186ms
+2022-07-20 14:54:38.894 +05:30  INF]  Request starting HTTP/1.1 GET https://localhost:44352/api/AllDetailsView - -
+2022-07-20 14:54:38.894 +05:30  INF]  Successfully validated the token.
+2022-07-20 14:54:38.894 +05:30  INF]  Authorization was successful.
+2022-07-20 14:54:38.894 +05:30  INF]  Executing endpoint 'JopPortal.Controllers.AllDetailsViewController.DetailsView (JopPortal)'
+2022-07-20 14:54:38.894 +05:30  INF]  Route matched with {action = "DetailsView", controller = "AllDetailsView"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult DetailsView() on controller JopPortal.Controllers.AllDetailsViewController (JopPortal).
+2022-07-20 14:54:38.895 +05:30  INF]  Entity Framework Core 5.0.17 initialized 'JobPortal2Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+2022-07-20 14:54:38.899 +05:30  INF]  Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT [p].[UserId], [u].[PhotoPath], [p].[Email], (COALESCE([p].[FirstName], '') + ' ') + COALESCE([p].[LastName], '') AS [FullName], [p].[PhoneNumber], [p].[Gender], [p].[DateOfBirth], [p].[Experience], [p].[Skills]
+FROM [PersonalDetailsTbl] AS [p]
+INNER JOIN [UserProfilePhotoTbl] AS [u] ON [p].[UserId] = [u].[UserId]
+2022-07-20 14:54:38.899 +05:30  INF]  Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[<>f__AnonymousType0`9[[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Nullable`1[[System.DateTime, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Nullable`1[[System.Int32, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=5.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], JopPortal, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2022-07-20 14:54:38.900 +05:30  INF]  Executed action JopPortal.Controllers.AllDetailsViewController.DetailsView (JopPortal) in 5.4891ms
+2022-07-20 14:54:38.900 +05:30  INF]  Executed endpoint 'JopPortal.Controllers.AllDetailsViewController.DetailsView (JopPortal)'
+2022-07-20 14:54:38.901 +05:30  INF]  Request finished HTTP/1.1 GET https://localhost:44352/api/AllDetailsView - - - 200 - application/json;+charset=utf-8 7.0749ms

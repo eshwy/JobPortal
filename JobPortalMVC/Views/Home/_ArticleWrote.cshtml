@@ -14,14 +14,12 @@
     {
         UserIdData = @item.UserId;
         <div class="col-md-7">
-
-            @*@Html.DisplayFor(modelItem => item.Title)*@
-            <b>@item.Title</b><br />
+            @item.Category<br />
         </div>
         <div class="col-md-4">
             @if (UserIdData == @Model.UserData)
             {
-                <button type="button" class="btn btn-light " data-toggle="modal" data-target="#EditArticleWrote">
+                <button type="button" class="btn btn-light " data-toggle="modal" data-target="#EditArticleWrote_@item.RowId">
                     <span class="bi bi-pencil"></span>
                 </button>
             }
@@ -30,7 +28,7 @@
 </div>
 @foreach (var item in Model.ArticleWroteDetails)
 {
-    <div class="modal fade" id="EditArticleWrote" tabindex="-1" role="dialog">
+    <div class="modal fade" id=@("EditArticleWrote_"+item.RowId) tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -43,19 +41,22 @@
                             <input value="@item.RowId" name="RowId" type="hidden" />
                             <input value="@item.UserId" name="UserId" type="hidden" />
                             <div class="col-md-6">
-                                <h6>Article Name</h6>
-                                <b>@item.Title</b>
+                                <h6><b>Category :</b></h6>
+                                @item.Category
+                                <br />
+                                <h6><b>Title :</b></h6>
+                                @item.Title
                             </div>
                             <div class="col-md-3">
                                 <table></table>
                                 <h6> </h6>
-                                @Html.ActionLink("View", "ViewArticle", "Home", new { artileId = item.RowId }, new { @class = "btn btn-outline-primary" })
+                                @Html.ActionLink("View", "ViewArticle", "Home", new { userId = item.RowId }, new { @class = "btn btn-outline-primary" })
 
                             </div>
                             <div class="col-md-3">
                                 <table></table>
                                 <h6> </h6>
-                                @Html.ActionLink("Remove", "DeleteAticle", new { RowId = item.RowId}, new { @class = "btn btn-danger btn-small", @onclick = "return confirm('Do You Want to Delete This Article?');" })
+                                @Html.ActionLink("Remove", "DeleteAticle", "Edit", new { RowId = item.RowId, userId = item.UserId }, new { @class = "btn btn-danger btn-small", @onclick = "return confirm('Do You Want to Delete This Article?');" })
                             </div>                            
                         </div>                        
                     </form>

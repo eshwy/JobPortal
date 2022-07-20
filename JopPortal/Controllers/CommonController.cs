@@ -24,8 +24,73 @@ namespace JopPortal.Controllers
         [HttpGet("{userId}")]
         public async Task<ActionResult> DetailsOfParticularUsingUserId(int userId)
         {
-            var details = await _context.ArticlePinedTbls.Where(x => x.UserId == userId).ToListAsync();
-            return Ok(details);
+            //Article Pinned Data
+            var articlePinnedDetails = await _context.ArticlePinedTbls.Where(x => x.UserId == userId).ToListAsync();
+
+            //Article List for getting other data
+            List<int> ArticleRowId = new List<int>();
+            foreach (var Artdetails in articlePinnedDetails)
+            {
+                ArticleRowId.Add((int)Artdetails.PinedArticleId);
+            }
+            
+            //Getting Article Table  
+            List<ArticleTbl> data = new List<ArticleTbl>();
+            foreach (var Idvalue in ArticleRowId)
+            {
+                var ArticleTitleData = await _context.ArticleTbls.Where(x => x.RowId == Idvalue).ToListAsync();
+                foreach (var item1 in ArticleTitleData)
+                {
+                    data.Add(item1);
+                }
+
+            }
+            var AdticleTableDetails = from t1 in articlePinnedDetails
+                                      join t2 in data on
+                                      t1.PinedArticleId equals t2.RowId
+                                      select new { 
+                                      t1.RowId,
+                                      t1.UserId,
+                                      t1.PinedArticleId,
+                                      t2.Category,
+                                      ArticleRowId=t2.RowId                                      
+                                      };
+
+            //Article Title Details.
+            List < ArticleTitleTbl > data1 = new List<ArticleTitleTbl>();
+            foreach (var Idvalue in ArticleRowId)
+            {
+                var ArticleTitleData = await _context.ArticleTitleTbl.Where(x => x.ArticleId == Idvalue).ToListAsync();
+                foreach (var item1 in ArticleTitleData)
+                {
+                    data1.Add(item1);
+                }
+
+            }
+            var FinalTitleData = from t1 in AdticleTableDetails
+                                 join t2 in data1
+                                 on t1.ArticleRowId equals t2.ArticleId
+                                 group t2.Title by t1.ArticleRowId into g
+                                 select new
+                                 {
+                                     id = g.Key,
+                                     Title = string.Join(",", g.ToArray())
+                                 };
+
+            var FinalArticlePinnedData = (from t1 in AdticleTableDetails
+                                    join t2 in FinalTitleData
+                                    on t1.ArticleRowId equals t2.id
+                                    select new
+                                    {
+                                        t1.PinedArticleId,
+                                        t1.RowId,
+                                        t1.UserId,
+                                        t2.Title,                                        
+                                        t1.Category
+                                    }).ToList();
+
+
+            return Ok(FinalArticlePinnedData);
         }
     }
 
