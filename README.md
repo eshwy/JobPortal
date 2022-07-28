@@ -1,4 +1,4 @@
-# JopPortal
+# Job Portal
 Jop portal 2.0
 In this project I have changed my coding style by implementing the generic crud and other few funtionalities
 
